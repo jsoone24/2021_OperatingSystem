@@ -87,6 +87,7 @@ allocproc(void)
 
 found:
   p->state = EMBRYO;
+  p->runtime = 0;
   p->pid = nextpid++;
 
   release(&ptable.lock);
@@ -149,6 +150,7 @@ userinit(void)
   acquire(&ptable.lock);
 
   p->state = RUNNABLE;
+  p->priority = 5;  //HW#4
 
   release(&ptable.lock);
 }
@@ -199,6 +201,7 @@ fork(void)
   np->sz = curproc->sz;
   np->parent = curproc;
   *np->tf = *curproc->tf;
+  np->priority = curproc->priority; //HW#4
 
   // Clear %eax so that fork returns 0 in the child.
   np->tf->eax = 0;
@@ -533,8 +536,6 @@ procdump(void)
   }
 }
 
-
-#ifdef PRIORITY
 int setnice(int pid, int nice)
 {
     if( nice < 0 || nice > 10)
@@ -546,9 +547,18 @@ int setnice(int pid, int nice)
 	/************************/ 
 	/*       do program 	*/
 	/************************/ 
+    for( p = ptable.proc; p < &ptable.proc[NPROC]; p++)
+    {
+        if(p->pid == pid)
+        {
+            p->priority = nice;
+            release(&ptable.lock);
+            return 0;
+        }
+    }
 
     release(&ptable.lock);
-    return -1;
+    return -1; //non-existing pid
 }
 
 int getnice(int pid)
@@ -559,10 +569,19 @@ int getnice(int pid)
 	/************************/ 
 	/*       do program 	*/
 	/************************/ 
-   
+    for( p = ptable.proc; p < &ptable.proc[NPROC]; p++)
+    {
+        if(p->pid == pid)
+        {
+            release(&ptable.lock);
+            return p->priority;
+        }
+    }
+
     release(&ptable.lock);
 
-    return -1;
+    return -1; //non-existing pid
+
 }
 
 void ps(void)
@@ -593,5 +612,3 @@ void ps(void)
     return;
 
 }
-#endif
-

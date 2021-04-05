@@ -185,7 +185,10 @@ UPROGS=\
 	$U/_wc\
 	$U/_zombie\
 	$U/_ps\
-    $U/_test_nice
+    $U/_test_nice\
+    $U/_test_sys_ps\
+    $U/_getnice\
+    $U/_setnice\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)
@@ -255,7 +258,7 @@ qemu-nox-gdb: fs.img xv6.img .gdbinit
 EXTRA=\
 	mkfs.c ulib.c user.h cat.c echo.c forktest.c grep.c kill.c\
 	ln.c ls.c mkdir.c rm.c stressfs.c usertests.c wc.c zombie.c\
-	printf.c umalloc.c test_nice.c\
+	printf.c umalloc.c test_nice.c test_sys_ps.c getnice.c setnice.c\
 	README dot-bochsrc *.pl toc.* runoff runoff1 runoff.list\
 	.gdbinit.tmpl gdbutil\
 

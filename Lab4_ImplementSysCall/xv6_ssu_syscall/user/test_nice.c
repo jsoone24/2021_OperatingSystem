@@ -5,7 +5,7 @@
 
 void test_nice()
 {
-    /*
+    
     int pid, nice;
 
     printf(1, "case 1. get nice value of init process: ");
@@ -56,13 +56,13 @@ void test_nice()
         }   
         else                        //parent
             wait();
-     */
+     
 }
 
 int main(int argc, char **argv)
 {
         printf(1, "=== TEST START ===\n");
-        //test_nice();
+        test_nice();
         printf(1, "=== TEST   END ===\n");
 
         exit();
