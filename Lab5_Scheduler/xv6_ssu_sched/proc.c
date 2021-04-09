@@ -217,6 +217,8 @@ fork(void) {
 
     release(&ptable.lock);
 
+    yield();
+
     return pid;
 }
 
@@ -319,45 +321,36 @@ wait(void) {
 void
 scheduler(void) {
     struct proc *p;
+    struct proc *pp;
     struct cpu *c = mycpu();
     c->proc = 0;
 
-    for (;;) {
-        int MaxPriority = -1; //HW#5 highest priority in ptable
-        int TieBreak = 0;     //HW#5 same highest priority tiebreaks num
-        int WhichToRun = 0;   //HW#5 select randomly in same MaxPriority
-        int CurrTieIdx = 0;   //HW#5 to find process correspond to WhichToRun
+    int MaxPriority = -1;   //HW#5 highest priortiy in table
 
+    for (;;) {
 
         // Enable interrupts on this processor.
         sti();
 
         // Loop over process table looking for process to run.
         acquire(&ptable.lock);
-
-        //HW#5 run most
+        
         for (p = ptable.proc; p < &ptable.proc[NPROC]; p++) {
+            //HW#5 run most
+            for (pp = ptable.proc; pp < &ptable.proc[NPROC]; pp++) {
+                if (pp->state != RUNNABLE)
+                    continue;
+                if (pp->priority > MaxPriority) {
+                    MaxPriority = pp->priority;
+                }
+            }
+
             if (p->state != RUNNABLE)
                 continue;
-            if (p->priority > MaxPriority) {
-                MaxPriority = p->priority;
-                TieBreak = 1;
-            } else if (p->priority == MaxPriority) {
-                TieBreak++;
-            }
-        }
+            if (p->priority < MaxPriority)
+                continue;
 
-        //WhichToRun = rand() %  TieBreak;    //Calculate index which to run
-
-        for (p = ptable.proc; p < &ptable.proc[NPROC]; p++) {
-            if (p->state != RUNNABLE)
-                continue;
-            if (p->priority != MaxPriority)
-                continue;
-            if (CurrTieIdx != WhichToRun) {
-                CurrTieIdx++;
-                continue;
-            }
+            MaxPriority = -1;
 
             // Switch to chosen process.  It is the process's job
             // to release ptable.lock and then reacquire it
@@ -551,34 +544,38 @@ procdump(void) {
 int setnice(int pid, int nice) {
     if (nice < 0 || nice > 10)
         return -1;
-
-    if (pid < 0)
+    if(pid < 1)
         return -1;
 
     struct proc *p;
     acquire(&ptable.lock);
+    int priority = 0;
+    priority = 10 - nice;
 
     /************************/
     /*       do program 	*/
     /************************/
     for (p = ptable.proc; p < &ptable.proc[NPROC]; p++) {
         if (p->pid == pid) {
-            p->priority = nice;
+            p->priority = priority;
             release(&ptable.lock);
             return 0;
         }
     }
 
     myproc()->state = RUNNABLE;
-    sched();    // Call Scheduler due to priority change
     release(&ptable.lock);
+
+    yield();    // Call Scheduler due to priority change
 
     return -1; //non-existing pid
 }
 
 int getnice(int pid) {
-    if (pid < 0)
+
+    if(pid < 1)
         return -1;
+
     struct proc *p;
     acquire(&ptable.lock);
 
@@ -588,7 +585,7 @@ int getnice(int pid) {
     for (p = ptable.proc; p < &ptable.proc[NPROC]; p++) {
         if (p->pid == pid) {
             release(&ptable.lock);
-            return p->priority;
+            return (10 - p->priority);
         }
     }
 
