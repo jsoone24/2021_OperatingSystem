@@ -336,7 +336,7 @@ scheduler(void) {
         acquire(&ptable.lock);
         
         for (p = ptable.proc; p < &ptable.proc[NPROC]; p++) {
-            //HW#5 run most
+            //HW#5 run most highest priority process
             for (pp = ptable.proc; pp < &ptable.proc[NPROC]; pp++) {
                 if (pp->state != RUNNABLE)
                     continue;
