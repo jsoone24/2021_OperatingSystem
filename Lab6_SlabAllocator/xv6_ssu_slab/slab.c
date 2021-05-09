@@ -6,33 +6,189 @@
 #include "spinlock.h"
 #include "slab.h"
 
-struct {
-	struct spinlock lock;
-	struct slab slab[NSLAB];
+struct
+{
+    struct spinlock lock;
+    struct slab slab[NSLAB];
 } stable;
 
-void slabinit(){
-	/* fill in the blank */
+unsigned int nextPowerOf2Idx(unsigned int n)
+{
+    unsigned count = 0;
+
+    // First n in the below condition
+    // is for the case where n is 0
+    if (n && !(n & (n - 1)))
+        return 0;
+
+    while (n != 0)
+    {
+        n >>= 1;
+        count += 1;
+    }
+
+    return count;
 }
 
-char *kmalloc(int size){
-	/* fill in the blank */
-	return 0;
+void slabinit()
+{
+    /* fill in the blank */
+    acquire(&stable.lock);
+    for (int i = 0; i < NSLAB; i++)
+    {
+        // set slab size
+        stable.slab[i].size = 0x8 << i;
+
+        // first slab page allocation and initialization
+        stable.slab[i].page[0] = kalloc();
+        memset(stable.slab[i].page[0], 1, PGSIZE);
+        stable.slab[i].num_pages = 1;
+        stable.slab[i].num_objects_per_page = (int)PGSIZE / stable.slab[i].size;
+        stable.slab[i].num_free_objects = stable.slab[i].num_objects_per_page;
+        stable.slab[i].num_used_objects = 0;
+
+        // bitmap allocation and initialization
+        stable.slab[i].bitmap = kalloc();
+        memset(stable.slab[i].bitmap, 0, PGSIZE);
+    }
+    release(&stable.lock);
 }
 
-void kmfree(char *addr, int size){
-	/* fill in the blank */
+char *kmalloc(int size)
+{
+    /* fill in the blank */
+    // calculate which slab to put
+    int where_to_put = 0;
+    where_to_put = nextPowerOf2Idx((unsigned int)size) - 3;
+
+    acquire(&stable.lock);
+    // check if slab available
+    if (stable.slab[where_to_put].num_free_objects == 0) // check free object exists
+    {
+        // no free objects
+        if (stable.slab[where_to_put].num_pages <= MAX_PAGES_PER_SLAB) // check if new page allocation available
+        {
+            // available
+            stable.slab[where_to_put].page[stable.slab[where_to_put].num_pages] = kalloc();
+            stable.slab[where_to_put].num_pages++;
+            stable.slab[where_to_put].num_free_objects += stable.slab[where_to_put].num_objects_per_page;
+        }
+        else
+        {
+            //not available
+            cprintf("page allocation limit\n");
+
+            return 0;
+        }
+    }
+
+    // search bitmap for free space
+    int free_slab_idx = 0;                               // free slab index from bitmap
+    char *bitmap_ptr = stable.slab[where_to_put].bitmap; // get bitmap start address
+    char *free_space_addr;                               // return value;
+    unsigned char temp = 0;                              // temporary space for bitmap calculation
+
+    for (int i = 0; i * 8 < stable.slab[where_to_put].num_pages * stable.slab[where_to_put].num_objects_per_page; i++, bitmap_ptr++)
+    {
+        if (~((unsigned char)*bitmap_ptr) & 0xFF) // if not FF, there's empty space
+        {
+            temp = ((unsigned char)*bitmap_ptr);
+            while ((temp && 0x01) != 0) // search from front
+            {
+                temp >>= 1;
+                free_slab_idx++;
+            }
+
+            // check bitmap to 1 and return allocated space
+            *bitmap_ptr = ((unsigned char)*bitmap_ptr) | (0x01 << free_slab_idx);
+            free_space_addr = stable.slab[where_to_put].page[(i * 8 + free_slab_idx) / stable.slab[where_to_put].num_objects_per_page];
+            free_space_addr += (((i * 8 + free_slab_idx) % (stable.slab[where_to_put].num_objects_per_page) * stable.slab[where_to_put].size));
+            stable.slab[where_to_put].num_free_objects--;
+            stable.slab[where_to_put].num_used_objects++;
+            release(&stable.lock);
+
+            return free_space_addr;
+        }
+    }
+
+    release(&stable.lock);
+
+    // something wrong
+    cprintf("something wrong\n");
+
+    return 0;
 }
 
-void slabdump(){
-	cprintf("__slabdump__\n");
+void kmfree(char *addr, int size)
+{
+    /* fill in the blank */
+    // calculate which slab to free
+    int where_to_free = 0;
+    where_to_free = nextPowerOf2Idx((unsigned int)size) - 3;
 
-	struct slab *s;
+    acquire(&stable.lock);
+    // calculate index from addr
+    char *ptr;
+    char *bitmap_ptr = stable.slab[where_to_free].bitmap; // get bitmap start address
 
-	cprintf("size\tnum_pages\tused_objects\tfree_objects\n");
+    for (int i = 0; i * 8 < stable.slab[where_to_free].num_pages * stable.slab[where_to_free].num_objects_per_page; i++)
+    {
+        for (int j = 0; j < 8; j++)
+        {
+            ptr = stable.slab[where_to_free].page[(i * 8 + j) / stable.slab[where_to_free].num_objects_per_page];
+            ptr += (((i * 8 + j) % (stable.slab[where_to_free].num_objects_per_page) * stable.slab[where_to_free].size));
 
-	for(s = stable.slab; s < &stable.slab[NSLAB]; s++){
-		cprintf("%d\t%d\t\t%d\t\t%d\n", 
-			s->size, s->num_pages, s->num_used_objects, s->num_free_objects);
-	}
+            if (ptr == addr)
+            {
+                bitmap_ptr += i;
+                *bitmap_ptr = (((unsigned char)*bitmap_ptr) & ~(1 << j));
+                stable.slab[where_to_free].num_free_objects++;
+                stable.slab[where_to_free].num_used_objects--;
+                memset(addr, 1, stable.slab[where_to_free].size);
+                release(&stable.lock);
+
+                return;
+            }
+        }
+    }
+
+    release(&stable.lock);
+
+    // something wrong
+    cprintf("something wrong\n");
+    cprintf("input addr : %p\n", addr);
+}
+
+void bitmapdump()
+{
+    struct slab *s;
+    for (s = stable.slab; s < &stable.slab[NSLAB]; s++)
+    {
+        char *ptr = s->bitmap;
+        cprintf("size : %d\n", s->size);
+
+        for (int i = 0; i < PGSIZE; i++)
+        {
+            cprintf("%d", (unsigned char)*ptr);
+            ptr++;
+        }
+        cprintf("\n");
+    }
+}
+
+void slabdump()
+{
+    cprintf("__slabdump__\n");
+
+    struct slab *s;
+
+    cprintf("size\tnum_pages\tused_objects\tfree_objects\n");
+
+    for (s = stable.slab; s < &stable.slab[NSLAB]; s++)
+    {
+        cprintf("%d\t%d\t\t%d\t\t%d\n",
+                s->size, s->num_pages, s->num_used_objects, s->num_free_objects);
+    }
+
+    //bitmapdump();
 }
