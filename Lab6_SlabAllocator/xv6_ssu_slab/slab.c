@@ -34,22 +34,26 @@ void slabinit()
 {
     /* fill in the blank */
     acquire(&stable.lock);
+    struct slab *slab_ptr;
+
     for (int i = 0; i < NSLAB; i++)
     {
+        slab_ptr = &stable.slab[i];
+
         // set slab size
-        stable.slab[i].size = 0x8 << i;
+        slab_ptr->size = 0x8 << i;
 
         // first slab page allocation and initialization
-        stable.slab[i].page[0] = kalloc();
-        memset(stable.slab[i].page[0], 1, PGSIZE);
-        stable.slab[i].num_pages = 1;
-        stable.slab[i].num_objects_per_page = (int)PGSIZE / stable.slab[i].size;
-        stable.slab[i].num_free_objects = stable.slab[i].num_objects_per_page;
-        stable.slab[i].num_used_objects = 0;
+        slab_ptr->page[0] = kalloc();
+        memset(slab_ptr->page[0], 1, PGSIZE);
+        slab_ptr->num_pages = 1;
+        slab_ptr->num_objects_per_page = (int)PGSIZE / slab_ptr->size;
+        slab_ptr->num_free_objects = slab_ptr->num_objects_per_page;
+        slab_ptr->num_used_objects = 0;
 
         // bitmap allocation and initialization
-        stable.slab[i].bitmap = kalloc();
-        memset(stable.slab[i].bitmap, 0, PGSIZE);
+        slab_ptr->bitmap = kalloc();
+        memset(slab_ptr->bitmap, 0, PGSIZE);
     }
     release(&stable.lock);
 }
@@ -60,18 +64,20 @@ char *kmalloc(int size)
     // calculate which slab to put
     int where_to_put = 0;
     where_to_put = nextPowerOf2Idx((unsigned int)size) - 3;
+    struct slab *slab_ptr;
+    slab_ptr = &stable.slab[where_to_put];
 
     acquire(&stable.lock);
     // check if slab available
-    if (stable.slab[where_to_put].num_free_objects == 0) // check free object exists
+    if (slab_ptr->num_free_objects == 0) // check free object exists
     {
         // no free objects
-        if (stable.slab[where_to_put].num_pages <= MAX_PAGES_PER_SLAB) // check if new page allocation available
+        if (slab_ptr->num_pages <= MAX_PAGES_PER_SLAB) // check if new page allocation available
         {
             // available
-            stable.slab[where_to_put].page[stable.slab[where_to_put].num_pages] = kalloc();
-            stable.slab[where_to_put].num_pages++;
-            stable.slab[where_to_put].num_free_objects += stable.slab[where_to_put].num_objects_per_page;
+            slab_ptr->page[slab_ptr->num_pages] = kalloc();
+            slab_ptr->num_pages++;
+            slab_ptr->num_free_objects += slab_ptr->num_objects_per_page;
         }
         else
         {
@@ -84,11 +90,11 @@ char *kmalloc(int size)
 
     // search bitmap for free space
     int free_slab_idx = 0;                               // free slab index from bitmap
-    char *bitmap_ptr = stable.slab[where_to_put].bitmap; // get bitmap start address
+    char *bitmap_ptr = slab_ptr->bitmap; // get bitmap start address
     char *free_space_addr;                               // return value;
     unsigned char temp = 0;                              // temporary space for bitmap calculation
 
-    for (int i = 0; i * 8 < stable.slab[where_to_put].num_pages * stable.slab[where_to_put].num_objects_per_page; i++, bitmap_ptr++)
+    for (int i = 0; i * 8 < slab_ptr->num_pages * slab_ptr->num_objects_per_page; i++, bitmap_ptr++)
     {
         if (~((unsigned char)*bitmap_ptr) & 0xFF) // if not FF, there's empty space
         {
@@ -101,10 +107,10 @@ char *kmalloc(int size)
 
             // check bitmap to 1 and return allocated space
             *bitmap_ptr = ((unsigned char)*bitmap_ptr) | (0x01 << free_slab_idx);
-            free_space_addr = stable.slab[where_to_put].page[(i * 8 + free_slab_idx) / stable.slab[where_to_put].num_objects_per_page];
-            free_space_addr += (((i * 8 + free_slab_idx) % (stable.slab[where_to_put].num_objects_per_page) * stable.slab[where_to_put].size));
-            stable.slab[where_to_put].num_free_objects--;
-            stable.slab[where_to_put].num_used_objects++;
+            free_space_addr = slab_ptr->page[(i * 8 + free_slab_idx) / slab_ptr->num_objects_per_page];
+            free_space_addr += (((i * 8 + free_slab_idx) % (slab_ptr->num_objects_per_page) * slab_ptr->size));
+            slab_ptr->num_free_objects--;
+            slab_ptr->num_used_objects++;
             release(&stable.lock);
 
             return free_space_addr;
@@ -125,26 +131,28 @@ void kmfree(char *addr, int size)
     // calculate which slab to free
     int where_to_free = 0;
     where_to_free = nextPowerOf2Idx((unsigned int)size) - 3;
+    struct slab *slab_ptr;
+    slab_ptr = &stable.slab[where_to_free];
 
     acquire(&stable.lock);
     // calculate index from addr
     char *ptr;
-    char *bitmap_ptr = stable.slab[where_to_free].bitmap; // get bitmap start address
+    char *bitmap_ptr = slab_ptr->bitmap; // get bitmap start address
 
-    for (int i = 0; i * 8 < stable.slab[where_to_free].num_pages * stable.slab[where_to_free].num_objects_per_page; i++)
+    for (int i = 0; i * 8 < slab_ptr->num_pages * slab_ptr->num_objects_per_page; i++)
     {
         for (int j = 0; j < 8; j++)
         {
-            ptr = stable.slab[where_to_free].page[(i * 8 + j) / stable.slab[where_to_free].num_objects_per_page];
-            ptr += (((i * 8 + j) % (stable.slab[where_to_free].num_objects_per_page) * stable.slab[where_to_free].size));
+            ptr = slab_ptr->page[(i * 8 + j) / slab_ptr->num_objects_per_page];
+            ptr += (((i * 8 + j) % (slab_ptr->num_objects_per_page) * slab_ptr->size));
 
             if (ptr == addr)
             {
                 bitmap_ptr += i;
                 *bitmap_ptr = (((unsigned char)*bitmap_ptr) & ~(1 << j));
-                stable.slab[where_to_free].num_free_objects++;
-                stable.slab[where_to_free].num_used_objects--;
-                memset(addr, 1, stable.slab[where_to_free].size);
+                slab_ptr->num_free_objects++;
+                slab_ptr->num_used_objects--;
+                memset(addr, 1, slab_ptr->size);
                 release(&stable.lock);
 
                 return;
