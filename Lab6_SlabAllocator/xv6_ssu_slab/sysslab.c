@@ -9,7 +9,7 @@
 
 #define TEST_ALLOC_MIN_SIZE 8
 #define TEST_ALLOC_MAX_SIZE 32
-#define NTEST 100
+#define NTEST 1000
 
 int slabtest(void)
 {

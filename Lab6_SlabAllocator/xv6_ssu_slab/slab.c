@@ -169,7 +169,10 @@ void bitmapdump()
 
         for (int i = 0; i < PGSIZE; i++)
         {
-            cprintf("%d", (unsigned char)*ptr);
+            if(((unsigned char)*ptr) !=0)
+                cprintf("%x ", (unsigned char)*ptr);
+            else
+                cprintf("00 ");
             ptr++;
         }
         cprintf("\n");
