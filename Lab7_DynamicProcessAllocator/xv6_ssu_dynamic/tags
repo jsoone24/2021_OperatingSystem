@@ -319,90 +319,90 @@ a	user/rm.asm	/^   a:	55                   	push   %ebp$/;"	l
 a	user/slabtest.asm	/^   a:	55                   	push   %ebp$/;"	l
 a	user/stressfs.asm	/^   a:	55                   	push   %ebp$/;"	l
 a	user/zombie.asm	/^   a:	55                   	push   %ebp$/;"	l
-a0	user/echo.asm	/^  a0:	83 c2 01             	add    $0x1,%edx$/;"	l
 a0	user/init.asm	/^  a0:	6a 01                	push   $0x1$/;"	l
+a0	user/kill.asm	/^  a0:	0f b6 12             	movzbl (%edx),%edx$/;"	l
 a0	user/ps.asm	/^  a0:	57                   	push   %edi$/;"	l
 a0	user/slabtest.asm	/^  a0:	89 d0                	mov    %edx,%eax$/;"	l
-a00	user/sh.asm	/^ a00:	84 c0                	test   %al,%al$/;"	l
-a02	user/sh.asm	/^ a02:	74 11                	je     a15 <strcmp+0x21>$/;"	l
-a03	user/usertests.asm	/^     a03:	e8 94 2d 00 00       	call   379c <wait>$/;"	l
-a04	user/sh.asm	/^ a04:	38 02                	cmp    %al,(%edx)$/;"	l
-a06	user/sh.asm	/^ a06:	75 0d                	jne    a15 <strcmp+0x21>$/;"	l
-a08	user/sh.asm	/^ a08:	83 c1 01             	add    $0x1,%ecx$/;"	l
+a00	user/sh.asm	/^ a00:	74 15                	je     a17 <strcmp+0x25>$/;"	l
+a02	user/sh.asm	/^ a02:	3a 02                	cmp    (%edx),%al$/;"	l
+a03	user/usertests.asm	/^     a03:	e8 92 2d 00 00       	call   379a <wait>$/;"	l
+a04	user/sh.asm	/^ a04:	75 11                	jne    a17 <strcmp+0x25>$/;"	l
+a06	user/sh.asm	/^ a06:	83 c1 01             	add    $0x1,%ecx$/;"	l
 a08	user/usertests.asm	/^     a08:	83 c4 08             	add    $0x8,%esp$/;"	l
-a0b	user/sh.asm	/^ a0b:	83 c2 01             	add    $0x1,%edx$/;"	l
+a09	user/sh.asm	/^ a09:	83 c2 01             	add    $0x1,%edx$/;"	l
 a0b	user/usertests.asm	/^     a0b:	68 5f 3f 00 00       	push   $0x3f5f$/;"	l
-a0e	user/sh.asm	/^ a0e:	0f b6 01             	movzbl (%ecx),%eax$/;"	l
-a1	user/cat.asm	/^  a1:	e8 57 02 00 00       	call   2fd <open>$/;"	l
-a1	user/kill.asm	/^  a1:	29 d0                	sub    %edx,%eax$/;"	l
+a0c	user/sh.asm	/^ a0c:	0f b6 01             	movzbl (%ecx),%eax$/;"	l
+a0f	user/sh.asm	/^ a0f:	84 c0                	test   %al,%al$/;"	l
+a1	user/cat.asm	/^  a1:	e8 55 02 00 00       	call   2fb <open>$/;"	l
+a1	user/echo.asm	/^  a1:	0f b6 01             	movzbl (%ecx),%eax$/;"	l
+a1	user/ln.asm	/^  a1:	0f b6 c0             	movzbl %al,%eax$/;"	l
 a1	user/ls.asm	/^  a1:	6a 00                	push   $0x0$/;"	l
-a1	user/mkdir.asm	/^  a1:	0f b6 01             	movzbl (%ecx),%eax$/;"	l
 a1	user/ps.asm	/^  a1:	8b 55 08             	mov    0x8(%ebp),%edx$/;"	l
-a1	user/rm.asm	/^  a1:	0f b6 01             	movzbl (%ecx),%eax$/;"	l
 a1	user/wc.asm	/^  a1:	ff 75 dc             	pushl  -0x24(%ebp)$/;"	l
 a1	user/zombie.asm	/^  a1:	55                   	push   %ebp$/;"	l
 a10	user/usertests.asm	/^     a10:	6a 01                	push   $0x1$/;"	l
-a11	user/sh.asm	/^ a11:	84 c0                	test   %al,%al$/;"	l
-a12	user/usertests.asm	/^     a12:	e8 c1 2e 00 00       	call   38d8 <printf>$/;"	l
-a13	user/sh.asm	/^ a13:	75 ef                	jne    a04 <strcmp+0x10>$/;"	l
-a15	user/sh.asm	/^ a15:	0f b6 c0             	movzbl %al,%eax$/;"	l
+a11	user/sh.asm	/^ a11:	74 04                	je     a17 <strcmp+0x25>$/;"	l
+a12	user/usertests.asm	/^     a12:	e8 b5 2e 00 00       	call   38cc <printf>$/;"	l
+a13	user/sh.asm	/^ a13:	3a 02                	cmp    (%edx),%al$/;"	l
+a15	user/sh.asm	/^ a15:	74 ef                	je     a06 <strcmp+0x14>$/;"	l
+a17	user/sh.asm	/^ a17:	0f b6 c0             	movzbl %al,%eax$/;"	l
 a17	user/usertests.asm	/^     a17:	83 c4 10             	add    $0x10,%esp$/;"	l
-a18	user/sh.asm	/^ a18:	0f b6 12             	movzbl (%edx),%edx$/;"	l
+a1a	user/sh.asm	/^ a1a:	0f b6 12             	movzbl (%edx),%edx$/;"	l
 a1a	user/usertests.asm	/^     a1a:	eb b1                	jmp    9cd <pipe1+0x128>$/;"	l
-a1b	user/sh.asm	/^ a1b:	29 d0                	sub    %edx,%eax$/;"	l
 a1c	user/usertests.asm	/^     a1c:	83 ec 04             	sub    $0x4,%esp$/;"	l
-a1d	user/sh.asm	/^ a1d:	5d                   	pop    %ebp$/;"	l
-a1e	user/sh.asm	/^ a1e:	c3                   	ret    $/;"	l
-a1f	user/sh.asm	/^ a1f:	55                   	push   %ebp$/;"	l
+a1d	user/sh.asm	/^ a1d:	29 d0                	sub    %edx,%eax$/;"	l
+a1f	user/sh.asm	/^ a1f:	5d                   	pop    %ebp$/;"	l
 a1f	user/usertests.asm	/^     a1f:	ff 75 d4             	pushl  -0x2c(%ebp)$/;"	l
 a2	user/forktest.asm	/^  a2:	6a 01                	push   $0x1$/;"	l
 a2	user/grep.asm	/^  a2:	eb e3                	jmp    87 <matchhere+0x3f>$/;"	l
-a2	user/init.asm	/^  a2:	e8 3e 03 00 00       	call   3e5 <printf>$/;"	l
-a2	user/ln.asm	/^  a2:	0f b6 12             	movzbl (%edx),%edx$/;"	l
+a2	user/init.asm	/^  a2:	e8 32 03 00 00       	call   3d9 <printf>$/;"	l
+a2	user/mkdir.asm	/^  a2:	84 c0                	test   %al,%al$/;"	l
+a2	user/rm.asm	/^  a2:	84 c0                	test   %al,%al$/;"	l
 a2	user/sh.asm	/^  a2:	68 ec 0f 00 00       	push   $0xfec$/;"	l
 a2	user/slabtest.asm	/^  a2:	5f                   	pop    %edi$/;"	l
 a2	user/stressfs.asm	/^  a2:	57                   	push   %edi$/;"	l
 a2	user/zombie.asm	/^  a2:	89 e5                	mov    %esp,%ebp$/;"	l
-a20	user/sh.asm	/^ a20:	89 e5                	mov    %esp,%ebp$/;"	l
-a22	user/sh.asm	/^ a22:	8b 55 08             	mov    0x8(%ebp),%edx$/;"	l
+a20	user/sh.asm	/^ a20:	c3                   	ret    $/;"	l
+a21	user/sh.asm	/^ a21:	55                   	push   %ebp$/;"	l
+a22	user/sh.asm	/^ a22:	89 e5                	mov    %esp,%ebp$/;"	l
 a22	user/usertests.asm	/^     a22:	68 48 3f 00 00       	push   $0x3f48$/;"	l
-a25	user/sh.asm	/^ a25:	80 3a 00             	cmpb   $0x0,(%edx)$/;"	l
+a24	user/sh.asm	/^ a24:	8b 4d 08             	mov    0x8(%ebp),%ecx$/;"	l
+a27	user/sh.asm	/^ a27:	80 39 00             	cmpb   $0x0,(%ecx)$/;"	l
 a27	user/usertests.asm	/^     a27:	6a 01                	push   $0x1$/;"	l
-a28	user/sh.asm	/^ a28:	74 14                	je     a3e <strlen+0x1f>$/;"	l
-a29	user/usertests.asm	/^     a29:	e8 aa 2e 00 00       	call   38d8 <printf>$/;"	l
-a2a	user/sh.asm	/^ a2a:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
-a2e	user/usertests.asm	/^     a2e:	e8 61 2d 00 00       	call   3794 <exit>$/;"	l
-a2f	user/sh.asm	/^ a2f:	83 c0 01             	add    $0x1,%eax$/;"	l
-a3	user/echo.asm	/^  a3:	0f b6 01             	movzbl (%ecx),%eax$/;"	l
-a3	user/kill.asm	/^  a3:	5d                   	pop    %ebp$/;"	l
+a29	user/usertests.asm	/^     a29:	e8 9e 2e 00 00       	call   38cc <printf>$/;"	l
+a2a	user/sh.asm	/^ a2a:	74 12                	je     a3e <strlen+0x1d>$/;"	l
+a2c	user/sh.asm	/^ a2c:	ba 00 00 00 00       	mov    $0x0,%edx$/;"	l
+a2e	user/usertests.asm	/^     a2e:	e8 5f 2d 00 00       	call   3792 <exit>$/;"	l
+a3	user/kill.asm	/^  a3:	29 d0                	sub    %edx,%eax$/;"	l
 a3	user/ls.asm	/^  a3:	53                   	push   %ebx$/;"	l
 a3	user/slabtest.asm	/^  a3:	5d                   	pop    %ebp$/;"	l
 a3	user/stressfs.asm	/^  a3:	56                   	push   %esi$/;"	l
-a3	user/usertests.asm	/^      a3:	e8 30 38 00 00       	call   38d8 <printf>$/;"	l
-a32	user/sh.asm	/^ a32:	89 c1                	mov    %eax,%ecx$/;"	l
+a3	user/usertests.asm	/^      a3:	e8 24 38 00 00       	call   38cc <printf>$/;"	l
+a31	user/sh.asm	/^ a31:	83 c2 01             	add    $0x1,%edx$/;"	l
 a33	user/usertests.asm	/^     a33:	83 ec 08             	sub    $0x8,%esp$/;"	l
-a34	user/sh.asm	/^ a34:	80 3c 02 00          	cmpb   $0x0,(%edx,%eax,1)$/;"	l
+a34	user/sh.asm	/^ a34:	89 d0                	mov    %edx,%eax$/;"	l
+a36	user/sh.asm	/^ a36:	80 3c 11 00          	cmpb   $0x0,(%ecx,%edx,1)$/;"	l
 a36	user/usertests.asm	/^     a36:	68 69 3f 00 00       	push   $0x3f69$/;"	l
-a38	user/sh.asm	/^ a38:	75 f5                	jne    a2f <strlen+0x10>$/;"	l
-a3a	user/sh.asm	/^ a3a:	89 c8                	mov    %ecx,%eax$/;"	l
+a3a	user/sh.asm	/^ a3a:	75 f5                	jne    a31 <strlen+0x10>$/;"	l
 a3b	user/usertests.asm	/^     a3b:	6a 01                	push   $0x1$/;"	l
 a3c	user/sh.asm	/^ a3c:	5d                   	pop    %ebp$/;"	l
 a3d	user/sh.asm	/^ a3d:	c3                   	ret    $/;"	l
-a3d	user/usertests.asm	/^     a3d:	e8 96 2e 00 00       	call   38d8 <printf>$/;"	l
-a3e	user/sh.asm	/^ a3e:	b9 00 00 00 00       	mov    $0x0,%ecx$/;"	l
+a3d	user/usertests.asm	/^     a3d:	e8 8a 2e 00 00       	call   38cc <printf>$/;"	l
+a3e	user/sh.asm	/^ a3e:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
+a4	user/echo.asm	/^  a4:	84 c0                	test   %al,%al$/;"	l
 a4	user/forktest.asm	/^  a4:	e8 57 ff ff ff       	call   0 <print>$/;"	l
 a4	user/grep.asm	/^  a4:	8b 45 0c             	mov    0xc(%ebp),%eax$/;"	l
-a4	user/kill.asm	/^  a4:	c3                   	ret    $/;"	l
-a4	user/ls.asm	/^  a4:	e8 33 04 00 00       	call   4dc <open>$/;"	l
-a4	user/mkdir.asm	/^  a4:	84 c0                	test   %al,%al$/;"	l
+a4	user/ln.asm	/^  a4:	0f b6 12             	movzbl (%edx),%edx$/;"	l
+a4	user/ls.asm	/^  a4:	e8 31 04 00 00       	call   4da <open>$/;"	l
+a4	user/mkdir.asm	/^  a4:	74 15                	je     bb <strcmp+0x25>$/;"	l
 a4	user/ps.asm	/^  a4:	89 d7                	mov    %edx,%edi$/;"	l
-a4	user/rm.asm	/^  a4:	84 c0                	test   %al,%al$/;"	l
+a4	user/rm.asm	/^  a4:	74 15                	je     bb <strcmp+0x25>$/;"	l
 a4	user/slabtest.asm	/^  a4:	c3                   	ret    $/;"	l
-a4	user/stressfs.asm	/^  a4:	e8 4a 02 00 00       	call   2f3 <write>$/;"	l
+a4	user/stressfs.asm	/^  a4:	e8 48 02 00 00       	call   2f1 <write>$/;"	l
 a4	user/wc.asm	/^  a4:	ff 75 e0             	pushl  -0x20(%ebp)$/;"	l
 a4	user/zombie.asm	/^  a4:	57                   	push   %edi$/;"	l
-a42	user/usertests.asm	/^     a42:	e8 4d 2d 00 00       	call   3794 <exit>$/;"	l
-a43	user/sh.asm	/^ a43:	eb f5                	jmp    a3a <strlen+0x1b>$/;"	l
+a42	user/usertests.asm	/^     a42:	e8 4b 2d 00 00       	call   3792 <exit>$/;"	l
+a43	user/sh.asm	/^ a43:	eb f7                	jmp    a3c <strlen+0x1b>$/;"	l
 a45	user/sh.asm	/^ a45:	55                   	push   %ebp$/;"	l
 a46	user/sh.asm	/^ a46:	89 e5                	mov    %esp,%ebp$/;"	l
 a47	user/usertests.asm	/^     a47:	55                   	push   %ebp$/;"	l
@@ -415,8 +415,7 @@ a4c	user/sh.asm	/^ a4c:	89 d7                	mov    %edx,%edi$/;"	l
 a4c	user/usertests.asm	/^     a4c:	53                   	push   %ebx$/;"	l
 a4d	user/usertests.asm	/^     a4d:	83 ec 24             	sub    $0x24,%esp$/;"	l
 a4e	user/sh.asm	/^ a4e:	8b 4d 10             	mov    0x10(%ebp),%ecx$/;"	l
-a5	user/kill.asm	/^  a5:	55                   	push   %ebp$/;"	l
-a5	user/ln.asm	/^  a5:	29 d0                	sub    %edx,%eax$/;"	l
+a5	user/kill.asm	/^  a5:	5d                   	pop    %ebp$/;"	l
 a5	user/slabtest.asm	/^  a5:	55                   	push   %ebp$/;"	l
 a5	user/zombie.asm	/^  a5:	8b 55 08             	mov    0x8(%ebp),%edx$/;"	l
 a50	user/usertests.asm	/^     a50:	68 78 3f 00 00       	push   $0x3f78$/;"	l
@@ -425,200 +424,204 @@ a54	user/sh.asm	/^ a54:	fc                   	cld    $/;"	l
 a55	user/sh.asm	/^ a55:	f3 aa                	rep stos %al,%es:(%edi)$/;"	l
 a55	user/usertests.asm	/^     a55:	6a 01                	push   $0x1$/;"	l
 a57	user/sh.asm	/^ a57:	89 d0                	mov    %edx,%eax$/;"	l
-a57	user/usertests.asm	/^     a57:	e8 7c 2e 00 00       	call   38d8 <printf>$/;"	l
+a57	user/usertests.asm	/^     a57:	e8 70 2e 00 00       	call   38cc <printf>$/;"	l
 a59	user/sh.asm	/^ a59:	5f                   	pop    %edi$/;"	l
 a5a	user/sh.asm	/^ a5a:	5d                   	pop    %ebp$/;"	l
 a5b	user/sh.asm	/^ a5b:	c3                   	ret    $/;"	l
 a5c	user/sh.asm	/^ a5c:	55                   	push   %ebp$/;"	l
-a5c	user/usertests.asm	/^     a5c:	e8 2b 2d 00 00       	call   378c <fork>$/;"	l
+a5c	user/usertests.asm	/^     a5c:	e8 29 2d 00 00       	call   378a <fork>$/;"	l
 a5d	user/sh.asm	/^ a5d:	89 e5                	mov    %esp,%ebp$/;"	l
-a5f	user/sh.asm	/^ a5f:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
+a5f	user/sh.asm	/^ a5f:	53                   	push   %ebx$/;"	l
 a6	user/cat.asm	/^  a6:	89 c6                	mov    %eax,%esi$/;"	l
-a6	user/echo.asm	/^  a6:	84 c0                	test   %al,%al$/;"	l
-a6	user/kill.asm	/^  a6:	89 e5                	mov    %esp,%ebp$/;"	l
-a6	user/mkdir.asm	/^  a6:	74 11                	je     b9 <strcmp+0x21>$/;"	l
+a6	user/echo.asm	/^  a6:	74 04                	je     ac <strcmp+0x25>$/;"	l
+a6	user/kill.asm	/^  a6:	c3                   	ret    $/;"	l
+a6	user/mkdir.asm	/^  a6:	3a 02                	cmp    (%edx),%al$/;"	l
 a6	user/ps.asm	/^  a6:	8b 4d 10             	mov    0x10(%ebp),%ecx$/;"	l
-a6	user/rm.asm	/^  a6:	74 11                	je     b9 <strcmp+0x21>$/;"	l
+a6	user/rm.asm	/^  a6:	3a 02                	cmp    (%edx),%al$/;"	l
 a6	user/slabtest.asm	/^  a6:	89 e5                	mov    %esp,%ebp$/;"	l
+a60	user/sh.asm	/^ a60:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
 a61	user/usertests.asm	/^     a61:	83 c4 10             	add    $0x10,%esp$/;"	l
-a62	user/sh.asm	/^ a62:	0f b6 4d 0c          	movzbl 0xc(%ebp),%ecx$/;"	l
+a63	user/sh.asm	/^ a63:	8b 5d 0c             	mov    0xc(%ebp),%ebx$/;"	l
 a64	user/usertests.asm	/^     a64:	85 c0                	test   %eax,%eax$/;"	l
 a66	user/sh.asm	/^ a66:	0f b6 10             	movzbl (%eax),%edx$/;"	l
 a66	user/usertests.asm	/^     a66:	75 02                	jne    a6a <preempt+0x23>$/;"	l
 a68	user/usertests.asm	/^     a68:	eb fe                	jmp    a68 <preempt+0x21>$/;"	l
 a69	user/sh.asm	/^ a69:	84 d2                	test   %dl,%dl$/;"	l
 a6a	user/usertests.asm	/^     a6a:	89 c7                	mov    %eax,%edi$/;"	l
-a6b	user/sh.asm	/^ a6b:	74 15                	je     a82 <strchr+0x26>$/;"	l
-a6c	user/usertests.asm	/^     a6c:	e8 1b 2d 00 00       	call   378c <fork>$/;"	l
-a6d	user/sh.asm	/^ a6d:	38 d1                	cmp    %dl,%cl$/;"	l
-a6f	user/sh.asm	/^ a6f:	74 0f                	je     a80 <strchr+0x24>$/;"	l
+a6b	user/sh.asm	/^ a6b:	74 1e                	je     a8b <strchr+0x2f>$/;"	l
+a6c	user/usertests.asm	/^     a6c:	e8 19 2d 00 00       	call   378a <fork>$/;"	l
+a6d	user/sh.asm	/^ a6d:	89 d9                	mov    %ebx,%ecx$/;"	l
+a6f	user/sh.asm	/^ a6f:	38 d3                	cmp    %dl,%bl$/;"	l
 a7	user/grep.asm	/^  a7:	80 38 00             	cmpb   $0x0,(%eax)$/;"	l
-a7	user/init.asm	/^  a7:	e8 ed 01 00 00       	call   299 <fork>$/;"	l
-a7	user/ln.asm	/^  a7:	5d                   	pop    %ebp$/;"	l
+a7	user/init.asm	/^  a7:	e8 eb 01 00 00       	call   297 <fork>$/;"	l
+a7	user/kill.asm	/^  a7:	55                   	push   %ebp$/;"	l
+a7	user/ln.asm	/^  a7:	29 d0                	sub    %edx,%eax$/;"	l
 a7	user/sh.asm	/^  a7:	e8 99 ff ff ff       	call   45 <panic>$/;"	l
 a7	user/wc.asm	/^  a7:	56                   	push   %esi$/;"	l
-a71	user/sh.asm	/^ a71:	83 c0 01             	add    $0x1,%eax$/;"	l
+a71	user/sh.asm	/^ a71:	74 15                	je     a88 <strchr+0x2c>$/;"	l
 a71	user/usertests.asm	/^     a71:	89 c6                	mov    %eax,%esi$/;"	l
+a73	user/sh.asm	/^ a73:	83 c0 01             	add    $0x1,%eax$/;"	l
 a73	user/usertests.asm	/^     a73:	85 c0                	test   %eax,%eax$/;"	l
-a74	user/sh.asm	/^ a74:	0f b6 10             	movzbl (%eax),%edx$/;"	l
 a75	user/usertests.asm	/^     a75:	75 02                	jne    a79 <preempt+0x32>$/;"	l
-a77	user/sh.asm	/^ a77:	84 d2                	test   %dl,%dl$/;"	l
+a76	user/sh.asm	/^ a76:	0f b6 10             	movzbl (%eax),%edx$/;"	l
 a77	user/usertests.asm	/^     a77:	eb fe                	jmp    a77 <preempt+0x30>$/;"	l
-a79	user/sh.asm	/^ a79:	75 f2                	jne    a6d <strchr+0x11>$/;"	l
+a79	user/sh.asm	/^ a79:	84 d2                	test   %dl,%dl$/;"	l
 a79	user/usertests.asm	/^     a79:	83 ec 0c             	sub    $0xc,%esp$/;"	l
-a7b	user/sh.asm	/^ a7b:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
+a7b	user/sh.asm	/^ a7b:	74 06                	je     a83 <strchr+0x27>$/;"	l
 a7c	user/usertests.asm	/^     a7c:	8d 45 e0             	lea    -0x20(%ebp),%eax$/;"	l
+a7d	user/sh.asm	/^ a7d:	38 ca                	cmp    %cl,%dl$/;"	l
+a7f	user/sh.asm	/^ a7f:	75 f2                	jne    a73 <strchr+0x17>$/;"	l
 a7f	user/usertests.asm	/^     a7f:	50                   	push   %eax$/;"	l
 a8	user/cat.asm	/^  a8:	83 c4 10             	add    $0x10,%esp$/;"	l
-a8	user/echo.asm	/^  a8:	75 ef                	jne    99 <strcmp+0x10>$/;"	l
-a8	user/kill.asm	/^  a8:	8b 55 08             	mov    0x8(%ebp),%edx$/;"	l
-a8	user/ln.asm	/^  a8:	c3                   	ret    $/;"	l
-a8	user/mkdir.asm	/^  a8:	38 02                	cmp    %al,(%edx)$/;"	l
-a8	user/rm.asm	/^  a8:	38 02                	cmp    %al,(%edx)$/;"	l
-a8	user/slabtest.asm	/^  a8:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
-a8	user/usertests.asm	/^      a8:	e8 e7 36 00 00       	call   3794 <exit>$/;"	l
+a8	user/echo.asm	/^  a8:	3a 02                	cmp    (%edx),%al$/;"	l
+a8	user/kill.asm	/^  a8:	89 e5                	mov    %esp,%ebp$/;"	l
+a8	user/mkdir.asm	/^  a8:	75 11                	jne    bb <strcmp+0x25>$/;"	l
+a8	user/rm.asm	/^  a8:	75 11                	jne    bb <strcmp+0x25>$/;"	l
+a8	user/slabtest.asm	/^  a8:	53                   	push   %ebx$/;"	l
+a8	user/usertests.asm	/^      a8:	e8 e5 36 00 00       	call   3792 <exit>$/;"	l
 a8	user/wc.asm	/^  a8:	68 8e 07 00 00       	push   $0x78e$/;"	l
 a8	user/zombie.asm	/^  a8:	89 d7                	mov    %edx,%edi$/;"	l
-a80	user/sh.asm	/^ a80:	5d                   	pop    %ebp$/;"	l
-a80	user/usertests.asm	/^     a80:	e8 1f 2d 00 00       	call   37a4 <pipe>$/;"	l
-a81	user/sh.asm	/^ a81:	c3                   	ret    $/;"	l
-a82	user/sh.asm	/^ a82:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
-a85	user/usertests.asm	/^     a85:	e8 02 2d 00 00       	call   378c <fork>$/;"	l
-a87	user/sh.asm	/^ a87:	eb f7                	jmp    a80 <strchr+0x24>$/;"	l
-a89	user/sh.asm	/^ a89:	55                   	push   %ebp$/;"	l
-a8a	user/sh.asm	/^ a8a:	89 e5                	mov    %esp,%ebp$/;"	l
+a80	user/usertests.asm	/^     a80:	e8 1d 2d 00 00       	call   37a2 <pipe>$/;"	l
+a81	user/sh.asm	/^ a81:	eb 05                	jmp    a88 <strchr+0x2c>$/;"	l
+a83	user/sh.asm	/^ a83:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
+a85	user/usertests.asm	/^     a85:	e8 00 2d 00 00       	call   378a <fork>$/;"	l
+a88	user/sh.asm	/^ a88:	5b                   	pop    %ebx$/;"	l
+a89	user/sh.asm	/^ a89:	5d                   	pop    %ebp$/;"	l
+a8a	user/sh.asm	/^ a8a:	c3                   	ret    $/;"	l
 a8a	user/usertests.asm	/^     a8a:	89 c3                	mov    %eax,%ebx$/;"	l
-a8c	user/sh.asm	/^ a8c:	57                   	push   %edi$/;"	l
+a8b	user/sh.asm	/^ a8b:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
 a8c	user/usertests.asm	/^     a8c:	83 c4 10             	add    $0x10,%esp$/;"	l
-a8d	user/sh.asm	/^ a8d:	56                   	push   %esi$/;"	l
-a8e	user/sh.asm	/^ a8e:	53                   	push   %ebx$/;"	l
-a8f	user/sh.asm	/^ a8f:	83 ec 2c             	sub    $0x2c,%esp$/;"	l
 a8f	user/usertests.asm	/^     a8f:	85 c0                	test   %eax,%eax$/;"	l
 a9	user/forktest.asm	/^  a9:	83 c4 10             	add    $0x10,%esp$/;"	l
-a9	user/ln.asm	/^  a9:	55                   	push   %ebp$/;"	l
+a9	user/ln.asm	/^  a9:	5d                   	pop    %ebp$/;"	l
 a9	user/ls.asm	/^  a9:	83 c4 10             	add    $0x10,%esp$/;"	l
 a9	user/ps.asm	/^  a9:	8b 45 0c             	mov    0xc(%ebp),%eax$/;"	l
+a9	user/slabtest.asm	/^  a9:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
 a9	user/stressfs.asm	/^  a9:	83 c4 10             	add    $0x10,%esp$/;"	l
+a90	user/sh.asm	/^ a90:	eb f6                	jmp    a88 <strchr+0x2c>$/;"	l
 a91	user/usertests.asm	/^     a91:	75 47                	jne    ada <preempt+0x93>$/;"	l
-a92	user/sh.asm	/^ a92:	8b 75 08             	mov    0x8(%ebp),%esi$/;"	l
+a92	user/sh.asm	/^ a92:	55                   	push   %ebp$/;"	l
+a93	user/sh.asm	/^ a93:	89 e5                	mov    %esp,%ebp$/;"	l
 a93	user/usertests.asm	/^     a93:	83 ec 0c             	sub    $0xc,%esp$/;"	l
-a95	user/sh.asm	/^ a95:	bb 00 00 00 00       	mov    $0x0,%ebx$/;"	l
+a95	user/sh.asm	/^ a95:	57                   	push   %edi$/;"	l
+a96	user/sh.asm	/^ a96:	56                   	push   %esi$/;"	l
 a96	user/usertests.asm	/^     a96:	ff 75 e0             	pushl  -0x20(%ebp)$/;"	l
-a99	user/usertests.asm	/^     a99:	e8 1e 2d 00 00       	call   37bc <close>$/;"	l
-a9a	user/sh.asm	/^ a9a:	8d 7d e7             	lea    -0x19(%ebp),%edi$/;"	l
-a9d	user/sh.asm	/^ a9d:	89 5d d4             	mov    %ebx,-0x2c(%ebp)$/;"	l
+a97	user/sh.asm	/^ a97:	53                   	push   %ebx$/;"	l
+a98	user/sh.asm	/^ a98:	83 ec 1c             	sub    $0x1c,%esp$/;"	l
+a99	user/usertests.asm	/^     a99:	e8 1c 2d 00 00       	call   37ba <close>$/;"	l
+a9b	user/sh.asm	/^ a9b:	be 00 00 00 00       	mov    $0x0,%esi$/;"	l
 a9e	user/usertests.asm	/^     a9e:	83 c4 0c             	add    $0xc,%esp$/;"	l
-aa	user/echo.asm	/^  aa:	0f b6 c0             	movzbl %al,%eax$/;"	l
+aa	user/echo.asm	/^  aa:	74 ef                	je     9b <strcmp+0x14>$/;"	l
 aa	user/grep.asm	/^  aa:	0f 94 c0             	sete   %al$/;"	l
-aa	user/ln.asm	/^  aa:	89 e5                	mov    %esp,%ebp$/;"	l
-aa	user/mkdir.asm	/^  aa:	75 0d                	jne    b9 <strcmp+0x21>$/;"	l
-aa	user/rm.asm	/^  aa:	75 0d                	jne    b9 <strcmp+0x21>$/;"	l
+aa	user/kill.asm	/^  aa:	8b 4d 08             	mov    0x8(%ebp),%ecx$/;"	l
+aa	user/ln.asm	/^  aa:	c3                   	ret    $/;"	l
+aa	user/mkdir.asm	/^  aa:	83 c1 01             	add    $0x1,%ecx$/;"	l
+aa	user/rm.asm	/^  aa:	83 c1 01             	add    $0x1,%ecx$/;"	l
 aa	user/zombie.asm	/^  aa:	8b 4d 10             	mov    0x10(%ebp),%ecx$/;"	l
-aa0	user/sh.asm	/^ aa0:	83 c3 01             	add    $0x1,%ebx$/;"	l
+aa0	user/sh.asm	/^ aa0:	8d 7d e7             	lea    -0x19(%ebp),%edi$/;"	l
 aa1	user/usertests.asm	/^     aa1:	6a 01                	push   $0x1$/;"	l
-aa3	user/sh.asm	/^ aa3:	3b 5d 0c             	cmp    0xc(%ebp),%ebx$/;"	l
+aa3	user/sh.asm	/^ aa3:	8d 5e 01             	lea    0x1(%esi),%ebx$/;"	l
 aa3	user/usertests.asm	/^     aa3:	68 3d 45 00 00       	push   $0x453d$/;"	l
-aa6	user/sh.asm	/^ aa6:	7d 27                	jge    acf <gets+0x46>$/;"	l
-aa8	user/sh.asm	/^ aa8:	83 ec 04             	sub    $0x4,%esp$/;"	l
+aa6	user/sh.asm	/^ aa6:	3b 5d 0c             	cmp    0xc(%ebp),%ebx$/;"	l
 aa8	user/usertests.asm	/^     aa8:	ff 75 e4             	pushl  -0x1c(%ebp)$/;"	l
-aab	user/sh.asm	/^ aab:	6a 01                	push   $0x1$/;"	l
-aab	user/usertests.asm	/^     aab:	e8 04 2d 00 00       	call   37b4 <write>$/;"	l
-aad	user/sh.asm	/^ aad:	57                   	push   %edi$/;"	l
-aae	user/sh.asm	/^ aae:	6a 00                	push   $0x0$/;"	l
+aa9	user/sh.asm	/^ aa9:	7d 2b                	jge    ad6 <gets+0x44>$/;"	l
+aab	user/sh.asm	/^ aab:	83 ec 04             	sub    $0x4,%esp$/;"	l
+aab	user/usertests.asm	/^     aab:	e8 02 2d 00 00       	call   37b2 <write>$/;"	l
+aae	user/sh.asm	/^ aae:	6a 01                	push   $0x1$/;"	l
 ab	user/cat.asm	/^  ab:	85 c0                	test   %eax,%eax$/;"	l
-ab	user/kill.asm	/^  ab:	80 3a 00             	cmpb   $0x0,(%edx)$/;"	l
-ab	user/slabtest.asm	/^  ab:	0f b6 4d 0c          	movzbl 0xc(%ebp),%ecx$/;"	l
-ab0	user/sh.asm	/^ ab0:	e8 f7 00 00 00       	call   bac <read>$/;"	l
+ab	user/ln.asm	/^  ab:	55                   	push   %ebp$/;"	l
+ab0	user/sh.asm	/^ ab0:	57                   	push   %edi$/;"	l
 ab0	user/usertests.asm	/^     ab0:	83 c4 10             	add    $0x10,%esp$/;"	l
+ab1	user/sh.asm	/^ ab1:	6a 00                	push   $0x0$/;"	l
+ab3	user/sh.asm	/^ ab3:	e8 f2 00 00 00       	call   baa <read>$/;"	l
 ab3	user/usertests.asm	/^     ab3:	83 f8 01             	cmp    $0x1,%eax$/;"	l
-ab5	user/sh.asm	/^ ab5:	83 c4 10             	add    $0x10,%esp$/;"	l
 ab6	user/usertests.asm	/^     ab6:	74 12                	je     aca <preempt+0x83>$/;"	l
-ab8	user/sh.asm	/^ ab8:	85 c0                	test   %eax,%eax$/;"	l
+ab8	user/sh.asm	/^ ab8:	83 c4 10             	add    $0x10,%esp$/;"	l
 ab8	user/usertests.asm	/^     ab8:	83 ec 08             	sub    $0x8,%esp$/;"	l
-aba	user/sh.asm	/^ aba:	7e 13                	jle    acf <gets+0x46>$/;"	l
+abb	user/sh.asm	/^ abb:	85 c0                	test   %eax,%eax$/;"	l
 abb	user/usertests.asm	/^     abb:	68 82 3f 00 00       	push   $0x3f82$/;"	l
-abc	user/sh.asm	/^ abc:	0f b6 45 e7          	movzbl -0x19(%ebp),%eax$/;"	l
+abd	user/sh.asm	/^ abd:	7e 17                	jle    ad6 <gets+0x44>$/;"	l
+abf	user/sh.asm	/^ abf:	0f b6 45 e7          	movzbl -0x19(%ebp),%eax$/;"	l
+ac	user/echo.asm	/^  ac:	0f b6 c0             	movzbl %al,%eax$/;"	l
 ac	user/forktest.asm	/^  ac:	8b 5d fc             	mov    -0x4(%ebp),%ebx$/;"	l
 ac	user/init.asm	/^  ac:	89 c3                	mov    %eax,%ebx$/;"	l
-ac	user/ln.asm	/^  ac:	8b 55 08             	mov    0x8(%ebp),%edx$/;"	l
+ac	user/ln.asm	/^  ac:	89 e5                	mov    %esp,%ebp$/;"	l
 ac	user/ls.asm	/^  ac:	85 c0                	test   %eax,%eax$/;"	l
-ac	user/mkdir.asm	/^  ac:	83 c1 01             	add    $0x1,%ecx$/;"	l
 ac	user/ps.asm	/^  ac:	fc                   	cld    $/;"	l
-ac	user/rm.asm	/^  ac:	83 c1 01             	add    $0x1,%ecx$/;"	l
 ac	user/sh.asm	/^  ac:	8b 43 04             	mov    0x4(%ebx),%eax$/;"	l
+ac	user/slabtest.asm	/^  ac:	8b 5d 0c             	mov    0xc(%ebp),%ebx$/;"	l
 ac	user/stressfs.asm	/^  ac:	83 eb 01             	sub    $0x1,%ebx$/;"	l
-ac0	user/sh.asm	/^ ac0:	88 44 1e ff          	mov    %al,-0x1(%esi,%ebx,1)$/;"	l
 ac0	user/usertests.asm	/^     ac0:	6a 01                	push   $0x1$/;"	l
-ac2	user/usertests.asm	/^     ac2:	e8 11 2e 00 00       	call   38d8 <printf>$/;"	l
-ac4	user/sh.asm	/^ ac4:	3c 0a                	cmp    $0xa,%al$/;"	l
-ac6	user/sh.asm	/^ ac6:	74 04                	je     acc <gets+0x43>$/;"	l
+ac2	user/usertests.asm	/^     ac2:	e8 05 2e 00 00       	call   38cc <printf>$/;"	l
+ac3	user/sh.asm	/^ ac3:	8b 55 08             	mov    0x8(%ebp),%edx$/;"	l
+ac6	user/sh.asm	/^ ac6:	88 44 1a ff          	mov    %al,-0x1(%edx,%ebx,1)$/;"	l
 ac7	user/usertests.asm	/^     ac7:	83 c4 10             	add    $0x10,%esp$/;"	l
-ac8	user/sh.asm	/^ ac8:	3c 0d                	cmp    $0xd,%al$/;"	l
-aca	user/sh.asm	/^ aca:	75 d1                	jne    a9d <gets+0x14>$/;"	l
+aca	user/sh.asm	/^ aca:	89 de                	mov    %ebx,%esi$/;"	l
 aca	user/usertests.asm	/^     aca:	83 ec 0c             	sub    $0xc,%esp$/;"	l
-acc	user/sh.asm	/^ acc:	89 5d d4             	mov    %ebx,-0x2c(%ebp)$/;"	l
+acc	user/sh.asm	/^ acc:	3c 0a                	cmp    $0xa,%al$/;"	l
 acd	user/usertests.asm	/^     acd:	ff 75 e4             	pushl  -0x1c(%ebp)$/;"	l
-acf	user/sh.asm	/^ acf:	8b 45 d4             	mov    -0x2c(%ebp),%eax$/;"	l
+ace	user/sh.asm	/^ ace:	74 04                	je     ad4 <gets+0x42>$/;"	l
 acquire	spinlock.c	/^acquire(struct spinlock *lk)$/;"	f
 acquiresleep	sleeplock.c	/^acquiresleep(struct sleeplock *lk)$/;"	f
 ad	user/cat.asm	/^  ad:	78 33                	js     e2 <main+0x74>$/;"	l
-ad	user/echo.asm	/^  ad:	0f b6 12             	movzbl (%edx),%edx$/;"	l
 ad	user/grep.asm	/^  ad:	0f b6 c0             	movzbl %al,%eax$/;"	l
+ad	user/kill.asm	/^  ad:	80 39 00             	cmpb   $0x0,(%ecx)$/;"	l
+ad	user/mkdir.asm	/^  ad:	83 c2 01             	add    $0x1,%edx$/;"	l
 ad	user/ps.asm	/^  ad:	f3 aa                	rep stos %al,%es:(%edi)$/;"	l
+ad	user/rm.asm	/^  ad:	83 c2 01             	add    $0x1,%edx$/;"	l
 ad	user/usertests.asm	/^      ad:	83 ec 08             	sub    $0x8,%esp$/;"	l
 ad	user/wc.asm	/^  ad:	6a 01                	push   $0x1$/;"	l
 ad	user/zombie.asm	/^  ad:	8b 45 0c             	mov    0xc(%ebp),%eax$/;"	l
-ad0	user/usertests.asm	/^     ad0:	e8 e7 2c 00 00       	call   37bc <close>$/;"	l
-ad2	user/sh.asm	/^ ad2:	c6 04 06 00          	movb   $0x0,(%esi,%eax,1)$/;"	l
+ad0	user/sh.asm	/^ ad0:	3c 0d                	cmp    $0xd,%al$/;"	l
+ad0	user/usertests.asm	/^     ad0:	e8 e5 2c 00 00       	call   37ba <close>$/;"	l
+ad2	user/sh.asm	/^ ad2:	75 cf                	jne    aa3 <gets+0x11>$/;"	l
+ad4	user/sh.asm	/^ ad4:	89 de                	mov    %ebx,%esi$/;"	l
 ad5	user/usertests.asm	/^     ad5:	83 c4 10             	add    $0x10,%esp$/;"	l
-ad6	user/sh.asm	/^ ad6:	89 f0                	mov    %esi,%eax$/;"	l
-ad8	user/sh.asm	/^ ad8:	8d 65 f4             	lea    -0xc(%ebp),%esp$/;"	l
+ad6	user/sh.asm	/^ ad6:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
 ad8	user/usertests.asm	/^     ad8:	eb fe                	jmp    ad8 <preempt+0x91>$/;"	l
+ad9	user/sh.asm	/^ ad9:	c6 04 30 00          	movb   $0x0,(%eax,%esi,1)$/;"	l
 ada	user/usertests.asm	/^     ada:	83 ec 0c             	sub    $0xc,%esp$/;"	l
-adb	user/sh.asm	/^ adb:	5b                   	pop    %ebx$/;"	l
-adc	user/sh.asm	/^ adc:	5e                   	pop    %esi$/;"	l
-add	user/sh.asm	/^ add:	5f                   	pop    %edi$/;"	l
+add	user/sh.asm	/^ add:	8d 65 f4             	lea    -0xc(%ebp),%esp$/;"	l
 add	user/usertests.asm	/^     add:	ff 75 e4             	pushl  -0x1c(%ebp)$/;"	l
 addr	mp.h	/^  uint *addr;                  \/\/ I\/O APIC address$/;"	m	struct:mpioapic
 addrs	file.h	/^  uint addrs[NDIRECT+1];$/;"	m	struct:inode
 addrs	fs.h	/^  uint addrs[NDIRECT+1];   \/\/ Data block addresses$/;"	m	struct:dinode
-ade	user/sh.asm	/^ ade:	5d                   	pop    %ebp$/;"	l
-adf	user/sh.asm	/^ adf:	c3                   	ret    $/;"	l
 ae	user/init.asm	/^  ae:	83 c4 10             	add    $0x10,%esp$/;"	l
-ae	user/kill.asm	/^  ae:	74 14                	je     c4 <strlen+0x1f>$/;"	l
+ae	user/ln.asm	/^  ae:	8b 4d 08             	mov    0x8(%ebp),%ecx$/;"	l
 ae	user/ls.asm	/^  ae:	78 7b                	js     12b <ls+0x99>$/;"	l
-ae0	user/sh.asm	/^ ae0:	55                   	push   %ebp$/;"	l
-ae0	user/usertests.asm	/^     ae0:	e8 d7 2c 00 00       	call   37bc <close>$/;"	l
-ae1	user/sh.asm	/^ ae1:	89 e5                	mov    %esp,%ebp$/;"	l
-ae3	user/sh.asm	/^ ae3:	56                   	push   %esi$/;"	l
-ae4	user/sh.asm	/^ ae4:	53                   	push   %ebx$/;"	l
-ae5	user/sh.asm	/^ ae5:	83 ec 08             	sub    $0x8,%esp$/;"	l
+ae0	user/sh.asm	/^ ae0:	5b                   	pop    %ebx$/;"	l
+ae0	user/usertests.asm	/^     ae0:	e8 d5 2c 00 00       	call   37ba <close>$/;"	l
+ae1	user/sh.asm	/^ ae1:	5e                   	pop    %esi$/;"	l
+ae2	user/sh.asm	/^ ae2:	5f                   	pop    %edi$/;"	l
+ae3	user/sh.asm	/^ ae3:	5d                   	pop    %ebp$/;"	l
+ae4	user/sh.asm	/^ ae4:	c3                   	ret    $/;"	l
+ae5	user/sh.asm	/^ ae5:	55                   	push   %ebp$/;"	l
 ae5	user/usertests.asm	/^     ae5:	83 c4 0c             	add    $0xc,%esp$/;"	l
-ae8	user/sh.asm	/^ ae8:	6a 00                	push   $0x0$/;"	l
+ae6	user/sh.asm	/^ ae6:	89 e5                	mov    %esp,%ebp$/;"	l
+ae8	user/sh.asm	/^ ae8:	56                   	push   %esi$/;"	l
 ae8	user/usertests.asm	/^     ae8:	68 00 20 00 00       	push   $0x2000$/;"	l
-aea	user/sh.asm	/^ aea:	ff 75 08             	pushl  0x8(%ebp)$/;"	l
-aed	user/sh.asm	/^ aed:	e8 e2 00 00 00       	call   bd4 <open>$/;"	l
+ae9	user/sh.asm	/^ ae9:	53                   	push   %ebx$/;"	l
+aea	user/sh.asm	/^ aea:	83 ec 08             	sub    $0x8,%esp$/;"	l
+aed	user/sh.asm	/^ aed:	6a 00                	push   $0x0$/;"	l
 aed	user/usertests.asm	/^     aed:	68 00 84 00 00       	push   $0x8400$/;"	l
+aef	user/sh.asm	/^ aef:	ff 75 08             	pushl  0x8(%ebp)$/;"	l
 af	user/cat.asm	/^  af:	83 ec 0c             	sub    $0xc,%esp$/;"	l
+af	user/echo.asm	/^  af:	0f b6 12             	movzbl (%edx),%edx$/;"	l
 af	user/forktest.asm	/^  af:	c9                   	leave  $/;"	l
-af	user/ln.asm	/^  af:	80 3a 00             	cmpb   $0x0,(%edx)$/;"	l
-af	user/mkdir.asm	/^  af:	83 c2 01             	add    $0x1,%edx$/;"	l
 af	user/ps.asm	/^  af:	89 d0                	mov    %edx,%eax$/;"	l
-af	user/rm.asm	/^  af:	83 c2 01             	add    $0x1,%edx$/;"	l
 af	user/sh.asm	/^  af:	85 c0                	test   %eax,%eax$/;"	l
 af	user/slabtest.asm	/^  af:	0f b6 10             	movzbl (%eax),%edx$/;"	l
 af	user/stressfs.asm	/^  af:	75 e9                	jne    9a <main+0x9a>$/;"	l
-af	user/wc.asm	/^  af:	e8 b9 03 00 00       	call   46d <printf>$/;"	l
-af2	user/sh.asm	/^ af2:	83 c4 10             	add    $0x10,%esp$/;"	l
+af	user/wc.asm	/^  af:	e8 ad 03 00 00       	call   461 <printf>$/;"	l
+af2	user/sh.asm	/^ af2:	e8 db 00 00 00       	call   bd2 <open>$/;"	l
 af2	user/usertests.asm	/^     af2:	ff 75 e0             	pushl  -0x20(%ebp)$/;"	l
-af5	user/sh.asm	/^ af5:	85 c0                	test   %eax,%eax$/;"	l
-af5	user/usertests.asm	/^     af5:	e8 b2 2c 00 00       	call   37ac <read>$/;"	l
-af7	user/sh.asm	/^ af7:	78 24                	js     b1d <stat+0x3d>$/;"	l
-af9	user/sh.asm	/^ af9:	89 c3                	mov    %eax,%ebx$/;"	l
+af5	user/usertests.asm	/^     af5:	e8 b0 2c 00 00       	call   37aa <read>$/;"	l
+af7	user/sh.asm	/^ af7:	83 c4 10             	add    $0x10,%esp$/;"	l
+afa	user/sh.asm	/^ afa:	85 c0                	test   %eax,%eax$/;"	l
 afa	user/usertests.asm	/^     afa:	83 c4 10             	add    $0x10,%esp$/;"	l
-afb	user/sh.asm	/^ afb:	83 ec 08             	sub    $0x8,%esp$/;"	l
+afc	user/sh.asm	/^ afc:	78 24                	js     b22 <stat+0x3d>$/;"	l
 afd	user/usertests.asm	/^     afd:	83 f8 01             	cmp    $0x1,%eax$/;"	l
-afe	user/sh.asm	/^ afe:	ff 75 0c             	pushl  0xc(%ebp)$/;"	l
+afe	user/sh.asm	/^ afe:	89 c3                	mov    %eax,%ebx$/;"	l
 align	elf.h	/^  uint align;$/;"	m	struct:proghdr
 allocproc	proc.c	/^allocproc(void)$/;"	f	file:
 allocuvm	vm.c	/^allocuvm(pde_t *pgdir, uint oldsz, uint newsz)$/;"	f
@@ -656,7 +659,7 @@ atoi	ulib.c	/^atoi(const char *s)$/;"	f
 avl	mmu.h	/^  uint avl : 1;        \/\/ Unused (available for software use)$/;"	m	struct:segdesc
 b	user/cat.asm	/^   b:	68 00 02 00 00       	push   $0x200$/;"	l
 b	user/echo.asm	/^   b:	89 e5                	mov    %esp,%ebp$/;"	l
-b	user/forktest.asm	/^   b:	e8 31 01 00 00       	call   141 <strlen>$/;"	l
+b	user/forktest.asm	/^   b:	e8 33 01 00 00       	call   143 <strlen>$/;"	l
 b	user/init.asm	/^   b:	89 e5                	mov    %esp,%ebp$/;"	l
 b	user/kill.asm	/^   b:	89 e5                	mov    %esp,%ebp$/;"	l
 b	user/ln.asm	/^   b:	89 e5                	mov    %esp,%ebp$/;"	l
@@ -669,211 +672,211 @@ b	user/slabtest.asm	/^   b:	89 e5                	mov    %esp,%ebp$/;"	l
 b	user/stressfs.asm	/^   b:	89 e5                	mov    %esp,%ebp$/;"	l
 b	user/usertests.asm	/^       b:	ff 35 14 5c 00 00    	pushl  0x5c14$/;"	l
 b	user/zombie.asm	/^   b:	89 e5                	mov    %esp,%ebp$/;"	l
-b0	user/echo.asm	/^  b0:	29 d0                	sub    %edx,%eax$/;"	l
 b0	user/forktest.asm	/^  b0:	c3                   	ret    $/;"	l
 b0	user/grep.asm	/^  b0:	eb d5                	jmp    87 <matchhere+0x3f>$/;"	l
-b0	user/kill.asm	/^  b0:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
+b0	user/kill.asm	/^  b0:	74 12                	je     c4 <strlen+0x1d>$/;"	l
 b0	user/ls.asm	/^  b0:	89 c6                	mov    %eax,%esi$/;"	l
+b0	user/mkdir.asm	/^  b0:	0f b6 01             	movzbl (%ecx),%eax$/;"	l
+b0	user/rm.asm	/^  b0:	0f b6 01             	movzbl (%ecx),%eax$/;"	l
 b0	user/usertests.asm	/^      b0:	68 13 3c 00 00       	push   $0x3c13$/;"	l
 b0	user/zombie.asm	/^  b0:	fc                   	cld    $/;"	l
+b00	user/sh.asm	/^ b00:	83 ec 08             	sub    $0x8,%esp$/;"	l
 b00	user/usertests.asm	/^     b00:	74 1a                	je     b1c <preempt+0xd5>$/;"	l
-b01	user/sh.asm	/^ b01:	50                   	push   %eax$/;"	l
-b02	user/sh.asm	/^ b02:	e8 e5 00 00 00       	call   bec <fstat>$/;"	l
 b02	user/usertests.asm	/^     b02:	83 ec 08             	sub    $0x8,%esp$/;"	l
+b03	user/sh.asm	/^ b03:	ff 75 0c             	pushl  0xc(%ebp)$/;"	l
 b05	user/usertests.asm	/^     b05:	68 96 3f 00 00       	push   $0x3f96$/;"	l
-b07	user/sh.asm	/^ b07:	89 c6                	mov    %eax,%esi$/;"	l
-b09	user/sh.asm	/^ b09:	89 1c 24             	mov    %ebx,(%esp)$/;"	l
+b06	user/sh.asm	/^ b06:	50                   	push   %eax$/;"	l
+b07	user/sh.asm	/^ b07:	e8 de 00 00 00       	call   bea <fstat>$/;"	l
 b0a	user/usertests.asm	/^     b0a:	6a 01                	push   $0x1$/;"	l
-b0c	user/sh.asm	/^ b0c:	e8 ab 00 00 00       	call   bbc <close>$/;"	l
-b0c	user/usertests.asm	/^     b0c:	e8 c7 2d 00 00       	call   38d8 <printf>$/;"	l
+b0c	user/sh.asm	/^ b0c:	89 c6                	mov    %eax,%esi$/;"	l
+b0c	user/usertests.asm	/^     b0c:	e8 bb 2d 00 00       	call   38cc <printf>$/;"	l
+b0e	user/sh.asm	/^ b0e:	89 1c 24             	mov    %ebx,(%esp)$/;"	l
 b1	user/forktest.asm	/^  b1:	83 ec 08             	sub    $0x8,%esp$/;"	l
 b1	user/init.asm	/^  b1:	85 c0                	test   %eax,%eax$/;"	l
+b1	user/ln.asm	/^  b1:	80 39 00             	cmpb   $0x0,(%ecx)$/;"	l
 b1	user/ps.asm	/^  b1:	5f                   	pop    %edi$/;"	l
 b1	user/sh.asm	/^  b1:	74 27                	je     da <runcmd+0x5c>$/;"	l
 b1	user/stressfs.asm	/^  b1:	83 ec 0c             	sub    $0xc,%esp$/;"	l
 b1	user/zombie.asm	/^  b1:	f3 aa                	rep stos %al,%es:(%edi)$/;"	l
-b11	user/sh.asm	/^ b11:	83 c4 10             	add    $0x10,%esp$/;"	l
+b11	user/sh.asm	/^ b11:	e8 a4 00 00 00       	call   bba <close>$/;"	l
 b11	user/usertests.asm	/^     b11:	83 c4 10             	add    $0x10,%esp$/;"	l
-b14	user/sh.asm	/^ b14:	89 f0                	mov    %esi,%eax$/;"	l
 b14	user/usertests.asm	/^     b14:	8d 65 f4             	lea    -0xc(%ebp),%esp$/;"	l
-b16	user/sh.asm	/^ b16:	8d 65 f8             	lea    -0x8(%ebp),%esp$/;"	l
+b16	user/sh.asm	/^ b16:	83 c4 10             	add    $0x10,%esp$/;"	l
 b17	user/usertests.asm	/^     b17:	5b                   	pop    %ebx$/;"	l
 b18	user/usertests.asm	/^     b18:	5e                   	pop    %esi$/;"	l
-b19	user/sh.asm	/^ b19:	5b                   	pop    %ebx$/;"	l
+b19	user/sh.asm	/^ b19:	89 f0                	mov    %esi,%eax$/;"	l
 b19	user/usertests.asm	/^     b19:	5f                   	pop    %edi$/;"	l
-b1a	user/sh.asm	/^ b1a:	5e                   	pop    %esi$/;"	l
 b1a	user/usertests.asm	/^     b1a:	5d                   	pop    %ebp$/;"	l
-b1b	user/sh.asm	/^ b1b:	5d                   	pop    %ebp$/;"	l
+b1b	user/sh.asm	/^ b1b:	8d 65 f8             	lea    -0x8(%ebp),%esp$/;"	l
 b1b	user/usertests.asm	/^     b1b:	c3                   	ret    $/;"	l
-b1c	user/sh.asm	/^ b1c:	c3                   	ret    $/;"	l
 b1c	user/usertests.asm	/^     b1c:	83 ec 0c             	sub    $0xc,%esp$/;"	l
-b1d	user/sh.asm	/^ b1d:	be ff ff ff ff       	mov    $0xffffffff,%esi$/;"	l
+b1e	user/sh.asm	/^ b1e:	5b                   	pop    %ebx$/;"	l
+b1f	user/sh.asm	/^ b1f:	5e                   	pop    %esi$/;"	l
 b1f	user/usertests.asm	/^     b1f:	ff 75 e0             	pushl  -0x20(%ebp)$/;"	l
 b2	user/cat.asm	/^  b2:	50                   	push   %eax$/;"	l
-b2	user/echo.asm	/^  b2:	5d                   	pop    %ebp$/;"	l
+b2	user/echo.asm	/^  b2:	29 d0                	sub    %edx,%eax$/;"	l
 b2	user/grep.asm	/^  b2:	83 ec 08             	sub    $0x8,%esp$/;"	l
-b2	user/ln.asm	/^  b2:	74 14                	je     c8 <strlen+0x1f>$/;"	l
+b2	user/kill.asm	/^  b2:	ba 00 00 00 00       	mov    $0x0,%edx$/;"	l
 b2	user/ls.asm	/^  b2:	83 ec 08             	sub    $0x8,%esp$/;"	l
-b2	user/mkdir.asm	/^  b2:	0f b6 01             	movzbl (%ecx),%eax$/;"	l
 b2	user/ps.asm	/^  b2:	5d                   	pop    %ebp$/;"	l
-b2	user/rm.asm	/^  b2:	0f b6 01             	movzbl (%ecx),%eax$/;"	l
 b2	user/slabtest.asm	/^  b2:	84 d2                	test   %dl,%dl$/;"	l
-b22	user/sh.asm	/^ b22:	eb f0                	jmp    b14 <stat+0x34>$/;"	l
-b22	user/usertests.asm	/^     b22:	e8 95 2c 00 00       	call   37bc <close>$/;"	l
-b24	user/sh.asm	/^ b24:	55                   	push   %ebp$/;"	l
-b25	user/sh.asm	/^ b25:	89 e5                	mov    %esp,%ebp$/;"	l
-b27	user/sh.asm	/^ b27:	53                   	push   %ebx$/;"	l
+b20	user/sh.asm	/^ b20:	5d                   	pop    %ebp$/;"	l
+b21	user/sh.asm	/^ b21:	c3                   	ret    $/;"	l
+b22	user/sh.asm	/^ b22:	be ff ff ff ff       	mov    $0xffffffff,%esi$/;"	l
+b22	user/usertests.asm	/^     b22:	e8 93 2c 00 00       	call   37ba <close>$/;"	l
+b27	user/sh.asm	/^ b27:	eb f0                	jmp    b19 <stat+0x34>$/;"	l
 b27	user/usertests.asm	/^     b27:	83 c4 08             	add    $0x8,%esp$/;"	l
-b28	user/sh.asm	/^ b28:	8b 55 08             	mov    0x8(%ebp),%edx$/;"	l
+b29	user/sh.asm	/^ b29:	55                   	push   %ebp$/;"	l
+b2a	user/sh.asm	/^ b2a:	89 e5                	mov    %esp,%ebp$/;"	l
 b2a	user/usertests.asm	/^     b2a:	68 a9 3f 00 00       	push   $0x3fa9$/;"	l
-b2b	user/sh.asm	/^ b2b:	0f b6 02             	movzbl (%edx),%eax$/;"	l
-b2e	user/sh.asm	/^ b2e:	8d 48 d0             	lea    -0x30(%eax),%ecx$/;"	l
+b2c	user/sh.asm	/^ b2c:	53                   	push   %ebx$/;"	l
+b2d	user/sh.asm	/^ b2d:	8b 4d 08             	mov    0x8(%ebp),%ecx$/;"	l
 b2f	user/usertests.asm	/^     b2f:	6a 01                	push   $0x1$/;"	l
 b3	user/cat.asm	/^  b3:	e8 48 ff ff ff       	call   0 <cat>$/;"	l
-b3	user/echo.asm	/^  b3:	c3                   	ret    $/;"	l
 b3	user/init.asm	/^  b3:	78 b0                	js     65 <main+0x65>$/;"	l
+b3	user/mkdir.asm	/^  b3:	84 c0                	test   %al,%al$/;"	l
 b3	user/ps.asm	/^  b3:	c3                   	ret    $/;"	l
+b3	user/rm.asm	/^  b3:	84 c0                	test   %al,%al$/;"	l
 b3	user/sh.asm	/^  b3:	83 ec 08             	sub    $0x8,%esp$/;"	l
 b3	user/zombie.asm	/^  b3:	89 d0                	mov    %edx,%eax$/;"	l
-b31	user/sh.asm	/^ b31:	80 f9 09             	cmp    $0x9,%cl$/;"	l
-b31	user/usertests.asm	/^     b31:	e8 a2 2d 00 00       	call   38d8 <printf>$/;"	l
-b34	user/sh.asm	/^ b34:	77 22                	ja     b58 <atoi+0x34>$/;"	l
-b36	user/sh.asm	/^ b36:	b9 00 00 00 00       	mov    $0x0,%ecx$/;"	l
+b30	user/sh.asm	/^ b30:	0f b6 11             	movzbl (%ecx),%edx$/;"	l
+b31	user/usertests.asm	/^     b31:	e8 96 2d 00 00       	call   38cc <printf>$/;"	l
+b33	user/sh.asm	/^ b33:	8d 42 d0             	lea    -0x30(%edx),%eax$/;"	l
+b36	user/sh.asm	/^ b36:	3c 09                	cmp    $0x9,%al$/;"	l
 b36	user/usertests.asm	/^     b36:	89 3c 24             	mov    %edi,(%esp)$/;"	l
-b39	user/usertests.asm	/^     b39:	e8 86 2c 00 00       	call   37c4 <kill>$/;"	l
-b3b	user/sh.asm	/^ b3b:	83 c2 01             	add    $0x1,%edx$/;"	l
-b3e	user/sh.asm	/^ b3e:	8d 0c 89             	lea    (%ecx,%ecx,4),%ecx$/;"	l
+b38	user/sh.asm	/^ b38:	77 20                	ja     b5a <atoi+0x31>$/;"	l
+b39	user/usertests.asm	/^     b39:	e8 84 2c 00 00       	call   37c2 <kill>$/;"	l
+b3a	user/sh.asm	/^ b3a:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
 b3e	user/usertests.asm	/^     b3e:	89 34 24             	mov    %esi,(%esp)$/;"	l
-b4	user/echo.asm	/^  b4:	55                   	push   %ebp$/;"	l
-b4	user/forktest.asm	/^  b4:	68 13 07 00 00       	push   $0x713$/;"	l
-b4	user/ln.asm	/^  b4:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
+b3f	user/sh.asm	/^ b3f:	83 c1 01             	add    $0x1,%ecx$/;"	l
+b4	user/echo.asm	/^  b4:	5d                   	pop    %ebp$/;"	l
+b4	user/forktest.asm	/^  b4:	68 0f 07 00 00       	push   $0x70f$/;"	l
+b4	user/ln.asm	/^  b4:	74 12                	je     c8 <strlen+0x1d>$/;"	l
 b4	user/ps.asm	/^  b4:	55                   	push   %ebp$/;"	l
-b4	user/slabtest.asm	/^  b4:	74 15                	je     cb <strchr+0x26>$/;"	l
+b4	user/slabtest.asm	/^  b4:	74 1e                	je     d4 <strchr+0x2f>$/;"	l
 b4	user/stressfs.asm	/^  b4:	56                   	push   %esi$/;"	l
 b4	user/wc.asm	/^  b4:	83 c4 20             	add    $0x20,%esp$/;"	l
-b41	user/sh.asm	/^ b41:	0f be c0             	movsbl %al,%eax$/;"	l
-b41	user/usertests.asm	/^     b41:	e8 7e 2c 00 00       	call   37c4 <kill>$/;"	l
-b44	user/sh.asm	/^ b44:	8d 4c 48 d0          	lea    -0x30(%eax,%ecx,2),%ecx$/;"	l
+b41	user/usertests.asm	/^     b41:	e8 7c 2c 00 00       	call   37c2 <kill>$/;"	l
+b42	user/sh.asm	/^ b42:	8d 04 80             	lea    (%eax,%eax,4),%eax$/;"	l
+b45	user/sh.asm	/^ b45:	0f be d2             	movsbl %dl,%edx$/;"	l
 b46	user/usertests.asm	/^     b46:	89 1c 24             	mov    %ebx,(%esp)$/;"	l
-b48	user/sh.asm	/^ b48:	0f b6 02             	movzbl (%edx),%eax$/;"	l
-b49	user/usertests.asm	/^     b49:	e8 76 2c 00 00       	call   37c4 <kill>$/;"	l
-b4b	user/sh.asm	/^ b4b:	8d 58 d0             	lea    -0x30(%eax),%ebx$/;"	l
-b4e	user/sh.asm	/^ b4e:	80 fb 09             	cmp    $0x9,%bl$/;"	l
+b48	user/sh.asm	/^ b48:	8d 44 42 d0          	lea    -0x30(%edx,%eax,2),%eax$/;"	l
+b49	user/usertests.asm	/^     b49:	e8 74 2c 00 00       	call   37c2 <kill>$/;"	l
+b4c	user/sh.asm	/^ b4c:	0f b6 11             	movzbl (%ecx),%edx$/;"	l
 b4e	user/usertests.asm	/^     b4e:	83 c4 08             	add    $0x8,%esp$/;"	l
-b5	user/echo.asm	/^  b5:	89 e5                	mov    %esp,%ebp$/;"	l
+b4f	user/sh.asm	/^ b4f:	8d 5a d0             	lea    -0x30(%edx),%ebx$/;"	l
+b5	user/echo.asm	/^  b5:	c3                   	ret    $/;"	l
 b5	user/grep.asm	/^  b5:	8b 45 0c             	mov    0xc(%ebp),%eax$/;"	l
 b5	user/init.asm	/^  b5:	85 c0                	test   %eax,%eax$/;"	l
-b5	user/kill.asm	/^  b5:	83 c0 01             	add    $0x1,%eax$/;"	l
 b5	user/ls.asm	/^  b5:	8d 85 c4 fd ff ff    	lea    -0x23c(%ebp),%eax$/;"	l
-b5	user/mkdir.asm	/^  b5:	84 c0                	test   %al,%al$/;"	l
+b5	user/mkdir.asm	/^  b5:	74 04                	je     bb <strcmp+0x25>$/;"	l
 b5	user/ps.asm	/^  b5:	89 e5                	mov    %esp,%ebp$/;"	l
-b5	user/rm.asm	/^  b5:	84 c0                	test   %al,%al$/;"	l
-b5	user/stressfs.asm	/^  b5:	e8 41 02 00 00       	call   2fb <close>$/;"	l
+b5	user/rm.asm	/^  b5:	74 04                	je     bb <strcmp+0x25>$/;"	l
+b5	user/stressfs.asm	/^  b5:	e8 3f 02 00 00       	call   2f9 <close>$/;"	l
 b5	user/usertests.asm	/^      b5:	ff 35 14 5c 00 00    	pushl  0x5c14$/;"	l
 b5	user/zombie.asm	/^  b5:	5f                   	pop    %edi$/;"	l
-b51	user/sh.asm	/^ b51:	76 e8                	jbe    b3b <atoi+0x17>$/;"	l
 b51	user/usertests.asm	/^     b51:	68 b2 3f 00 00       	push   $0x3fb2$/;"	l
-b53	user/sh.asm	/^ b53:	89 c8                	mov    %ecx,%eax$/;"	l
-b55	user/sh.asm	/^ b55:	5b                   	pop    %ebx$/;"	l
-b56	user/sh.asm	/^ b56:	5d                   	pop    %ebp$/;"	l
+b52	user/sh.asm	/^ b52:	80 fb 09             	cmp    $0x9,%bl$/;"	l
+b55	user/sh.asm	/^ b55:	76 e8                	jbe    b3f <atoi+0x16>$/;"	l
 b56	user/usertests.asm	/^     b56:	6a 01                	push   $0x1$/;"	l
-b57	user/sh.asm	/^ b57:	c3                   	ret    $/;"	l
-b58	user/sh.asm	/^ b58:	b9 00 00 00 00       	mov    $0x0,%ecx$/;"	l
-b58	user/usertests.asm	/^     b58:	e8 7b 2d 00 00       	call   38d8 <printf>$/;"	l
-b5d	user/sh.asm	/^ b5d:	eb f4                	jmp    b53 <atoi+0x2f>$/;"	l
-b5d	user/usertests.asm	/^     b5d:	e8 3a 2c 00 00       	call   379c <wait>$/;"	l
-b5f	user/sh.asm	/^ b5f:	55                   	push   %ebp$/;"	l
+b57	user/sh.asm	/^ b57:	5b                   	pop    %ebx$/;"	l
+b58	user/sh.asm	/^ b58:	5d                   	pop    %ebp$/;"	l
+b58	user/usertests.asm	/^     b58:	e8 6f 2d 00 00       	call   38cc <printf>$/;"	l
+b59	user/sh.asm	/^ b59:	c3                   	ret    $/;"	l
+b5a	user/sh.asm	/^ b5a:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
+b5d	user/usertests.asm	/^     b5d:	e8 38 2c 00 00       	call   379a <wait>$/;"	l
+b5f	user/sh.asm	/^ b5f:	eb f6                	jmp    b57 <atoi+0x2e>$/;"	l
+b6	user/echo.asm	/^  b6:	55                   	push   %ebp$/;"	l
+b6	user/ln.asm	/^  b6:	ba 00 00 00 00       	mov    $0x0,%edx$/;"	l
 b6	user/sh.asm	/^  b6:	8d 53 04             	lea    0x4(%ebx),%edx$/;"	l
-b6	user/slabtest.asm	/^  b6:	38 d1                	cmp    %dl,%cl$/;"	l
+b6	user/slabtest.asm	/^  b6:	89 d9                	mov    %ebx,%ecx$/;"	l
 b6	user/zombie.asm	/^  b6:	5d                   	pop    %ebp$/;"	l
-b60	user/sh.asm	/^ b60:	89 e5                	mov    %esp,%ebp$/;"	l
-b62	user/sh.asm	/^ b62:	56                   	push   %esi$/;"	l
-b62	user/usertests.asm	/^     b62:	e8 35 2c 00 00       	call   379c <wait>$/;"	l
-b63	user/sh.asm	/^ b63:	53                   	push   %ebx$/;"	l
-b64	user/sh.asm	/^ b64:	8b 75 08             	mov    0x8(%ebp),%esi$/;"	l
-b67	user/sh.asm	/^ b67:	8b 55 0c             	mov    0xc(%ebp),%edx$/;"	l
-b67	user/usertests.asm	/^     b67:	e8 30 2c 00 00       	call   379c <wait>$/;"	l
-b6a	user/sh.asm	/^ b6a:	8b 5d 10             	mov    0x10(%ebp),%ebx$/;"	l
+b61	user/sh.asm	/^ b61:	55                   	push   %ebp$/;"	l
+b62	user/sh.asm	/^ b62:	89 e5                	mov    %esp,%ebp$/;"	l
+b62	user/usertests.asm	/^     b62:	e8 33 2c 00 00       	call   379a <wait>$/;"	l
+b64	user/sh.asm	/^ b64:	56                   	push   %esi$/;"	l
+b65	user/sh.asm	/^ b65:	53                   	push   %ebx$/;"	l
+b66	user/sh.asm	/^ b66:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
+b67	user/usertests.asm	/^     b67:	e8 2e 2c 00 00       	call   379a <wait>$/;"	l
+b69	user/sh.asm	/^ b69:	8b 75 0c             	mov    0xc(%ebp),%esi$/;"	l
+b6c	user/sh.asm	/^ b6c:	8b 5d 10             	mov    0x10(%ebp),%ebx$/;"	l
 b6c	user/usertests.asm	/^     b6c:	83 c4 08             	add    $0x8,%esp$/;"	l
-b6d	user/sh.asm	/^ b6d:	85 db                	test   %ebx,%ebx$/;"	l
-b6f	user/sh.asm	/^ b6f:	7e 15                	jle    b86 <memmove+0x27>$/;"	l
+b6f	user/sh.asm	/^ b6f:	85 db                	test   %ebx,%ebx$/;"	l
 b6f	user/usertests.asm	/^     b6f:	68 bb 3f 00 00       	push   $0x3fbb$/;"	l
-b7	user/echo.asm	/^  b7:	8b 55 08             	mov    0x8(%ebp),%edx$/;"	l
+b7	user/echo.asm	/^  b7:	89 e5                	mov    %esp,%ebp$/;"	l
 b7	user/init.asm	/^  b7:	75 d2                	jne    8b <main+0x8b>$/;"	l
-b7	user/mkdir.asm	/^  b7:	75 ef                	jne    a8 <strcmp+0x10>$/;"	l
-b7	user/ps.asm	/^  b7:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
-b7	user/rm.asm	/^  b7:	75 ef                	jne    a8 <strcmp+0x10>$/;"	l
+b7	user/kill.asm	/^  b7:	83 c2 01             	add    $0x1,%edx$/;"	l
+b7	user/mkdir.asm	/^  b7:	3a 02                	cmp    (%edx),%al$/;"	l
+b7	user/ps.asm	/^  b7:	53                   	push   %ebx$/;"	l
+b7	user/rm.asm	/^  b7:	3a 02                	cmp    (%edx),%al$/;"	l
 b7	user/wc.asm	/^  b7:	8d 65 f4             	lea    -0xc(%ebp),%esp$/;"	l
 b7	user/zombie.asm	/^  b7:	c3                   	ret    $/;"	l
-b71	user/sh.asm	/^ b71:	01 f3                	add    %esi,%ebx$/;"	l
-b73	user/sh.asm	/^ b73:	89 f0                	mov    %esi,%eax$/;"	l
+b71	user/sh.asm	/^ b71:	7e 13                	jle    b86 <memmove+0x25>$/;"	l
+b73	user/sh.asm	/^ b73:	ba 00 00 00 00       	mov    $0x0,%edx$/;"	l
 b74	user/usertests.asm	/^     b74:	6a 01                	push   $0x1$/;"	l
-b75	user/sh.asm	/^ b75:	83 c2 01             	add    $0x1,%edx$/;"	l
-b76	user/usertests.asm	/^     b76:	e8 5d 2d 00 00       	call   38d8 <printf>$/;"	l
-b78	user/sh.asm	/^ b78:	83 c0 01             	add    $0x1,%eax$/;"	l
-b7b	user/sh.asm	/^ b7b:	0f b6 4a ff          	movzbl -0x1(%edx),%ecx$/;"	l
+b76	user/usertests.asm	/^     b76:	e8 51 2d 00 00       	call   38cc <printf>$/;"	l
+b78	user/sh.asm	/^ b78:	0f b6 0c 16          	movzbl (%esi,%edx,1),%ecx$/;"	l
 b7b	user/usertests.asm	/^     b7b:	83 c4 10             	add    $0x10,%esp$/;"	l
+b7c	user/sh.asm	/^ b7c:	88 0c 10             	mov    %cl,(%eax,%edx,1)$/;"	l
 b7e	user/usertests.asm	/^     b7e:	eb 94                	jmp    b14 <preempt+0xcd>$/;"	l
-b7f	user/sh.asm	/^ b7f:	88 48 ff             	mov    %cl,-0x1(%eax)$/;"	l
+b7f	user/sh.asm	/^ b7f:	83 c2 01             	add    $0x1,%edx$/;"	l
 b8	user/cat.asm	/^  b8:	89 34 24             	mov    %esi,(%esp)$/;"	l
 b8	user/grep.asm	/^  b8:	83 c0 01             	add    $0x1,%eax$/;"	l
-b8	user/kill.asm	/^  b8:	89 c1                	mov    %eax,%ecx$/;"	l
-b8	user/slabtest.asm	/^  b8:	74 0f                	je     c9 <strchr+0x24>$/;"	l
+b8	user/ps.asm	/^  b8:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
+b8	user/slabtest.asm	/^  b8:	38 d3                	cmp    %dl,%bl$/;"	l
 b8	user/zombie.asm	/^  b8:	55                   	push   %ebp$/;"	l
 b80	user/usertests.asm	/^     b80:	55                   	push   %ebp$/;"	l
 b81	user/usertests.asm	/^     b81:	89 e5                	mov    %esp,%ebp$/;"	l
-b82	user/sh.asm	/^ b82:	39 c3                	cmp    %eax,%ebx$/;"	l
+b82	user/sh.asm	/^ b82:	39 d3                	cmp    %edx,%ebx$/;"	l
 b83	user/usertests.asm	/^     b83:	56                   	push   %esi$/;"	l
-b84	user/sh.asm	/^ b84:	75 ef                	jne    b75 <memmove+0x16>$/;"	l
+b84	user/sh.asm	/^ b84:	75 f2                	jne    b78 <memmove+0x17>$/;"	l
 b84	user/usertests.asm	/^     b84:	53                   	push   %ebx$/;"	l
 b85	user/usertests.asm	/^     b85:	be 64 00 00 00       	mov    $0x64,%esi$/;"	l
-b86	user/sh.asm	/^ b86:	89 f0                	mov    %esi,%eax$/;"	l
-b88	user/sh.asm	/^ b88:	5b                   	pop    %ebx$/;"	l
-b89	user/sh.asm	/^ b89:	5e                   	pop    %esi$/;"	l
-b8a	user/sh.asm	/^ b8a:	5d                   	pop    %ebp$/;"	l
-b8a	user/usertests.asm	/^     b8a:	e8 fd 2b 00 00       	call   378c <fork>$/;"	l
-b8b	user/sh.asm	/^ b8b:	c3                   	ret    $/;"	l
-b8c	user/sh.asm	/^ b8c:	b8 01 00 00 00       	mov    $0x1,%eax$/;"	l
+b86	user/sh.asm	/^ b86:	5b                   	pop    %ebx$/;"	l
+b87	user/sh.asm	/^ b87:	5e                   	pop    %esi$/;"	l
+b88	user/sh.asm	/^ b88:	5d                   	pop    %ebp$/;"	l
+b89	user/sh.asm	/^ b89:	c3                   	ret    $/;"	l
+b8a	user/sh.asm	/^ b8a:	b8 01 00 00 00       	mov    $0x1,%eax$/;"	l
+b8a	user/usertests.asm	/^     b8a:	e8 fb 2b 00 00       	call   378a <fork>$/;"	l
+b8f	user/sh.asm	/^ b8f:	cd 40                	int    $0x40$/;"	l
 b8f	user/usertests.asm	/^     b8f:	89 c3                	mov    %eax,%ebx$/;"	l
+b9	user/echo.asm	/^  b9:	8b 4d 08             	mov    0x8(%ebp),%ecx$/;"	l
 b9	user/forktest.asm	/^  b9:	6a 01                	push   $0x1$/;"	l
 b9	user/init.asm	/^  b9:	83 ec 08             	sub    $0x8,%esp$/;"	l
-b9	user/ln.asm	/^  b9:	83 c0 01             	add    $0x1,%eax$/;"	l
-b9	user/mkdir.asm	/^  b9:	0f b6 c0             	movzbl %al,%eax$/;"	l
-b9	user/rm.asm	/^  b9:	0f b6 c0             	movzbl %al,%eax$/;"	l
+b9	user/mkdir.asm	/^  b9:	74 ef                	je     aa <strcmp+0x14>$/;"	l
+b9	user/rm.asm	/^  b9:	74 ef                	je     aa <strcmp+0x14>$/;"	l
 b9	user/sh.asm	/^  b9:	52                   	push   %edx$/;"	l
 b9	user/zombie.asm	/^  b9:	89 e5                	mov    %esp,%ebp$/;"	l
-b91	user/sh.asm	/^ b91:	cd 40                	int    $0x40$/;"	l
+b91	user/sh.asm	/^ b91:	c3                   	ret    $/;"	l
 b91	user/usertests.asm	/^     b91:	85 c0                	test   %eax,%eax$/;"	l
-b93	user/sh.asm	/^ b93:	c3                   	ret    $/;"	l
+b92	user/sh.asm	/^ b92:	b8 02 00 00 00       	mov    $0x2,%eax$/;"	l
 b93	user/usertests.asm	/^     b93:	78 26                	js     bbb <exitwait+0x3b>$/;"	l
-b94	user/sh.asm	/^ b94:	b8 02 00 00 00       	mov    $0x2,%eax$/;"	l
 b95	user/usertests.asm	/^     b95:	85 c0                	test   %eax,%eax$/;"	l
+b97	user/sh.asm	/^ b97:	cd 40                	int    $0x40$/;"	l
 b97	user/usertests.asm	/^     b97:	74 4f                	je     be8 <exitwait+0x68>$/;"	l
-b99	user/sh.asm	/^ b99:	cd 40                	int    $0x40$/;"	l
-b99	user/usertests.asm	/^     b99:	e8 fe 2b 00 00       	call   379c <wait>$/;"	l
-b9b	user/sh.asm	/^ b9b:	c3                   	ret    $/;"	l
-b9c	user/sh.asm	/^ b9c:	b8 03 00 00 00       	mov    $0x3,%eax$/;"	l
+b99	user/sh.asm	/^ b99:	c3                   	ret    $/;"	l
+b99	user/usertests.asm	/^     b99:	e8 fc 2b 00 00       	call   379a <wait>$/;"	l
+b9a	user/sh.asm	/^ b9a:	b8 03 00 00 00       	mov    $0x3,%eax$/;"	l
 b9e	user/usertests.asm	/^     b9e:	39 d8                	cmp    %ebx,%eax$/;"	l
-ba	user/echo.asm	/^  ba:	80 3a 00             	cmpb   $0x0,(%edx)$/;"	l
-ba	user/kill.asm	/^  ba:	80 3c 02 00          	cmpb   $0x0,(%edx,%eax,1)$/;"	l
-ba	user/ps.asm	/^  ba:	0f b6 4d 0c          	movzbl 0xc(%ebp),%ecx$/;"	l
+b9f	user/sh.asm	/^ b9f:	cd 40                	int    $0x40$/;"	l
+ba	user/kill.asm	/^  ba:	89 d0                	mov    %edx,%eax$/;"	l
 ba	user/sh.asm	/^  ba:	50                   	push   %eax$/;"	l
-ba	user/slabtest.asm	/^  ba:	83 c0 01             	add    $0x1,%eax$/;"	l
+ba	user/slabtest.asm	/^  ba:	74 15                	je     d1 <strchr+0x2c>$/;"	l
 ba	user/stressfs.asm	/^  ba:	83 c4 08             	add    $0x8,%esp$/;"	l
 ba	user/wc.asm	/^  ba:	5b                   	pop    %ebx$/;"	l
 ba0	user/usertests.asm	/^     ba0:	75 32                	jne    bd4 <exitwait+0x54>$/;"	l
-ba1	user/sh.asm	/^ ba1:	cd 40                	int    $0x40$/;"	l
+ba1	user/sh.asm	/^ ba1:	c3                   	ret    $/;"	l
+ba2	user/sh.asm	/^ ba2:	b8 04 00 00 00       	mov    $0x4,%eax$/;"	l
 ba2	user/usertests.asm	/^     ba2:	83 ee 01             	sub    $0x1,%esi$/;"	l
-ba3	user/sh.asm	/^ ba3:	c3                   	ret    $/;"	l
-ba4	user/sh.asm	/^ ba4:	b8 04 00 00 00       	mov    $0x4,%eax$/;"	l
 ba5	user/usertests.asm	/^     ba5:	75 e3                	jne    b8a <exitwait+0xa>$/;"	l
+ba7	user/sh.asm	/^ ba7:	cd 40                	int    $0x40$/;"	l
 ba7	user/usertests.asm	/^     ba7:	83 ec 08             	sub    $0x8,%esp$/;"	l
-ba9	user/sh.asm	/^ ba9:	cd 40                	int    $0x40$/;"	l
+ba9	user/sh.asm	/^ ba9:	c3                   	ret    $/;"	l
+baa	user/sh.asm	/^ baa:	b8 05 00 00 00       	mov    $0x5,%eax$/;"	l
 baa	user/usertests.asm	/^     baa:	68 d7 3f 00 00       	push   $0x3fd7$/;"	l
-bab	user/sh.asm	/^ bab:	c3                   	ret    $/;"	l
-bac	user/sh.asm	/^ bac:	b8 05 00 00 00       	mov    $0x5,%eax$/;"	l
 backcmd	user/sh.c	/^backcmd(struct cmd *subcmd)$/;"	f
 backcmd	user/sh.c	/^struct backcmd {$/;"	s	file:
+baf	user/sh.asm	/^ baf:	cd 40                	int    $0x40$/;"	l
 baf	user/usertests.asm	/^     baf:	6a 01                	push   $0x1$/;"	l
 balloc	fs.c	/^balloc(uint dev)$/;"	f	file:
 balloc	mkfs.c	/^balloc(int used)$/;"	f
@@ -881,97 +884,100 @@ base	umalloc.c	/^static Header base;$/;"	v	file:
 base_15_0	mmu.h	/^  uint base_15_0 : 16; \/\/ Low bits of segment base address$/;"	m	struct:segdesc
 base_23_16	mmu.h	/^  uint base_23_16 : 8; \/\/ Middle bits of segment base address$/;"	m	struct:segdesc
 base_31_24	mmu.h	/^  uint base_31_24 : 8; \/\/ High bits of segment base address$/;"	m	struct:segdesc
-bb	user/cat.asm	/^  bb:	e8 25 02 00 00       	call   2e5 <close>$/;"	l
+bb	user/cat.asm	/^  bb:	e8 23 02 00 00       	call   2e3 <close>$/;"	l
 bb	user/forktest.asm	/^  bb:	e8 40 ff ff ff       	call   0 <print>$/;"	l
 bb	user/grep.asm	/^  bb:	50                   	push   %eax$/;"	l
+bb	user/ln.asm	/^  bb:	83 c2 01             	add    $0x1,%edx$/;"	l
 bb	user/ls.asm	/^  bb:	50                   	push   %eax$/;"	l
-bb	user/sh.asm	/^  bb:	e8 0c 0b 00 00       	call   bcc <exec>$/;"	l
-bb	user/usertests.asm	/^      bb:	e8 18 38 00 00       	call   38d8 <printf>$/;"	l
+bb	user/mkdir.asm	/^  bb:	0f b6 c0             	movzbl %al,%eax$/;"	l
+bb	user/ps.asm	/^  bb:	8b 5d 0c             	mov    0xc(%ebp),%ebx$/;"	l
+bb	user/rm.asm	/^  bb:	0f b6 c0             	movzbl %al,%eax$/;"	l
+bb	user/sh.asm	/^  bb:	e8 0a 0b 00 00       	call   bca <exec>$/;"	l
+bb	user/usertests.asm	/^      bb:	e8 0c 38 00 00       	call   38cc <printf>$/;"	l
 bb	user/wc.asm	/^  bb:	5e                   	pop    %esi$/;"	l
-bb	user/zombie.asm	/^  bb:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
-bb1	user/sh.asm	/^ bb1:	cd 40                	int    $0x40$/;"	l
-bb1	user/usertests.asm	/^     bb1:	e8 22 2d 00 00       	call   38d8 <printf>$/;"	l
-bb3	user/sh.asm	/^ bb3:	c3                   	ret    $/;"	l
-bb4	user/sh.asm	/^ bb4:	b8 10 00 00 00       	mov    $0x10,%eax$/;"	l
+bb	user/zombie.asm	/^  bb:	53                   	push   %ebx$/;"	l
+bb1	user/sh.asm	/^ bb1:	c3                   	ret    $/;"	l
+bb1	user/usertests.asm	/^     bb1:	e8 16 2d 00 00       	call   38cc <printf>$/;"	l
+bb2	user/sh.asm	/^ bb2:	b8 10 00 00 00       	mov    $0x10,%eax$/;"	l
 bb6	user/usertests.asm	/^     bb6:	83 c4 10             	add    $0x10,%esp$/;"	l
-bb9	user/sh.asm	/^ bb9:	cd 40                	int    $0x40$/;"	l
+bb7	user/sh.asm	/^ bb7:	cd 40                	int    $0x40$/;"	l
+bb9	user/sh.asm	/^ bb9:	c3                   	ret    $/;"	l
 bb9	user/usertests.asm	/^     bb9:	eb 12                	jmp    bcd <exitwait+0x4d>$/;"	l
-bbb	user/sh.asm	/^ bbb:	c3                   	ret    $/;"	l
+bba	user/sh.asm	/^ bba:	b8 15 00 00 00       	mov    $0x15,%eax$/;"	l
 bbb	user/usertests.asm	/^     bbb:	83 ec 08             	sub    $0x8,%esp$/;"	l
-bbc	user/sh.asm	/^ bbc:	b8 15 00 00 00       	mov    $0x15,%eax$/;"	l
 bbe	user/usertests.asm	/^     bbe:	68 25 4b 00 00       	push   $0x4b25$/;"	l
+bbf	user/sh.asm	/^ bbf:	cd 40                	int    $0x40$/;"	l
+bc	user/echo.asm	/^  bc:	80 39 00             	cmpb   $0x0,(%ecx)$/;"	l
 bc	user/grep.asm	/^  bc:	83 c2 01             	add    $0x1,%edx$/;"	l
 bc	user/init.asm	/^  bc:	68 b4 09 00 00       	push   $0x9b4$/;"	l
-bc	user/ln.asm	/^  bc:	89 c1                	mov    %eax,%ecx$/;"	l
+bc	user/kill.asm	/^  bc:	80 3c 11 00          	cmpb   $0x0,(%ecx,%edx,1)$/;"	l
 bc	user/ls.asm	/^  bc:	56                   	push   %esi$/;"	l
-bc	user/mkdir.asm	/^  bc:	0f b6 12             	movzbl (%edx),%edx$/;"	l
-bc	user/rm.asm	/^  bc:	0f b6 12             	movzbl (%edx),%edx$/;"	l
+bc	user/slabtest.asm	/^  bc:	83 c0 01             	add    $0x1,%eax$/;"	l
 bc	user/wc.asm	/^  bc:	5f                   	pop    %edi$/;"	l
-bc1	user/sh.asm	/^ bc1:	cd 40                	int    $0x40$/;"	l
-bc3	user/sh.asm	/^ bc3:	c3                   	ret    $/;"	l
+bc	user/zombie.asm	/^  bc:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
+bc1	user/sh.asm	/^ bc1:	c3                   	ret    $/;"	l
+bc2	user/sh.asm	/^ bc2:	b8 06 00 00 00       	mov    $0x6,%eax$/;"	l
 bc3	user/usertests.asm	/^     bc3:	6a 01                	push   $0x1$/;"	l
-bc4	user/sh.asm	/^ bc4:	b8 06 00 00 00       	mov    $0x6,%eax$/;"	l
-bc5	user/usertests.asm	/^     bc5:	e8 0e 2d 00 00       	call   38d8 <printf>$/;"	l
-bc9	user/sh.asm	/^ bc9:	cd 40                	int    $0x40$/;"	l
+bc5	user/usertests.asm	/^     bc5:	e8 02 2d 00 00       	call   38cc <printf>$/;"	l
+bc7	user/sh.asm	/^ bc7:	cd 40                	int    $0x40$/;"	l
+bc9	user/sh.asm	/^ bc9:	c3                   	ret    $/;"	l
+bca	user/sh.asm	/^ bca:	b8 07 00 00 00       	mov    $0x7,%eax$/;"	l
 bca	user/usertests.asm	/^     bca:	83 c4 10             	add    $0x10,%esp$/;"	l
 bcache	bio.c	/^} bcache;$/;"	v	typeref:struct:__anon1
-bcb	user/sh.asm	/^ bcb:	c3                   	ret    $/;"	l
-bcc	user/sh.asm	/^ bcc:	b8 07 00 00 00       	mov    $0x7,%eax$/;"	l
 bcd	user/usertests.asm	/^     bcd:	8d 65 f8             	lea    -0x8(%ebp),%esp$/;"	l
-bd	user/echo.asm	/^  bd:	74 14                	je     d3 <strlen+0x1f>$/;"	l
-bd	user/ls.asm	/^  bd:	e8 32 04 00 00       	call   4f4 <fstat>$/;"	l
-bd	user/slabtest.asm	/^  bd:	0f b6 10             	movzbl (%eax),%edx$/;"	l
+bcf	user/sh.asm	/^ bcf:	cd 40                	int    $0x40$/;"	l
+bd	user/ls.asm	/^  bd:	e8 30 04 00 00       	call   4f2 <fstat>$/;"	l
 bd	user/stressfs.asm	/^  bd:	68 41 07 00 00       	push   $0x741$/;"	l
 bd	user/wc.asm	/^  bd:	5d                   	pop    %ebp$/;"	l
 bd0	user/usertests.asm	/^     bd0:	5b                   	pop    %ebx$/;"	l
-bd1	user/sh.asm	/^ bd1:	cd 40                	int    $0x40$/;"	l
+bd1	user/sh.asm	/^ bd1:	c3                   	ret    $/;"	l
 bd1	user/usertests.asm	/^     bd1:	5e                   	pop    %esi$/;"	l
+bd2	user/sh.asm	/^ bd2:	b8 0f 00 00 00       	mov    $0xf,%eax$/;"	l
 bd2	user/usertests.asm	/^     bd2:	5d                   	pop    %ebp$/;"	l
-bd3	user/sh.asm	/^ bd3:	c3                   	ret    $/;"	l
 bd3	user/usertests.asm	/^     bd3:	c3                   	ret    $/;"	l
-bd4	user/sh.asm	/^ bd4:	b8 0f 00 00 00       	mov    $0xf,%eax$/;"	l
 bd4	user/usertests.asm	/^     bd4:	83 ec 08             	sub    $0x8,%esp$/;"	l
+bd7	user/sh.asm	/^ bd7:	cd 40                	int    $0x40$/;"	l
 bd7	user/usertests.asm	/^     bd7:	68 c7 3f 00 00       	push   $0x3fc7$/;"	l
-bd9	user/sh.asm	/^ bd9:	cd 40                	int    $0x40$/;"	l
-bdb	user/sh.asm	/^ bdb:	c3                   	ret    $/;"	l
-bdc	user/sh.asm	/^ bdc:	b8 11 00 00 00       	mov    $0x11,%eax$/;"	l
+bd9	user/sh.asm	/^ bd9:	c3                   	ret    $/;"	l
+bda	user/sh.asm	/^ bda:	b8 11 00 00 00       	mov    $0x11,%eax$/;"	l
 bdc	user/usertests.asm	/^     bdc:	6a 01                	push   $0x1$/;"	l
-bde	user/usertests.asm	/^     bde:	e8 f5 2c 00 00       	call   38d8 <printf>$/;"	l
-be	user/kill.asm	/^  be:	75 f5                	jne    b5 <strlen+0x10>$/;"	l
-be	user/ln.asm	/^  be:	80 3c 02 00          	cmpb   $0x0,(%edx,%eax,1)$/;"	l
+bde	user/usertests.asm	/^     bde:	e8 e9 2c 00 00       	call   38cc <printf>$/;"	l
+bdf	user/sh.asm	/^ bdf:	cd 40                	int    $0x40$/;"	l
+be	user/ln.asm	/^  be:	89 d0                	mov    %edx,%eax$/;"	l
+be	user/mkdir.asm	/^  be:	0f b6 12             	movzbl (%edx),%edx$/;"	l
 be	user/ps.asm	/^  be:	0f b6 10             	movzbl (%eax),%edx$/;"	l
+be	user/rm.asm	/^  be:	0f b6 12             	movzbl (%edx),%edx$/;"	l
 be	user/wc.asm	/^  be:	c3                   	ret    $/;"	l
-be	user/zombie.asm	/^  be:	0f b6 4d 0c          	movzbl 0xc(%ebp),%ecx$/;"	l
-be1	user/sh.asm	/^ be1:	cd 40                	int    $0x40$/;"	l
-be3	user/sh.asm	/^ be3:	c3                   	ret    $/;"	l
+be1	user/sh.asm	/^ be1:	c3                   	ret    $/;"	l
+be2	user/sh.asm	/^ be2:	b8 12 00 00 00       	mov    $0x12,%eax$/;"	l
 be3	user/usertests.asm	/^     be3:	83 c4 10             	add    $0x10,%esp$/;"	l
-be4	user/sh.asm	/^ be4:	b8 12 00 00 00       	mov    $0x12,%eax$/;"	l
 be6	user/usertests.asm	/^     be6:	eb e5                	jmp    bcd <exitwait+0x4d>$/;"	l
-be8	user/usertests.asm	/^     be8:	e8 a7 2b 00 00       	call   3794 <exit>$/;"	l
-be9	user/sh.asm	/^ be9:	cd 40                	int    $0x40$/;"	l
-beb	user/sh.asm	/^ beb:	c3                   	ret    $/;"	l
-bec	user/sh.asm	/^ bec:	b8 08 00 00 00       	mov    $0x8,%eax$/;"	l
+be7	user/sh.asm	/^ be7:	cd 40                	int    $0x40$/;"	l
+be8	user/usertests.asm	/^     be8:	e8 a5 2b 00 00       	call   3792 <exit>$/;"	l
+be9	user/sh.asm	/^ be9:	c3                   	ret    $/;"	l
+bea	user/sh.asm	/^ bea:	b8 08 00 00 00       	mov    $0x8,%eax$/;"	l
 bed	user/usertests.asm	/^     bed:	55                   	push   %ebp$/;"	l
 bee	user/usertests.asm	/^     bee:	89 e5                	mov    %esp,%ebp$/;"	l
+bef	user/sh.asm	/^ bef:	cd 40                	int    $0x40$/;"	l
 begin_op	log.c	/^begin_op(void)$/;"	f
-bf	user/echo.asm	/^  bf:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
+bf	user/echo.asm	/^  bf:	74 12                	je     d3 <strlen+0x1d>$/;"	l
 bf	user/grep.asm	/^  bf:	52                   	push   %edx$/;"	l
-bf	user/mkdir.asm	/^  bf:	29 d0                	sub    %edx,%eax$/;"	l
-bf	user/rm.asm	/^  bf:	29 d0                	sub    %edx,%eax$/;"	l
+bf	user/slabtest.asm	/^  bf:	0f b6 10             	movzbl (%eax),%edx$/;"	l
 bf	user/wc.asm	/^  bf:	83 ec 08             	sub    $0x8,%esp$/;"	l
+bf	user/zombie.asm	/^  bf:	8b 5d 0c             	mov    0xc(%ebp),%ebx$/;"	l
 bf0	user/usertests.asm	/^     bf0:	57                   	push   %edi$/;"	l
-bf1	user/sh.asm	/^ bf1:	cd 40                	int    $0x40$/;"	l
+bf1	user/sh.asm	/^ bf1:	c3                   	ret    $/;"	l
 bf1	user/usertests.asm	/^     bf1:	56                   	push   %esi$/;"	l
+bf2	user/sh.asm	/^ bf2:	b8 13 00 00 00       	mov    $0x13,%eax$/;"	l
 bf2	user/usertests.asm	/^     bf2:	53                   	push   %ebx$/;"	l
-bf3	user/sh.asm	/^ bf3:	c3                   	ret    $/;"	l
 bf3	user/usertests.asm	/^     bf3:	83 ec 14             	sub    $0x14,%esp$/;"	l
-bf4	user/sh.asm	/^ bf4:	b8 13 00 00 00       	mov    $0x13,%eax$/;"	l
 bf6	user/usertests.asm	/^     bf6:	68 e4 3f 00 00       	push   $0x3fe4$/;"	l
-bf9	user/sh.asm	/^ bf9:	cd 40                	int    $0x40$/;"	l
-bfb	user/sh.asm	/^ bfb:	c3                   	ret    $/;"	l
+bf7	user/sh.asm	/^ bf7:	cd 40                	int    $0x40$/;"	l
+bf9	user/sh.asm	/^ bf9:	c3                   	ret    $/;"	l
+bfa	user/sh.asm	/^ bfa:	b8 14 00 00 00       	mov    $0x14,%eax$/;"	l
 bfb	user/usertests.asm	/^     bfb:	6a 01                	push   $0x1$/;"	l
-bfc	user/sh.asm	/^ bfc:	b8 14 00 00 00       	mov    $0x14,%eax$/;"	l
-bfd	user/usertests.asm	/^     bfd:	e8 d6 2c 00 00       	call   38d8 <printf>$/;"	l
+bfd	user/usertests.asm	/^     bfd:	e8 ca 2c 00 00       	call   38cc <printf>$/;"	l
+bff	user/sh.asm	/^ bff:	cd 40                	int    $0x40$/;"	l
 bfree	fs.c	/^bfree(int dev, uint b)$/;"	f	file:
 bget	bio.c	/^bget(uint dev, uint blockno)$/;"	f	file:
 bigargtest	user/usertests.c	/^bigargtest(void)$/;"	f
@@ -1024,7 +1030,7 @@ c	user/init.asm	/^    c = fmt[i] & 0xff;$/;"	d
 c	user/kill.asm	/^    c = fmt[i] & 0xff;$/;"	d
 c	user/ln.asm	/^    c = fmt[i] & 0xff;$/;"	d
 c	user/ls.asm	/^    c = fmt[i] & 0xff;$/;"	d
-c	user/ls.asm	/^   c:	e8 16 03 00 00       	call   327 <strlen>$/;"	l
+c	user/ls.asm	/^   c:	e8 18 03 00 00       	call   329 <strlen>$/;"	l
 c	user/mkdir.asm	/^    c = fmt[i] & 0xff;$/;"	d
 c	user/ps.asm	/^    c = fmt[i] & 0xff;$/;"	d
 c	user/rm.asm	/^    c = fmt[i] & 0xff;$/;"	d
@@ -1035,190 +1041,188 @@ c	user/usertests.asm	/^    c = fmt[i] & 0xff;$/;"	d
 c	user/wc.asm	/^    c = fmt[i] & 0xff;$/;"	d
 c	user/zombie.asm	/^    c = fmt[i] & 0xff;$/;"	d
 c0	user/cat.asm	/^  c0:	83 c7 01             	add    $0x1,%edi$/;"	l
-c0	user/forktest.asm	/^  c0:	e8 f1 01 00 00       	call   2b6 <exit>$/;"	l
+c0	user/forktest.asm	/^  c0:	e8 ef 01 00 00       	call   2b4 <exit>$/;"	l
 c0	user/grep.asm	/^  c0:	e8 83 ff ff ff       	call   48 <matchhere>$/;"	l
-c0	user/kill.asm	/^  c0:	89 c8                	mov    %ecx,%eax$/;"	l
+c0	user/kill.asm	/^  c0:	75 f5                	jne    b7 <strlen+0x10>$/;"	l
+c0	user/ln.asm	/^  c0:	80 3c 11 00          	cmpb   $0x0,(%ecx,%edx,1)$/;"	l
 c0	user/sh.asm	/^  c0:	83 c4 0c             	add    $0xc,%esp$/;"	l
-c0	user/slabtest.asm	/^  c0:	84 d2                	test   %dl,%dl$/;"	l
-c0	user/usertests.asm	/^      c0:	e8 cf 36 00 00       	call   3794 <exit>$/;"	l
-c01	user/sh.asm	/^ c01:	cd 40                	int    $0x40$/;"	l
-c02	user/usertests.asm	/^     c02:	e8 0d 2c 00 00       	call   3814 <getpid>$/;"	l
-c03	user/sh.asm	/^ c03:	c3                   	ret    $/;"	l
-c04	user/sh.asm	/^ c04:	b8 09 00 00 00       	mov    $0x9,%eax$/;"	l
+c0	user/usertests.asm	/^      c0:	e8 cd 36 00 00       	call   3792 <exit>$/;"	l
+c01	user/sh.asm	/^ c01:	c3                   	ret    $/;"	l
+c02	user/sh.asm	/^ c02:	b8 09 00 00 00       	mov    $0x9,%eax$/;"	l
+c02	user/usertests.asm	/^     c02:	e8 0b 2c 00 00       	call   3812 <getpid>$/;"	l
+c07	user/sh.asm	/^ c07:	cd 40                	int    $0x40$/;"	l
 c07	user/usertests.asm	/^     c07:	89 c6                	mov    %eax,%esi$/;"	l
-c09	user/sh.asm	/^ c09:	cd 40                	int    $0x40$/;"	l
-c09	user/usertests.asm	/^     c09:	e8 7e 2b 00 00       	call   378c <fork>$/;"	l
-c0b	user/sh.asm	/^ c0b:	c3                   	ret    $/;"	l
-c0c	user/sh.asm	/^ c0c:	b8 0a 00 00 00       	mov    $0xa,%eax$/;"	l
+c09	user/sh.asm	/^ c09:	c3                   	ret    $/;"	l
+c09	user/usertests.asm	/^     c09:	e8 7c 2b 00 00       	call   378a <fork>$/;"	l
+c0a	user/sh.asm	/^ c0a:	b8 0a 00 00 00       	mov    $0xa,%eax$/;"	l
 c0e	user/usertests.asm	/^     c0e:	83 c4 10             	add    $0x10,%esp$/;"	l
+c0f	user/sh.asm	/^ c0f:	cd 40                	int    $0x40$/;"	l
+c1	user/echo.asm	/^  c1:	ba 00 00 00 00       	mov    $0x0,%edx$/;"	l
 c1	user/init.asm	/^  c1:	68 1e 07 00 00       	push   $0x71e$/;"	l
-c1	user/mkdir.asm	/^  c1:	5d                   	pop    %ebp$/;"	l
+c1	user/mkdir.asm	/^  c1:	29 d0                	sub    %edx,%eax$/;"	l
 c1	user/ps.asm	/^  c1:	84 d2                	test   %dl,%dl$/;"	l
-c1	user/rm.asm	/^  c1:	5d                   	pop    %ebp$/;"	l
-c11	user/sh.asm	/^ c11:	cd 40                	int    $0x40$/;"	l
+c1	user/rm.asm	/^  c1:	29 d0                	sub    %edx,%eax$/;"	l
+c11	user/sh.asm	/^ c11:	c3                   	ret    $/;"	l
 c11	user/usertests.asm	/^     c11:	bb 00 00 00 00       	mov    $0x0,%ebx$/;"	l
-c13	user/sh.asm	/^ c13:	c3                   	ret    $/;"	l
-c14	user/sh.asm	/^ c14:	b8 0b 00 00 00       	mov    $0xb,%eax$/;"	l
+c12	user/sh.asm	/^ c12:	b8 0b 00 00 00       	mov    $0xb,%eax$/;"	l
 c16	user/usertests.asm	/^     c16:	85 c0                	test   %eax,%eax$/;"	l
+c17	user/sh.asm	/^ c17:	cd 40                	int    $0x40$/;"	l
 c18	user/usertests.asm	/^     c18:	74 11                	je     c2b <mem+0x3e>$/;"	l
-c19	user/sh.asm	/^ c19:	cd 40                	int    $0x40$/;"	l
-c1a	user/usertests.asm	/^     c1a:	e8 7d 2b 00 00       	call   379c <wait>$/;"	l
-c1b	user/sh.asm	/^ c1b:	c3                   	ret    $/;"	l
-c1c	user/sh.asm	/^ c1c:	b8 0c 00 00 00       	mov    $0xc,%eax$/;"	l
+c19	user/sh.asm	/^ c19:	c3                   	ret    $/;"	l
+c1a	user/sh.asm	/^ c1a:	b8 0c 00 00 00       	mov    $0xc,%eax$/;"	l
+c1a	user/usertests.asm	/^     c1a:	e8 7b 2b 00 00       	call   379a <wait>$/;"	l
+c1f	user/sh.asm	/^ c1f:	cd 40                	int    $0x40$/;"	l
 c1f	user/usertests.asm	/^     c1f:	8d 65 f4             	lea    -0xc(%ebp),%esp$/;"	l
 c2	user/kill.asm	/^  c2:	5d                   	pop    %ebp$/;"	l
-c2	user/ln.asm	/^  c2:	75 f5                	jne    b9 <strlen+0x10>$/;"	l
 c2	user/ls.asm	/^  c2:	83 c4 10             	add    $0x10,%esp$/;"	l
-c2	user/mkdir.asm	/^  c2:	c3                   	ret    $/;"	l
-c2	user/rm.asm	/^  c2:	c3                   	ret    $/;"	l
-c2	user/slabtest.asm	/^  c2:	75 f2                	jne    b6 <strchr+0x11>$/;"	l
+c2	user/slabtest.asm	/^  c2:	84 d2                	test   %dl,%dl$/;"	l
 c2	user/stressfs.asm	/^  c2:	6a 01                	push   $0x1$/;"	l
 c2	user/wc.asm	/^  c2:	68 7e 07 00 00       	push   $0x77e$/;"	l
 c2	user/zombie.asm	/^  c2:	0f b6 10             	movzbl (%eax),%edx$/;"	l
-c21	user/sh.asm	/^ c21:	cd 40                	int    $0x40$/;"	l
+c21	user/sh.asm	/^ c21:	c3                   	ret    $/;"	l
+c22	user/sh.asm	/^ c22:	b8 0d 00 00 00       	mov    $0xd,%eax$/;"	l
 c22	user/usertests.asm	/^     c22:	5b                   	pop    %ebx$/;"	l
-c23	user/sh.asm	/^ c23:	c3                   	ret    $/;"	l
 c23	user/usertests.asm	/^     c23:	5e                   	pop    %esi$/;"	l
-c24	user/sh.asm	/^ c24:	b8 0d 00 00 00       	mov    $0xd,%eax$/;"	l
 c24	user/usertests.asm	/^     c24:	5f                   	pop    %edi$/;"	l
 c25	user/usertests.asm	/^     c25:	5d                   	pop    %ebp$/;"	l
 c26	user/usertests.asm	/^     c26:	c3                   	ret    $/;"	l
+c27	user/sh.asm	/^ c27:	cd 40                	int    $0x40$/;"	l
 c27	user/usertests.asm	/^     c27:	89 18                	mov    %ebx,(%eax)$/;"	l
-c29	user/sh.asm	/^ c29:	cd 40                	int    $0x40$/;"	l
+c29	user/sh.asm	/^ c29:	c3                   	ret    $/;"	l
 c29	user/usertests.asm	/^     c29:	89 c3                	mov    %eax,%ebx$/;"	l
-c2b	user/sh.asm	/^ c2b:	c3                   	ret    $/;"	l
+c2a	user/sh.asm	/^ c2a:	b8 0e 00 00 00       	mov    $0xe,%eax$/;"	l
 c2b	user/usertests.asm	/^     c2b:	83 ec 0c             	sub    $0xc,%esp$/;"	l
-c2c	user/sh.asm	/^ c2c:	b8 0e 00 00 00       	mov    $0xe,%eax$/;"	l
 c2e	user/usertests.asm	/^     c2e:	68 11 27 00 00       	push   $0x2711$/;"	l
+c2f	user/sh.asm	/^ c2f:	cd 40                	int    $0x40$/;"	l
 c3	user/cat.asm	/^  c3:	83 c3 04             	add    $0x4,%ebx$/;"	l
 c3	user/kill.asm	/^  c3:	c3                   	ret    $/;"	l
-c3	user/mkdir.asm	/^  c3:	55                   	push   %ebp$/;"	l
-c3	user/ps.asm	/^  c3:	74 15                	je     da <strchr+0x26>$/;"	l
-c3	user/rm.asm	/^  c3:	55                   	push   %ebp$/;"	l
+c3	user/mkdir.asm	/^  c3:	5d                   	pop    %ebp$/;"	l
+c3	user/ps.asm	/^  c3:	74 1e                	je     e3 <strchr+0x2f>$/;"	l
+c3	user/rm.asm	/^  c3:	5d                   	pop    %ebp$/;"	l
 c3	user/sh.asm	/^  c3:	ff 73 04             	pushl  0x4(%ebx)$/;"	l
-c31	user/sh.asm	/^ c31:	cd 40                	int    $0x40$/;"	l
-c33	user/sh.asm	/^ c33:	c3                   	ret    $/;"	l
-c33	user/usertests.asm	/^     c33:	e8 d8 2e 00 00       	call   3b10 <malloc>$/;"	l
-c34	user/sh.asm	/^ c34:	b8 16 00 00 00       	mov    $0x16,%eax$/;"	l
+c31	user/sh.asm	/^ c31:	c3                   	ret    $/;"	l
+c32	user/sh.asm	/^ c32:	b8 16 00 00 00       	mov    $0x16,%eax$/;"	l
+c33	user/usertests.asm	/^     c33:	e8 d2 2e 00 00       	call   3b0a <malloc>$/;"	l
+c37	user/sh.asm	/^ c37:	cd 40                	int    $0x40$/;"	l
 c38	user/usertests.asm	/^     c38:	83 c4 10             	add    $0x10,%esp$/;"	l
-c39	user/sh.asm	/^ c39:	cd 40                	int    $0x40$/;"	l
-c3b	user/sh.asm	/^ c3b:	c3                   	ret    $/;"	l
+c39	user/sh.asm	/^ c39:	c3                   	ret    $/;"	l
+c3a	user/sh.asm	/^ c3a:	b8 17 00 00 00       	mov    $0x17,%eax$/;"	l
 c3b	user/usertests.asm	/^     c3b:	85 c0                	test   %eax,%eax$/;"	l
-c3c	user/sh.asm	/^ c3c:	b8 17 00 00 00       	mov    $0x17,%eax$/;"	l
 c3d	user/usertests.asm	/^     c3d:	75 e8                	jne    c27 <mem+0x3a>$/;"	l
+c3f	user/sh.asm	/^ c3f:	cd 40                	int    $0x40$/;"	l
 c3f	user/usertests.asm	/^     c3f:	85 db                	test   %ebx,%ebx$/;"	l
-c4	user/echo.asm	/^  c4:	83 c0 01             	add    $0x1,%eax$/;"	l
-c4	user/kill.asm	/^  c4:	b9 00 00 00 00       	mov    $0x0,%ecx$/;"	l
-c4	user/ln.asm	/^  c4:	89 c8                	mov    %ecx,%eax$/;"	l
-c4	user/mkdir.asm	/^  c4:	89 e5                	mov    %esp,%ebp$/;"	l
-c4	user/rm.asm	/^  c4:	89 e5                	mov    %esp,%ebp$/;"	l
-c4	user/slabtest.asm	/^  c4:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
-c4	user/stressfs.asm	/^  c4:	e8 4e 03 00 00       	call   417 <printf>$/;"	l
-c41	user/sh.asm	/^ c41:	cd 40                	int    $0x40$/;"	l
+c4	user/kill.asm	/^  c4:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
+c4	user/ln.asm	/^  c4:	75 f5                	jne    bb <strlen+0x10>$/;"	l
+c4	user/mkdir.asm	/^  c4:	c3                   	ret    $/;"	l
+c4	user/rm.asm	/^  c4:	c3                   	ret    $/;"	l
+c4	user/slabtest.asm	/^  c4:	74 06                	je     cc <strchr+0x27>$/;"	l
+c4	user/stressfs.asm	/^  c4:	e8 42 03 00 00       	call   40b <printf>$/;"	l
+c41	user/sh.asm	/^ c41:	c3                   	ret    $/;"	l
 c41	user/usertests.asm	/^     c41:	74 14                	je     c57 <mem+0x6a>$/;"	l
-c43	user/sh.asm	/^ c43:	c3                   	ret    $/;"	l
+c42	user/sh.asm	/^ c42:	55                   	push   %ebp$/;"	l
+c43	user/sh.asm	/^ c43:	89 e5                	mov    %esp,%ebp$/;"	l
 c43	user/usertests.asm	/^     c43:	8b 3b                	mov    (%ebx),%edi$/;"	l
-c44	user/sh.asm	/^ c44:	55                   	push   %ebp$/;"	l
-c45	user/sh.asm	/^ c45:	89 e5                	mov    %esp,%ebp$/;"	l
+c45	user/sh.asm	/^ c45:	57                   	push   %edi$/;"	l
 c45	user/usertests.asm	/^     c45:	83 ec 0c             	sub    $0xc,%esp$/;"	l
-c47	user/sh.asm	/^ c47:	57                   	push   %edi$/;"	l
-c48	user/sh.asm	/^ c48:	56                   	push   %esi$/;"	l
+c46	user/sh.asm	/^ c46:	56                   	push   %esi$/;"	l
+c47	user/sh.asm	/^ c47:	53                   	push   %ebx$/;"	l
+c48	user/sh.asm	/^ c48:	83 ec 3c             	sub    $0x3c,%esp$/;"	l
 c48	user/usertests.asm	/^     c48:	53                   	push   %ebx$/;"	l
-c49	user/sh.asm	/^ c49:	53                   	push   %ebx$/;"	l
-c49	user/usertests.asm	/^     c49:	e8 54 2e 00 00       	call   3aa2 <free>$/;"	l
-c4a	user/sh.asm	/^ c4a:	83 ec 3c             	sub    $0x3c,%esp$/;"	l
-c4d	user/sh.asm	/^ c4d:	89 45 c4             	mov    %eax,-0x3c(%ebp)$/;"	l
+c49	user/usertests.asm	/^     c49:	e8 4e 2e 00 00       	call   3a9c <free>$/;"	l
+c4b	user/sh.asm	/^ c4b:	89 c6                	mov    %eax,%esi$/;"	l
+c4d	user/sh.asm	/^ c4d:	83 7d 08 00          	cmpl   $0x0,0x8(%ebp)$/;"	l
 c4e	user/usertests.asm	/^     c4e:	89 fb                	mov    %edi,%ebx$/;"	l
 c5	user/forktest.asm	/^  c5:	83 ec 08             	sub    $0x8,%esp$/;"	l
 c5	user/grep.asm	/^  c5:	83 c4 10             	add    $0x10,%esp$/;"	l
 c5	user/ls.asm	/^  c5:	85 c0                	test   %eax,%eax$/;"	l
-c5	user/ps.asm	/^  c5:	38 d1                	cmp    %dl,%cl$/;"	l
+c5	user/mkdir.asm	/^  c5:	55                   	push   %ebp$/;"	l
+c5	user/ps.asm	/^  c5:	89 d9                	mov    %ebx,%ecx$/;"	l
+c5	user/rm.asm	/^  c5:	55                   	push   %ebp$/;"	l
 c5	user/usertests.asm	/^      c5:	83 ec 08             	sub    $0x8,%esp$/;"	l
 c5	user/zombie.asm	/^  c5:	84 d2                	test   %dl,%dl$/;"	l
-c50	user/sh.asm	/^ c50:	89 d3                	mov    %edx,%ebx$/;"	l
 c50	user/usertests.asm	/^     c50:	83 c4 10             	add    $0x10,%esp$/;"	l
-c52	user/sh.asm	/^ c52:	83 7d 08 00          	cmpl   $0x0,0x8(%ebp)$/;"	l
+c51	user/sh.asm	/^ c51:	74 14                	je     c67 <printint+0x25>$/;"	l
+c53	user/sh.asm	/^ c53:	85 d2                	test   %edx,%edx$/;"	l
 c53	user/usertests.asm	/^     c53:	85 ff                	test   %edi,%edi$/;"	l
+c55	user/sh.asm	/^ c55:	79 10                	jns    c67 <printint+0x25>$/;"	l
 c55	user/usertests.asm	/^     c55:	75 ec                	jne    c43 <mem+0x56>$/;"	l
-c56	user/sh.asm	/^ c56:	74 77                	je     ccf <printint+0x8b>$/;"	l
+c57	user/sh.asm	/^ c57:	f7 da                	neg    %edx$/;"	l
 c57	user/usertests.asm	/^     c57:	83 ec 0c             	sub    $0xc,%esp$/;"	l
-c58	user/sh.asm	/^ c58:	85 d2                	test   %edx,%edx$/;"	l
-c5a	user/sh.asm	/^ c5a:	79 73                	jns    ccf <printint+0x8b>$/;"	l
+c59	user/sh.asm	/^ c59:	c7 45 c4 01 00 00 00 	movl   $0x1,-0x3c(%ebp)$/;"	l
 c5a	user/usertests.asm	/^     c5a:	68 00 50 00 00       	push   $0x5000$/;"	l
-c5c	user/sh.asm	/^ c5c:	f7 db                	neg    %ebx$/;"	l
-c5e	user/sh.asm	/^ c5e:	c7 45 c0 01 00 00 00 	movl   $0x1,-0x40(%ebp)$/;"	l
-c5f	user/usertests.asm	/^     c5f:	e8 ac 2e 00 00       	call   3b10 <malloc>$/;"	l
+c5f	user/usertests.asm	/^     c5f:	e8 a6 2e 00 00       	call   3b0a <malloc>$/;"	l
 c6	user/cat.asm	/^  c6:	83 c4 10             	add    $0x10,%esp$/;"	l
-c6	user/init.asm	/^  c6:	e8 0e 02 00 00       	call   2d9 <exec>$/;"	l
+c6	user/echo.asm	/^  c6:	83 c2 01             	add    $0x1,%edx$/;"	l
+c6	user/init.asm	/^  c6:	e8 0c 02 00 00       	call   2d7 <exec>$/;"	l
 c6	user/ln.asm	/^  c6:	5d                   	pop    %ebp$/;"	l
-c6	user/mkdir.asm	/^  c6:	8b 55 08             	mov    0x8(%ebp),%edx$/;"	l
-c6	user/rm.asm	/^  c6:	8b 55 08             	mov    0x8(%ebp),%edx$/;"	l
+c6	user/mkdir.asm	/^  c6:	89 e5                	mov    %esp,%ebp$/;"	l
+c6	user/rm.asm	/^  c6:	89 e5                	mov    %esp,%ebp$/;"	l
 c6	user/sh.asm	/^  c6:	68 f3 0f 00 00       	push   $0xff3$/;"	l
+c6	user/slabtest.asm	/^  c6:	38 ca                	cmp    %cl,%dl$/;"	l
+c60	user/sh.asm	/^ c60:	bf 00 00 00 00       	mov    $0x0,%edi$/;"	l
 c64	user/usertests.asm	/^     c64:	83 c4 10             	add    $0x10,%esp$/;"	l
-c65	user/sh.asm	/^ c65:	be 00 00 00 00       	mov    $0x0,%esi$/;"	l
+c65	user/sh.asm	/^ c65:	eb 0b                	jmp    c72 <printint+0x30>$/;"	l
+c67	user/sh.asm	/^ c67:	c7 45 c4 00 00 00 00 	movl   $0x0,-0x3c(%ebp)$/;"	l
 c67	user/usertests.asm	/^     c67:	85 c0                	test   %eax,%eax$/;"	l
 c69	user/usertests.asm	/^     c69:	74 1d                	je     c88 <mem+0x9b>$/;"	l
-c6a	user/sh.asm	/^ c6a:	89 f7                	mov    %esi,%edi$/;"	l
 c6b	user/usertests.asm	/^     c6b:	83 ec 0c             	sub    $0xc,%esp$/;"	l
-c6c	user/sh.asm	/^ c6c:	83 c6 01             	add    $0x1,%esi$/;"	l
+c6e	user/sh.asm	/^ c6e:	eb f0                	jmp    c60 <printint+0x1e>$/;"	l
 c6e	user/usertests.asm	/^     c6e:	50                   	push   %eax$/;"	l
-c6f	user/sh.asm	/^ c6f:	89 d8                	mov    %ebx,%eax$/;"	l
-c6f	user/usertests.asm	/^     c6f:	e8 2e 2e 00 00       	call   3aa2 <free>$/;"	l
-c7	user/echo.asm	/^  c7:	89 c1                	mov    %eax,%ecx$/;"	l
+c6f	user/usertests.asm	/^     c6f:	e8 28 2e 00 00       	call   3a9c <free>$/;"	l
 c7	user/ln.asm	/^  c7:	c3                   	ret    $/;"	l
 c7	user/ls.asm	/^  c7:	78 77                	js     140 <ls+0xae>$/;"	l
-c7	user/ps.asm	/^  c7:	74 0f                	je     d8 <strchr+0x24>$/;"	l
+c7	user/ps.asm	/^  c7:	38 d3                	cmp    %dl,%bl$/;"	l
 c7	user/wc.asm	/^  c7:	6a 01                	push   $0x1$/;"	l
-c7	user/zombie.asm	/^  c7:	74 15                	je     de <strchr+0x26>$/;"	l
-c71	user/sh.asm	/^ c71:	ba 00 00 00 00       	mov    $0x0,%edx$/;"	l
+c7	user/zombie.asm	/^  c7:	74 1e                	je     e7 <strchr+0x2f>$/;"	l
+c70	user/sh.asm	/^ c70:	89 df                	mov    %ebx,%edi$/;"	l
+c72	user/sh.asm	/^ c72:	8d 5f 01             	lea    0x1(%edi),%ebx$/;"	l
 c74	user/usertests.asm	/^     c74:	83 c4 08             	add    $0x8,%esp$/;"	l
-c76	user/sh.asm	/^ c76:	f7 f1                	div    %ecx$/;"	l
+c75	user/sh.asm	/^ c75:	89 d0                	mov    %edx,%eax$/;"	l
+c77	user/sh.asm	/^ c77:	ba 00 00 00 00       	mov    $0x0,%edx$/;"	l
 c77	user/usertests.asm	/^     c77:	68 08 40 00 00       	push   $0x4008$/;"	l
-c78	user/sh.asm	/^ c78:	0f b6 92 d4 10 00 00 	movzbl 0x10d4(%edx),%edx$/;"	l
+c7c	user/sh.asm	/^ c7c:	f7 f1                	div    %ecx$/;"	l
 c7c	user/usertests.asm	/^     c7c:	6a 01                	push   $0x1$/;"	l
-c7e	user/usertests.asm	/^     c7e:	e8 55 2c 00 00       	call   38d8 <printf>$/;"	l
-c7f	user/sh.asm	/^ c7f:	88 54 35 d7          	mov    %dl,-0x29(%ebp,%esi,1)$/;"	l
-c8	user/forktest.asm	/^  c8:	68 27 07 00 00       	push   $0x727$/;"	l
+c7e	user/sh.asm	/^ c7e:	0f b6 92 d4 10 00 00 	movzbl 0x10d4(%edx),%edx$/;"	l
+c7e	user/usertests.asm	/^     c7e:	e8 49 2c 00 00       	call   38cc <printf>$/;"	l
+c8	user/forktest.asm	/^  c8:	68 23 07 00 00       	push   $0x723$/;"	l
 c8	user/grep.asm	/^  c8:	eb bd                	jmp    87 <matchhere+0x3f>$/;"	l
-c8	user/ln.asm	/^  c8:	b9 00 00 00 00       	mov    $0x0,%ecx$/;"	l
+c8	user/ln.asm	/^  c8:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
+c8	user/mkdir.asm	/^  c8:	8b 4d 08             	mov    0x8(%ebp),%ecx$/;"	l
+c8	user/rm.asm	/^  c8:	8b 4d 08             	mov    0x8(%ebp),%ecx$/;"	l
+c8	user/slabtest.asm	/^  c8:	75 f2                	jne    bc <strchr+0x17>$/;"	l
 c8	user/usertests.asm	/^      c8:	68 2f 3c 00 00       	push   $0x3c2f$/;"	l
-c83	user/sh.asm	/^ c83:	89 da                	mov    %ebx,%edx$/;"	l
-c83	user/usertests.asm	/^     c83:	e8 0c 2b 00 00       	call   3794 <exit>$/;"	l
-c85	user/sh.asm	/^ c85:	89 c3                	mov    %eax,%ebx$/;"	l
-c87	user/sh.asm	/^ c87:	39 d1                	cmp    %edx,%ecx$/;"	l
+c83	user/usertests.asm	/^     c83:	e8 0a 2b 00 00       	call   3792 <exit>$/;"	l
+c85	user/sh.asm	/^ c85:	88 54 1d d7          	mov    %dl,-0x29(%ebp,%ebx,1)$/;"	l
 c88	user/usertests.asm	/^     c88:	83 ec 08             	sub    $0x8,%esp$/;"	l
-c89	user/sh.asm	/^ c89:	76 df                	jbe    c6a <printint+0x26>$/;"	l
-c8b	user/sh.asm	/^ c8b:	83 7d c0 00          	cmpl   $0x0,-0x40(%ebp)$/;"	l
+c89	user/sh.asm	/^ c89:	89 c2                	mov    %eax,%edx$/;"	l
+c8b	user/sh.asm	/^ c8b:	85 c0                	test   %eax,%eax$/;"	l
 c8b	user/usertests.asm	/^     c8b:	68 ee 3f 00 00       	push   $0x3fee$/;"	l
-c8f	user/sh.asm	/^ c8f:	74 08                	je     c99 <printint+0x55>$/;"	l
+c8d	user/sh.asm	/^ c8d:	75 e1                	jne    c70 <printint+0x2e>$/;"	l
+c8f	user/sh.asm	/^ c8f:	83 7d c4 00          	cmpl   $0x0,-0x3c(%ebp)$/;"	l
 c9	user/cat.asm	/^  c9:	39 7d e4             	cmp    %edi,-0x1c(%ebp)$/;"	l
-c9	user/echo.asm	/^  c9:	80 3c 02 00          	cmpb   $0x0,(%edx,%eax,1)$/;"	l
-c9	user/kill.asm	/^  c9:	eb f5                	jmp    c0 <strlen+0x1b>$/;"	l
+c9	user/echo.asm	/^  c9:	89 d0                	mov    %edx,%eax$/;"	l
+c9	user/kill.asm	/^  c9:	eb f7                	jmp    c2 <strlen+0x1b>$/;"	l
 c9	user/ls.asm	/^  c9:	0f b7 85 c4 fd ff ff 	movzwl -0x23c(%ebp),%eax$/;"	l
-c9	user/mkdir.asm	/^  c9:	80 3a 00             	cmpb   $0x0,(%edx)$/;"	l
-c9	user/ps.asm	/^  c9:	83 c0 01             	add    $0x1,%eax$/;"	l
-c9	user/rm.asm	/^  c9:	80 3a 00             	cmpb   $0x0,(%edx)$/;"	l
-c9	user/slabtest.asm	/^  c9:	5d                   	pop    %ebp$/;"	l
+c9	user/ps.asm	/^  c9:	74 15                	je     e0 <strchr+0x2c>$/;"	l
 c9	user/stressfs.asm	/^  c9:	83 c4 08             	add    $0x8,%esp$/;"	l
-c9	user/wc.asm	/^  c9:	e8 9f 03 00 00       	call   46d <printf>$/;"	l
-c9	user/zombie.asm	/^  c9:	38 d1                	cmp    %dl,%cl$/;"	l
+c9	user/wc.asm	/^  c9:	e8 93 03 00 00       	call   461 <printf>$/;"	l
+c9	user/zombie.asm	/^  c9:	89 d9                	mov    %ebx,%ecx$/;"	l
 c90	user/usertests.asm	/^     c90:	6a 01                	push   $0x1$/;"	l
-c91	user/sh.asm	/^ c91:	c6 44 35 d8 2d       	movb   $0x2d,-0x28(%ebp,%esi,1)$/;"	l
-c92	user/usertests.asm	/^     c92:	e8 41 2c 00 00       	call   38d8 <printf>$/;"	l
-c96	user/sh.asm	/^ c96:	8d 77 02             	lea    0x2(%edi),%esi$/;"	l
+c92	user/usertests.asm	/^     c92:	e8 35 2c 00 00       	call   38cc <printf>$/;"	l
+c93	user/sh.asm	/^ c93:	74 08                	je     c9d <printint+0x5b>$/;"	l
+c95	user/sh.asm	/^ c95:	c6 44 1d d8 2d       	movb   $0x2d,-0x28(%ebp,%ebx,1)$/;"	l
 c97	user/usertests.asm	/^     c97:	89 34 24             	mov    %esi,(%esp)$/;"	l
-c99	user/sh.asm	/^ c99:	85 f6                	test   %esi,%esi$/;"	l
-c9a	user/usertests.asm	/^     c9a:	e8 25 2b 00 00       	call   37c4 <kill>$/;"	l
-c9b	user/sh.asm	/^ c9b:	7e 2a                	jle    cc7 <printint+0x83>$/;"	l
-c9d	user/sh.asm	/^ c9d:	8d 5c 35 d7          	lea    -0x29(%ebp,%esi,1),%ebx$/;"	l
-c9f	user/usertests.asm	/^     c9f:	e8 f0 2a 00 00       	call   3794 <exit>$/;"	l
+c9a	user/sh.asm	/^ c9a:	8d 5f 02             	lea    0x2(%edi),%ebx$/;"	l
+c9a	user/usertests.asm	/^     c9a:	e8 23 2b 00 00       	call   37c2 <kill>$/;"	l
+c9d	user/sh.asm	/^ c9d:	83 eb 01             	sub    $0x1,%ebx$/;"	l
+c9f	user/usertests.asm	/^     c9f:	e8 ee 2a 00 00       	call   3792 <exit>$/;"	l
 ca	user/grep.asm	/^  ca:	55                   	push   %ebp$/;"	l
-ca	user/slabtest.asm	/^  ca:	c3                   	ret    $/;"	l
-ca1	user/sh.asm	/^ ca1:	8d 7d d8             	lea    -0x28(%ebp),%edi$/;"	l
-ca4	user/sh.asm	/^ ca4:	8d 75 d7             	lea    -0x29(%ebp),%esi$/;"	l
+ca	user/slabtest.asm	/^  ca:	eb 05                	jmp    d1 <strchr+0x2c>$/;"	l
+ca0	user/sh.asm	/^ ca0:	78 22                	js     cc4 <printint+0x82>$/;"	l
+ca2	user/sh.asm	/^ ca2:	8d 7d d7             	lea    -0x29(%ebp),%edi$/;"	l
 ca4	user/usertests.asm	/^     ca4:	55                   	push   %ebp$/;"	l
+ca5	user/sh.asm	/^ ca5:	0f b6 44 1d d8       	movzbl -0x28(%ebp,%ebx,1),%eax$/;"	l
 ca5	user/usertests.asm	/^     ca5:	89 e5                	mov    %esp,%ebp$/;"	l
-ca7	user/sh.asm	/^ ca7:	0f b6 03             	movzbl (%ebx),%eax$/;"	l
 ca7	user/usertests.asm	/^     ca7:	57                   	push   %edi$/;"	l
 ca8	user/usertests.asm	/^     ca8:	56                   	push   %esi$/;"	l
 ca9	user/usertests.asm	/^     ca9:	53                   	push   %ebx$/;"	l
@@ -1227,21 +1231,25 @@ caa	user/usertests.asm	/^     caa:	83 ec 34             	sub    $0x34,%esp$/;"	l
 cad	user/sh.asm	/^ cad:	83 ec 04             	sub    $0x4,%esp$/;"	l
 cad	user/usertests.asm	/^     cad:	68 10 40 00 00       	push   $0x4010$/;"	l
 cat	user/cat.c	/^cat(int fd)$/;"	f
+cb	user/echo.asm	/^  cb:	80 3c 11 00          	cmpb   $0x0,(%ecx,%edx,1)$/;"	l
 cb	user/grep.asm	/^  cb:	89 e5                	mov    %esp,%ebp$/;"	l
 cb	user/init.asm	/^  cb:	83 c4 08             	add    $0x8,%esp$/;"	l
 cb	user/kill.asm	/^  cb:	55                   	push   %ebp$/;"	l
+cb	user/mkdir.asm	/^  cb:	80 39 00             	cmpb   $0x0,(%ecx)$/;"	l
+cb	user/ps.asm	/^  cb:	83 c0 01             	add    $0x1,%eax$/;"	l
+cb	user/rm.asm	/^  cb:	80 39 00             	cmpb   $0x0,(%ecx)$/;"	l
 cb	user/sh.asm	/^  cb:	6a 02                	push   $0x2$/;"	l
-cb	user/slabtest.asm	/^  cb:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
-cb	user/zombie.asm	/^  cb:	74 0f                	je     dc <strchr+0x24>$/;"	l
+cb	user/zombie.asm	/^  cb:	38 d3                	cmp    %dl,%bl$/;"	l
 cb0	user/sh.asm	/^ cb0:	6a 01                	push   $0x1$/;"	l
-cb2	user/sh.asm	/^ cb2:	56                   	push   %esi$/;"	l
+cb2	user/sh.asm	/^ cb2:	57                   	push   %edi$/;"	l
 cb2	user/usertests.asm	/^     cb2:	6a 01                	push   $0x1$/;"	l
-cb3	user/sh.asm	/^ cb3:	ff 75 c4             	pushl  -0x3c(%ebp)$/;"	l
-cb4	user/usertests.asm	/^     cb4:	e8 1f 2c 00 00       	call   38d8 <printf>$/;"	l
-cb6	user/sh.asm	/^ cb6:	e8 f9 fe ff ff       	call   bb4 <write>$/;"	l
+cb3	user/sh.asm	/^ cb3:	56                   	push   %esi$/;"	l
+cb4	user/sh.asm	/^ cb4:	e8 f9 fe ff ff       	call   bb2 <write>$/;"	l
+cb4	user/usertests.asm	/^     cb4:	e8 13 2c 00 00       	call   38cc <printf>$/;"	l
+cb9	user/sh.asm	/^ cb9:	83 eb 01             	sub    $0x1,%ebx$/;"	l
 cb9	user/usertests.asm	/^     cb9:	c7 04 24 1f 40 00 00 	movl   $0x401f,(%esp)$/;"	l
-cbb	user/sh.asm	/^ cbb:	89 d8                	mov    %ebx,%eax$/;"	l
-cbd	user/sh.asm	/^ cbd:	83 eb 01             	sub    $0x1,%ebx$/;"	l
+cbc	user/sh.asm	/^ cbc:	83 c4 10             	add    $0x10,%esp$/;"	l
+cbf	user/sh.asm	/^ cbf:	83 fb ff             	cmp    $0xffffffff,%ebx$/;"	l
 cc	user/cat.asm	/^    cc = read(0, &c, 1);$/;"	d
 cc	user/cat.asm	/^  cc:	75 c9                	jne    97 <main+0x29>$/;"	l
 cc	user/echo.asm	/^    cc = read(0, &c, 1);$/;"	d
@@ -1253,87 +1261,86 @@ cc	user/kill.asm	/^  cc:	89 e5                	mov    %esp,%ebp$/;"	l
 cc	user/ln.asm	/^    cc = read(0, &c, 1);$/;"	d
 cc	user/ls.asm	/^    cc = read(0, &c, 1);$/;"	d
 cc	user/mkdir.asm	/^    cc = read(0, &c, 1);$/;"	d
-cc	user/mkdir.asm	/^  cc:	74 14                	je     e2 <strlen+0x1f>$/;"	l
 cc	user/ps.asm	/^    cc = read(0, &c, 1);$/;"	d
-cc	user/ps.asm	/^  cc:	0f b6 10             	movzbl (%eax),%edx$/;"	l
 cc	user/rm.asm	/^    cc = read(0, &c, 1);$/;"	d
-cc	user/rm.asm	/^  cc:	74 14                	je     e2 <strlen+0x1f>$/;"	l
 cc	user/sh.asm	/^    cc = read(0, &c, 1);$/;"	d
 cc	user/slabtest.asm	/^    cc = read(0, &c, 1);$/;"	d
+cc	user/slabtest.asm	/^  cc:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
 cc	user/stressfs.asm	/^    cc = read(0, &c, 1);$/;"	d
 cc	user/stressfs.asm	/^  cc:	6a 00                	push   $0x0$/;"	l
 cc	user/usertests.asm	/^    cc = read(0, &c, 1);$/;"	d
 cc	user/wc.asm	/^    cc = read(0, &c, 1);$/;"	d
 cc	user/zombie.asm	/^    cc = read(0, &c, 1);$/;"	d
-cc0	user/sh.asm	/^ cc0:	83 c4 10             	add    $0x10,%esp$/;"	l
-cc0	user/usertests.asm	/^     cc0:	e8 1f 2b 00 00       	call   37e4 <unlink>$/;"	l
-cc3	user/sh.asm	/^ cc3:	39 f8                	cmp    %edi,%eax$/;"	l
-cc5	user/sh.asm	/^ cc5:	75 e0                	jne    ca7 <printint+0x63>$/;"	l
+cc0	user/usertests.asm	/^     cc0:	e8 1d 2b 00 00       	call   37e2 <unlink>$/;"	l
+cc2	user/sh.asm	/^ cc2:	75 e1                	jne    ca5 <printint+0x63>$/;"	l
+cc4	user/sh.asm	/^ cc4:	8d 65 f4             	lea    -0xc(%ebp),%esp$/;"	l
 cc5	user/usertests.asm	/^     cc5:	83 c4 08             	add    $0x8,%esp$/;"	l
-cc7	user/sh.asm	/^ cc7:	8d 65 f4             	lea    -0xc(%ebp),%esp$/;"	l
+cc7	user/sh.asm	/^ cc7:	5b                   	pop    %ebx$/;"	l
+cc8	user/sh.asm	/^ cc8:	5e                   	pop    %esi$/;"	l
 cc8	user/usertests.asm	/^     cc8:	68 02 02 00 00       	push   $0x202$/;"	l
-cca	user/sh.asm	/^ cca:	5b                   	pop    %ebx$/;"	l
-ccb	user/sh.asm	/^ ccb:	5e                   	pop    %esi$/;"	l
-ccc	user/sh.asm	/^ ccc:	5f                   	pop    %edi$/;"	l
-ccd	user/sh.asm	/^ ccd:	5d                   	pop    %ebp$/;"	l
+cc9	user/sh.asm	/^ cc9:	5f                   	pop    %edi$/;"	l
+cca	user/sh.asm	/^ cca:	5d                   	pop    %ebp$/;"	l
+ccb	user/sh.asm	/^ ccb:	c3                   	ret    $/;"	l
+ccc	user/sh.asm	/^ ccc:	55                   	push   %ebp$/;"	l
+ccd	user/sh.asm	/^ ccd:	89 e5                	mov    %esp,%ebp$/;"	l
 ccd	user/usertests.asm	/^     ccd:	68 1f 40 00 00       	push   $0x401f$/;"	l
-cce	user/sh.asm	/^ cce:	c3                   	ret    $/;"	l
-ccf	user/sh.asm	/^ ccf:	c7 45 c0 00 00 00 00 	movl   $0x0,-0x40(%ebp)$/;"	l
-cd	user/echo.asm	/^  cd:	75 f5                	jne    c4 <strlen+0x10>$/;"	l
+ccf	user/sh.asm	/^ ccf:	57                   	push   %edi$/;"	l
 cd	user/forktest.asm	/^  cd:	6a 01                	push   $0x1$/;"	l
 cd	user/grep.asm	/^  cd:	56                   	push   %esi$/;"	l
-cd	user/ln.asm	/^  cd:	eb f5                	jmp    c4 <strlen+0x1b>$/;"	l
-cd	user/sh.asm	/^  cd:	e8 06 0c 00 00       	call   cd8 <printf>$/;"	l
+cd	user/ln.asm	/^  cd:	eb f7                	jmp    c6 <strlen+0x1b>$/;"	l
+cd	user/sh.asm	/^  cd:	e8 fa 0b 00 00       	call   ccc <printf>$/;"	l
 cd	user/usertests.asm	/^      cd:	ff 35 14 5c 00 00    	pushl  0x5c14$/;"	l
-cd	user/zombie.asm	/^  cd:	83 c0 01             	add    $0x1,%eax$/;"	l
-cd2	user/usertests.asm	/^     cd2:	e8 fd 2a 00 00       	call   37d4 <open>$/;"	l
-cd6	user/sh.asm	/^ cd6:	eb 8d                	jmp    c65 <printint+0x21>$/;"	l
+cd	user/zombie.asm	/^  cd:	74 15                	je     e4 <strchr+0x2c>$/;"	l
+cd0	user/sh.asm	/^ cd0:	56                   	push   %esi$/;"	l
+cd1	user/sh.asm	/^ cd1:	53                   	push   %ebx$/;"	l
+cd2	user/sh.asm	/^ cd2:	83 ec 2c             	sub    $0x2c,%esp$/;"	l
+cd2	user/usertests.asm	/^     cd2:	e8 fb 2a 00 00       	call   37d2 <open>$/;"	l
+cd5	user/sh.asm	/^ cd5:	8b 75 0c             	mov    0xc(%ebp),%esi$/;"	l
 cd7	user/usertests.asm	/^     cd7:	83 c4 10             	add    $0x10,%esp$/;"	l
-cd8	user/sh.asm	/^ cd8:	55                   	push   %ebp$/;"	l
-cd9	user/sh.asm	/^ cd9:	89 e5                	mov    %esp,%ebp$/;"	l
+cd8	user/sh.asm	/^ cd8:	0f b6 1e             	movzbl (%esi),%ebx$/;"	l
 cda	user/usertests.asm	/^     cda:	85 c0                	test   %eax,%eax$/;"	l
-cdb	user/sh.asm	/^ cdb:	57                   	push   %edi$/;"	l
-cdc	user/sh.asm	/^ cdc:	56                   	push   %esi$/;"	l
+cdb	user/sh.asm	/^ cdb:	84 db                	test   %bl,%bl$/;"	l
 cdc	user/usertests.asm	/^     cdc:	78 4a                	js     d28 <sharedfd+0x84>$/;"	l
-cdd	user/sh.asm	/^ cdd:	53                   	push   %ebx$/;"	l
-cde	user/sh.asm	/^ cde:	83 ec 2c             	sub    $0x2c,%esp$/;"	l
+cdd	user/sh.asm	/^ cdd:	0f 84 b1 01 00 00    	je     e94 <printf+0x1c8>$/;"	l
 cde	user/usertests.asm	/^     cde:	89 c6                	mov    %eax,%esi$/;"	l
-ce	user/cat.asm	/^  ce:	e8 ea 01 00 00       	call   2bd <exit>$/;"	l
+ce	user/cat.asm	/^  ce:	e8 e8 01 00 00       	call   2bb <exit>$/;"	l
 ce	user/grep.asm	/^  ce:	53                   	push   %ebx$/;"	l
 ce	user/init.asm	/^  ce:	68 21 07 00 00       	push   $0x721$/;"	l
 ce	user/kill.asm	/^  ce:	57                   	push   %edi$/;"	l
-ce	user/mkdir.asm	/^  ce:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
-ce	user/rm.asm	/^  ce:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
+ce	user/mkdir.asm	/^  ce:	74 12                	je     e2 <strlen+0x1d>$/;"	l
+ce	user/ps.asm	/^  ce:	0f b6 10             	movzbl (%eax),%edx$/;"	l
+ce	user/rm.asm	/^  ce:	74 12                	je     e2 <strlen+0x1d>$/;"	l
 ce	user/stressfs.asm	/^  ce:	8d 45 de             	lea    -0x22(%ebp),%eax$/;"	l
-ce	user/wc.asm	/^  ce:	e8 56 02 00 00       	call   329 <exit>$/;"	l
-ce0	user/usertests.asm	/^     ce0:	e8 a7 2a 00 00       	call   378c <fork>$/;"	l
-ce1	user/sh.asm	/^ ce1:	8b 75 0c             	mov    0xc(%ebp),%esi$/;"	l
-ce4	user/sh.asm	/^ ce4:	0f b6 1e             	movzbl (%esi),%ebx$/;"	l
+ce	user/wc.asm	/^  ce:	e8 54 02 00 00       	call   327 <exit>$/;"	l
+ce0	user/usertests.asm	/^     ce0:	e8 a5 2a 00 00       	call   378a <fork>$/;"	l
+ce3	user/sh.asm	/^ ce3:	83 c6 01             	add    $0x1,%esi$/;"	l
 ce5	user/usertests.asm	/^     ce5:	89 45 d4             	mov    %eax,-0x2c(%ebp)$/;"	l
-ce7	user/sh.asm	/^ ce7:	84 db                	test   %bl,%bl$/;"	l
+ce6	user/sh.asm	/^ ce6:	8d 45 10             	lea    0x10(%ebp),%eax$/;"	l
 ce8	user/usertests.asm	/^     ce8:	83 f8 01             	cmp    $0x1,%eax$/;"	l
-ce9	user/sh.asm	/^ ce9:	0f 84 ab 01 00 00    	je     e9a <printf+0x1c2>$/;"	l
+ce9	user/sh.asm	/^ ce9:	89 45 d4             	mov    %eax,-0x2c(%ebp)$/;"	l
 ceb	user/usertests.asm	/^     ceb:	19 c0                	sbb    %eax,%eax$/;"	l
+cec	user/sh.asm	/^ cec:	bf 00 00 00 00       	mov    $0x0,%edi$/;"	l
 ced	user/usertests.asm	/^     ced:	83 e0 f3             	and    $0xfffffff3,%eax$/;"	l
-cef	user/sh.asm	/^ cef:	83 c6 01             	add    $0x1,%esi$/;"	l
-cf	user/echo.asm	/^  cf:	89 c8                	mov    %ecx,%eax$/;"	l
+cf	user/echo.asm	/^  cf:	75 f5                	jne    c6 <strlen+0x10>$/;"	l
 cf	user/forktest.asm	/^  cf:	e8 2c ff ff ff       	call   0 <print>$/;"	l
 cf	user/grep.asm	/^  cf:	8b 75 08             	mov    0x8(%ebp),%esi$/;"	l
 cf	user/kill.asm	/^  cf:	8b 55 08             	mov    0x8(%ebp),%edx$/;"	l
 cf	user/ln.asm	/^  cf:	55                   	push   %ebp$/;"	l
-cf	user/ps.asm	/^  cf:	84 d2                	test   %dl,%dl$/;"	l
+cf	user/zombie.asm	/^  cf:	83 c0 01             	add    $0x1,%eax$/;"	l
 cf0	user/usertests.asm	/^     cf0:	83 c0 70             	add    $0x70,%eax$/;"	l
-cf2	user/sh.asm	/^ cf2:	8d 45 10             	lea    0x10(%ebp),%eax$/;"	l
+cf1	user/sh.asm	/^ cf1:	eb 2d                	jmp    d20 <printf+0x54>$/;"	l
+cf3	user/sh.asm	/^ cf3:	88 5d e2             	mov    %bl,-0x1e(%ebp)$/;"	l
 cf3	user/usertests.asm	/^     cf3:	83 ec 04             	sub    $0x4,%esp$/;"	l
-cf5	user/sh.asm	/^ cf5:	89 45 d4             	mov    %eax,-0x2c(%ebp)$/;"	l
+cf6	user/sh.asm	/^ cf6:	83 ec 04             	sub    $0x4,%esp$/;"	l
 cf6	user/usertests.asm	/^     cf6:	6a 0a                	push   $0xa$/;"	l
-cf8	user/sh.asm	/^ cf8:	bf 00 00 00 00       	mov    $0x0,%edi$/;"	l
 cf8	user/usertests.asm	/^     cf8:	50                   	push   %eax$/;"	l
+cf9	user/sh.asm	/^ cf9:	6a 01                	push   $0x1$/;"	l
 cf9	user/usertests.asm	/^     cf9:	8d 45 de             	lea    -0x22(%ebp),%eax$/;"	l
+cfb	user/sh.asm	/^ cfb:	8d 45 e2             	lea    -0x1e(%ebp),%eax$/;"	l
 cfc	user/usertests.asm	/^     cfc:	50                   	push   %eax$/;"	l
-cfd	user/sh.asm	/^ cfd:	eb 2d                	jmp    d2c <printf+0x54>$/;"	l
 cfd	user/usertests.asm	/^     cfd:	e8 43 29 00 00       	call   3645 <memset>$/;"	l
-cff	user/sh.asm	/^ cff:	88 5d e7             	mov    %bl,-0x19(%ebp)$/;"	l
+cfe	user/sh.asm	/^ cfe:	50                   	push   %eax$/;"	l
+cff	user/sh.asm	/^ cff:	ff 75 08             	pushl  0x8(%ebp)$/;"	l
 cgaputc	console.c	/^cgaputc(int c)$/;"	f	file:
 chan	proc.h	/^  void *chan;                  \/\/ If non-zero, sleeping on chan$/;"	m	struct:proc
 checksum	mp.h	/^  uchar checksum;               \/\/ all bytes must add up to 0$/;"	m	struct:mp
@@ -1385,179 +1392,177 @@ d	user/stressfs.asm	/^   d:	57                   	push   %edi$/;"	l
 d	user/zombie.asm	/^   d:	51                   	push   %ecx$/;"	l
 d0	user/ln.asm	/^  d0:	89 e5                	mov    %esp,%ebp$/;"	l
 d0	user/ls.asm	/^  d0:	66 83 f8 01          	cmp    $0x1,%ax$/;"	l
-d0	user/slabtest.asm	/^  d0:	eb f7                	jmp    c9 <strchr+0x24>$/;"	l
-d0	user/zombie.asm	/^  d0:	0f b6 10             	movzbl (%eax),%edx$/;"	l
-d02	user/sh.asm	/^ d02:	83 ec 04             	sub    $0x4,%esp$/;"	l
+d0	user/mkdir.asm	/^  d0:	ba 00 00 00 00       	mov    $0x0,%edx$/;"	l
+d0	user/rm.asm	/^  d0:	ba 00 00 00 00       	mov    $0x0,%edx$/;"	l
+d02	user/sh.asm	/^ d02:	e8 ab fe ff ff       	call   bb2 <write>$/;"	l
 d02	user/usertests.asm	/^     d02:	83 c4 10             	add    $0x10,%esp$/;"	l
-d05	user/sh.asm	/^ d05:	6a 01                	push   $0x1$/;"	l
 d05	user/usertests.asm	/^     d05:	bb e8 03 00 00       	mov    $0x3e8,%ebx$/;"	l
-d07	user/sh.asm	/^ d07:	8d 45 e7             	lea    -0x19(%ebp),%eax$/;"	l
-d0a	user/sh.asm	/^ d0a:	50                   	push   %eax$/;"	l
+d07	user/sh.asm	/^ d07:	83 c4 10             	add    $0x10,%esp$/;"	l
+d0a	user/sh.asm	/^ d0a:	eb 05                	jmp    d11 <printf+0x45>$/;"	l
 d0a	user/usertests.asm	/^     d0a:	8d 7d de             	lea    -0x22(%ebp),%edi$/;"	l
-d0b	user/sh.asm	/^ d0b:	ff 75 08             	pushl  0x8(%ebp)$/;"	l
+d0c	user/sh.asm	/^ d0c:	83 ff 25             	cmp    $0x25,%edi$/;"	l
 d0d	user/usertests.asm	/^     d0d:	83 ec 04             	sub    $0x4,%esp$/;"	l
-d0e	user/sh.asm	/^ d0e:	e8 a1 fe ff ff       	call   bb4 <write>$/;"	l
+d0f	user/sh.asm	/^ d0f:	74 22                	je     d33 <printf+0x67>$/;"	l
 d1	user/echo.asm	/^  d1:	5d                   	pop    %ebp$/;"	l
-d1	user/ps.asm	/^  d1:	75 f2                	jne    c5 <strchr+0x11>$/;"	l
+d1	user/ps.asm	/^  d1:	84 d2                	test   %dl,%dl$/;"	l
+d1	user/slabtest.asm	/^  d1:	5b                   	pop    %ebx$/;"	l
 d1	user/stressfs.asm	/^  d1:	50                   	push   %eax$/;"	l
 d10	user/usertests.asm	/^     d10:	6a 0a                	push   $0xa$/;"	l
+d11	user/sh.asm	/^ d11:	83 c6 01             	add    $0x1,%esi$/;"	l
 d12	user/usertests.asm	/^     d12:	57                   	push   %edi$/;"	l
-d13	user/sh.asm	/^ d13:	83 c4 10             	add    $0x10,%esp$/;"	l
 d13	user/usertests.asm	/^     d13:	56                   	push   %esi$/;"	l
-d14	user/usertests.asm	/^     d14:	e8 9b 2a 00 00       	call   37b4 <write>$/;"	l
-d16	user/sh.asm	/^ d16:	eb 05                	jmp    d1d <printf+0x45>$/;"	l
-d18	user/sh.asm	/^ d18:	83 ff 25             	cmp    $0x25,%edi$/;"	l
+d14	user/sh.asm	/^ d14:	0f b6 5e ff          	movzbl -0x1(%esi),%ebx$/;"	l
+d14	user/usertests.asm	/^     d14:	e8 99 2a 00 00       	call   37b2 <write>$/;"	l
+d18	user/sh.asm	/^ d18:	84 db                	test   %bl,%bl$/;"	l
 d19	user/usertests.asm	/^     d19:	83 c4 10             	add    $0x10,%esp$/;"	l
-d1b	user/sh.asm	/^ d1b:	74 22                	je     d3f <printf+0x67>$/;"	l
+d1a	user/sh.asm	/^ d1a:	0f 84 74 01 00 00    	je     e94 <printf+0x1c8>$/;"	l
 d1c	user/usertests.asm	/^     d1c:	83 f8 0a             	cmp    $0xa,%eax$/;"	l
-d1d	user/sh.asm	/^ d1d:	83 c6 01             	add    $0x1,%esi$/;"	l
 d1f	user/usertests.asm	/^     d1f:	75 1e                	jne    d3f <sharedfd+0x9b>$/;"	l
 d2	user/echo.asm	/^  d2:	c3                   	ret    $/;"	l
 d2	user/grep.asm	/^  d2:	8b 5d 0c             	mov    0xc(%ebp),%ebx$/;"	l
 d2	user/kill.asm	/^  d2:	89 d7                	mov    %edx,%edi$/;"	l
 d2	user/ln.asm	/^  d2:	57                   	push   %edi$/;"	l
 d2	user/sh.asm	/^  d2:	83 c4 10             	add    $0x10,%esp$/;"	l
-d2	user/slabtest.asm	/^  d2:	55                   	push   %ebp$/;"	l
-d2	user/stressfs.asm	/^  d2:	e8 3c 02 00 00       	call   313 <open>$/;"	l
-d20	user/sh.asm	/^ d20:	0f b6 5e ff          	movzbl -0x1(%esi),%ebx$/;"	l
+d2	user/slabtest.asm	/^  d2:	5d                   	pop    %ebp$/;"	l
+d2	user/stressfs.asm	/^  d2:	e8 3a 02 00 00       	call   311 <open>$/;"	l
+d2	user/zombie.asm	/^  d2:	0f b6 10             	movzbl (%eax),%edx$/;"	l
+d20	user/sh.asm	/^ d20:	0f be d3             	movsbl %bl,%edx$/;"	l
 d21	user/usertests.asm	/^     d21:	83 eb 01             	sub    $0x1,%ebx$/;"	l
-d24	user/sh.asm	/^ d24:	84 db                	test   %bl,%bl$/;"	l
+d23	user/sh.asm	/^ d23:	0f b6 c3             	movzbl %bl,%eax$/;"	l
 d24	user/usertests.asm	/^     d24:	75 e7                	jne    d0d <sharedfd+0x69>$/;"	l
-d26	user/sh.asm	/^ d26:	0f 84 6e 01 00 00    	je     e9a <printf+0x1c2>$/;"	l
+d26	user/sh.asm	/^ d26:	85 ff                	test   %edi,%edi$/;"	l
 d26	user/usertests.asm	/^     d26:	eb 29                	jmp    d51 <sharedfd+0xad>$/;"	l
+d28	user/sh.asm	/^ d28:	75 e2                	jne    d0c <printf+0x40>$/;"	l
 d28	user/usertests.asm	/^     d28:	83 ec 08             	sub    $0x8,%esp$/;"	l
+d2a	user/sh.asm	/^ d2a:	83 f8 25             	cmp    $0x25,%eax$/;"	l
 d2b	user/usertests.asm	/^     d2b:	68 e4 4c 00 00       	push   $0x4ce4$/;"	l
-d2c	user/sh.asm	/^ d2c:	0f be d3             	movsbl %bl,%edx$/;"	l
-d2f	user/sh.asm	/^ d2f:	0f b6 c3             	movzbl %bl,%eax$/;"	l
+d2d	user/sh.asm	/^ d2d:	75 c4                	jne    cf3 <printf+0x27>$/;"	l
+d2f	user/sh.asm	/^ d2f:	89 c7                	mov    %eax,%edi$/;"	l
 d3	user/cat.asm	/^  d3:	83 ec 0c             	sub    $0xc,%esp$/;"	l
-d3	user/echo.asm	/^  d3:	b9 00 00 00 00       	mov    $0x0,%ecx$/;"	l
+d3	user/echo.asm	/^  d3:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
 d3	user/init.asm	/^  d3:	6a 01                	push   $0x1$/;"	l
 d3	user/ln.asm	/^  d3:	8b 55 08             	mov    0x8(%ebp),%edx$/;"	l
-d3	user/mkdir.asm	/^  d3:	83 c0 01             	add    $0x1,%eax$/;"	l
-d3	user/ps.asm	/^  d3:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
-d3	user/rm.asm	/^  d3:	83 c0 01             	add    $0x1,%eax$/;"	l
-d3	user/slabtest.asm	/^  d3:	89 e5                	mov    %esp,%ebp$/;"	l
-d3	user/usertests.asm	/^      d3:	e8 00 38 00 00       	call   38d8 <printf>$/;"	l
+d3	user/ps.asm	/^  d3:	74 06                	je     db <strchr+0x27>$/;"	l
+d3	user/slabtest.asm	/^  d3:	c3                   	ret    $/;"	l
+d3	user/usertests.asm	/^      d3:	e8 f4 37 00 00       	call   38cc <printf>$/;"	l
 d3	user/wc.asm	/^  d3:	8d 4c 24 04          	lea    0x4(%esp),%ecx$/;"	l
-d3	user/zombie.asm	/^  d3:	84 d2                	test   %dl,%dl$/;"	l
 d30	user/usertests.asm	/^     d30:	6a 01                	push   $0x1$/;"	l
-d32	user/sh.asm	/^ d32:	85 ff                	test   %edi,%edi$/;"	l
-d32	user/usertests.asm	/^     d32:	e8 a1 2b 00 00       	call   38d8 <printf>$/;"	l
-d34	user/sh.asm	/^ d34:	75 e2                	jne    d18 <printf+0x40>$/;"	l
-d36	user/sh.asm	/^ d36:	83 f8 25             	cmp    $0x25,%eax$/;"	l
+d31	user/sh.asm	/^ d31:	eb de                	jmp    d11 <printf+0x45>$/;"	l
+d32	user/usertests.asm	/^     d32:	e8 95 2b 00 00       	call   38cc <printf>$/;"	l
+d33	user/sh.asm	/^ d33:	83 f8 64             	cmp    $0x64,%eax$/;"	l
+d36	user/sh.asm	/^ d36:	74 59                	je     d91 <printf+0xc5>$/;"	l
 d37	user/usertests.asm	/^     d37:	83 c4 10             	add    $0x10,%esp$/;"	l
-d39	user/sh.asm	/^ d39:	75 c4                	jne    cff <printf+0x27>$/;"	l
+d38	user/sh.asm	/^ d38:	81 e2 f7 00 00 00    	and    $0xf7,%edx$/;"	l
 d3a	user/usertests.asm	/^     d3a:	e9 dd 00 00 00       	jmp    e1c <sharedfd+0x178>$/;"	l
-d3b	user/sh.asm	/^ d3b:	89 c7                	mov    %eax,%edi$/;"	l
-d3d	user/sh.asm	/^ d3d:	eb de                	jmp    d1d <printf+0x45>$/;"	l
-d3f	user/sh.asm	/^ d3f:	83 f8 64             	cmp    $0x64,%eax$/;"	l
+d3e	user/sh.asm	/^ d3e:	83 fa 70             	cmp    $0x70,%edx$/;"	l
 d3f	user/usertests.asm	/^     d3f:	83 ec 08             	sub    $0x8,%esp$/;"	l
-d4	user/forktest.asm	/^  d4:	e8 dd 01 00 00       	call   2b6 <exit>$/;"	l
+d4	user/forktest.asm	/^  d4:	e8 db 01 00 00       	call   2b4 <exit>$/;"	l
 d4	user/kill.asm	/^  d4:	8b 4d 10             	mov    0x10(%ebp),%ecx$/;"	l
 d4	user/ls.asm	/^  d4:	0f 84 83 00 00 00    	je     15d <ls+0xcb>$/;"	l
-d42	user/sh.asm	/^ d42:	74 59                	je     d9d <printf+0xc5>$/;"	l
+d4	user/slabtest.asm	/^  d4:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
+d41	user/sh.asm	/^ d41:	74 7a                	je     dbd <printf+0xf1>$/;"	l
 d42	user/usertests.asm	/^     d42:	68 10 4d 00 00       	push   $0x4d10$/;"	l
-d44	user/sh.asm	/^ d44:	81 e2 f7 00 00 00    	and    $0xf7,%edx$/;"	l
+d43	user/sh.asm	/^ d43:	83 f8 73             	cmp    $0x73,%eax$/;"	l
+d46	user/sh.asm	/^ d46:	0f 84 9d 00 00 00    	je     de9 <printf+0x11d>$/;"	l
 d47	user/usertests.asm	/^     d47:	6a 01                	push   $0x1$/;"	l
-d49	user/usertests.asm	/^     d49:	e8 8a 2b 00 00       	call   38d8 <printf>$/;"	l
-d4a	user/sh.asm	/^ d4a:	83 fa 70             	cmp    $0x70,%edx$/;"	l
-d4d	user/sh.asm	/^ d4d:	74 7a                	je     dc9 <printf+0xf1>$/;"	l
+d49	user/usertests.asm	/^     d49:	e8 7e 2b 00 00       	call   38cc <printf>$/;"	l
+d4c	user/sh.asm	/^ d4c:	83 f8 63             	cmp    $0x63,%eax$/;"	l
 d4e	user/usertests.asm	/^     d4e:	83 c4 10             	add    $0x10,%esp$/;"	l
-d4f	user/sh.asm	/^ d4f:	83 f8 73             	cmp    $0x73,%eax$/;"	l
+d4f	user/sh.asm	/^ d4f:	0f 84 f2 00 00 00    	je     e47 <printf+0x17b>$/;"	l
 d5	user/grep.asm	/^  d5:	80 3e 5e             	cmpb   $0x5e,(%esi)$/;"	l
-d5	user/init.asm	/^  d5:	e8 0b 03 00 00       	call   3e5 <printf>$/;"	l
+d5	user/init.asm	/^  d5:	e8 ff 02 00 00       	call   3d9 <printf>$/;"	l
+d5	user/mkdir.asm	/^  d5:	83 c2 01             	add    $0x1,%edx$/;"	l
+d5	user/ps.asm	/^  d5:	38 ca                	cmp    %cl,%dl$/;"	l
+d5	user/rm.asm	/^  d5:	83 c2 01             	add    $0x1,%edx$/;"	l
 d5	user/sh.asm	/^  d5:	e9 3a 01 00 00       	jmp    214 <runcmd+0x196>$/;"	l
-d5	user/slabtest.asm	/^  d5:	57                   	push   %edi$/;"	l
-d5	user/zombie.asm	/^  d5:	75 f2                	jne    c9 <strchr+0x11>$/;"	l
+d5	user/zombie.asm	/^  d5:	84 d2                	test   %dl,%dl$/;"	l
 d51	user/usertests.asm	/^     d51:	83 7d d4 00          	cmpl   $0x0,-0x2c(%ebp)$/;"	l
-d52	user/sh.asm	/^ d52:	0f 84 9d 00 00 00    	je     df5 <printf+0x11d>$/;"	l
+d55	user/sh.asm	/^ d55:	83 f8 25             	cmp    $0x25,%eax$/;"	l
 d55	user/usertests.asm	/^     d55:	74 51                	je     da8 <sharedfd+0x104>$/;"	l
-d57	user/usertests.asm	/^     d57:	e8 40 2a 00 00       	call   379c <wait>$/;"	l
-d58	user/sh.asm	/^ d58:	83 f8 63             	cmp    $0x63,%eax$/;"	l
-d5b	user/sh.asm	/^ d5b:	0f 84 ec 00 00 00    	je     e4d <printf+0x175>$/;"	l
+d57	user/usertests.asm	/^     d57:	e8 3e 2a 00 00       	call   379a <wait>$/;"	l
+d58	user/sh.asm	/^ d58:	0f 84 15 01 00 00    	je     e73 <printf+0x1a7>$/;"	l
 d5c	user/usertests.asm	/^     d5c:	83 ec 0c             	sub    $0xc,%esp$/;"	l
+d5e	user/sh.asm	/^ d5e:	c6 45 e7 25          	movb   $0x25,-0x19(%ebp)$/;"	l
 d5f	user/usertests.asm	/^     d5f:	56                   	push   %esi$/;"	l
 d6	user/cat.asm	/^  d6:	6a 00                	push   $0x0$/;"	l
 d6	user/ln.asm	/^  d6:	89 d7                	mov    %edx,%edi$/;"	l
-d6	user/mkdir.asm	/^  d6:	89 c1                	mov    %eax,%ecx$/;"	l
-d6	user/rm.asm	/^  d6:	89 c1                	mov    %eax,%ecx$/;"	l
-d6	user/slabtest.asm	/^  d6:	56                   	push   %esi$/;"	l
-d60	user/usertests.asm	/^     d60:	e8 57 2a 00 00       	call   37bc <close>$/;"	l
-d61	user/sh.asm	/^ d61:	83 f8 25             	cmp    $0x25,%eax$/;"	l
-d64	user/sh.asm	/^ d64:	0f 84 0f 01 00 00    	je     e79 <printf+0x1a1>$/;"	l
+d60	user/usertests.asm	/^     d60:	e8 55 2a 00 00       	call   37ba <close>$/;"	l
+d62	user/sh.asm	/^ d62:	83 ec 04             	sub    $0x4,%esp$/;"	l
+d65	user/sh.asm	/^ d65:	6a 01                	push   $0x1$/;"	l
 d65	user/usertests.asm	/^     d65:	83 c4 08             	add    $0x8,%esp$/;"	l
+d67	user/sh.asm	/^ d67:	8d 45 e7             	lea    -0x19(%ebp),%eax$/;"	l
 d68	user/usertests.asm	/^     d68:	6a 00                	push   $0x0$/;"	l
-d6a	user/sh.asm	/^ d6a:	c6 45 e7 25          	movb   $0x25,-0x19(%ebp)$/;"	l
+d6a	user/sh.asm	/^ d6a:	50                   	push   %eax$/;"	l
 d6a	user/usertests.asm	/^     d6a:	68 1f 40 00 00       	push   $0x401f$/;"	l
-d6e	user/sh.asm	/^ d6e:	83 ec 04             	sub    $0x4,%esp$/;"	l
-d6f	user/usertests.asm	/^     d6f:	e8 60 2a 00 00       	call   37d4 <open>$/;"	l
+d6b	user/sh.asm	/^ d6b:	ff 75 08             	pushl  0x8(%ebp)$/;"	l
+d6e	user/sh.asm	/^ d6e:	e8 3f fe ff ff       	call   bb2 <write>$/;"	l
+d6f	user/usertests.asm	/^     d6f:	e8 5e 2a 00 00       	call   37d2 <open>$/;"	l
 d7	user/kill.asm	/^  d7:	8b 45 0c             	mov    0xc(%ebp),%eax$/;"	l
-d7	user/slabtest.asm	/^  d7:	53                   	push   %ebx$/;"	l
+d7	user/ps.asm	/^  d7:	75 f2                	jne    cb <strchr+0x17>$/;"	l
 d7	user/stressfs.asm	/^  d7:	89 c6                	mov    %eax,%esi$/;"	l
 d7	user/wc.asm	/^  d7:	83 e4 f0             	and    $0xfffffff0,%esp$/;"	l
-d7	user/zombie.asm	/^  d7:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
-d71	user/sh.asm	/^ d71:	6a 01                	push   $0x1$/;"	l
-d73	user/sh.asm	/^ d73:	8d 45 e7             	lea    -0x19(%ebp),%eax$/;"	l
+d7	user/zombie.asm	/^  d7:	74 06                	je     df <strchr+0x27>$/;"	l
+d73	user/sh.asm	/^ d73:	88 5d e6             	mov    %bl,-0x1a(%ebp)$/;"	l
 d74	user/usertests.asm	/^     d74:	89 45 d4             	mov    %eax,-0x2c(%ebp)$/;"	l
-d76	user/sh.asm	/^ d76:	50                   	push   %eax$/;"	l
-d77	user/sh.asm	/^ d77:	ff 75 08             	pushl  0x8(%ebp)$/;"	l
+d76	user/sh.asm	/^ d76:	83 c4 0c             	add    $0xc,%esp$/;"	l
 d77	user/usertests.asm	/^     d77:	83 c4 10             	add    $0x10,%esp$/;"	l
-d7a	user/sh.asm	/^ d7a:	e8 35 fe ff ff       	call   bb4 <write>$/;"	l
+d79	user/sh.asm	/^ d79:	6a 01                	push   $0x1$/;"	l
 d7a	user/usertests.asm	/^     d7a:	bb 00 00 00 00       	mov    $0x0,%ebx$/;"	l
-d7f	user/sh.asm	/^ d7f:	88 5d e7             	mov    %bl,-0x19(%ebp)$/;"	l
+d7b	user/sh.asm	/^ d7b:	8d 45 e6             	lea    -0x1a(%ebp),%eax$/;"	l
+d7e	user/sh.asm	/^ d7e:	50                   	push   %eax$/;"	l
+d7f	user/sh.asm	/^ d7f:	ff 75 08             	pushl  0x8(%ebp)$/;"	l
 d7f	user/usertests.asm	/^     d7f:	bf 00 00 00 00       	mov    $0x0,%edi$/;"	l
 d8	user/cat.asm	/^  d8:	e8 23 ff ff ff       	call   0 <cat>$/;"	l
-d8	user/echo.asm	/^  d8:	eb f5                	jmp    cf <strlen+0x1b>$/;"	l
+d8	user/echo.asm	/^  d8:	eb f7                	jmp    d1 <strlen+0x1b>$/;"	l
 d8	user/grep.asm	/^  d8:	74 1c                	je     f6 <match+0x2c>$/;"	l
 d8	user/ln.asm	/^  d8:	8b 4d 10             	mov    0x10(%ebp),%ecx$/;"	l
-d8	user/mkdir.asm	/^  d8:	80 3c 02 00          	cmpb   $0x0,(%edx,%eax,1)$/;"	l
-d8	user/ps.asm	/^  d8:	5d                   	pop    %ebp$/;"	l
-d8	user/rm.asm	/^  d8:	80 3c 02 00          	cmpb   $0x0,(%edx,%eax,1)$/;"	l
-d8	user/slabtest.asm	/^  d8:	83 ec 2c             	sub    $0x2c,%esp$/;"	l
-d8	user/usertests.asm	/^      d8:	e8 b7 36 00 00       	call   3794 <exit>$/;"	l
-d82	user/sh.asm	/^ d82:	83 c4 0c             	add    $0xc,%esp$/;"	l
+d8	user/mkdir.asm	/^  d8:	89 d0                	mov    %edx,%eax$/;"	l
+d8	user/rm.asm	/^  d8:	89 d0                	mov    %edx,%eax$/;"	l
+d8	user/usertests.asm	/^      d8:	e8 b5 36 00 00       	call   3792 <exit>$/;"	l
+d82	user/sh.asm	/^ d82:	e8 2b fe ff ff       	call   bb2 <write>$/;"	l
 d84	user/usertests.asm	/^     d84:	8d 75 e8             	lea    -0x18(%ebp),%esi$/;"	l
-d85	user/sh.asm	/^ d85:	6a 01                	push   $0x1$/;"	l
-d87	user/sh.asm	/^ d87:	8d 45 e7             	lea    -0x19(%ebp),%eax$/;"	l
+d87	user/sh.asm	/^ d87:	83 c4 10             	add    $0x10,%esp$/;"	l
 d87	user/usertests.asm	/^     d87:	85 c0                	test   %eax,%eax$/;"	l
 d89	user/usertests.asm	/^     d89:	78 22                	js     dad <sharedfd+0x109>$/;"	l
-d8a	user/sh.asm	/^ d8a:	50                   	push   %eax$/;"	l
-d8b	user/sh.asm	/^ d8b:	ff 75 08             	pushl  0x8(%ebp)$/;"	l
+d8a	user/sh.asm	/^ d8a:	bf 00 00 00 00       	mov    $0x0,%edi$/;"	l
 d8b	user/usertests.asm	/^     d8b:	83 ec 04             	sub    $0x4,%esp$/;"	l
-d8e	user/sh.asm	/^ d8e:	e8 21 fe ff ff       	call   bb4 <write>$/;"	l
 d8e	user/usertests.asm	/^     d8e:	6a 0a                	push   $0xa$/;"	l
+d8f	user/sh.asm	/^ d8f:	eb 80                	jmp    d11 <printf+0x45>$/;"	l
 d9	user/forktest.asm	/^  d9:	8d 4c 24 04          	lea    0x4(%esp),%ecx$/;"	l
-d9	user/ps.asm	/^  d9:	c3                   	ret    $/;"	l
+d9	user/ps.asm	/^  d9:	eb 05                	jmp    e0 <strchr+0x2c>$/;"	l
+d9	user/slabtest.asm	/^  d9:	eb f6                	jmp    d1 <strchr+0x2c>$/;"	l
 d9	user/stressfs.asm	/^  d9:	83 c4 10             	add    $0x10,%esp$/;"	l
+d9	user/zombie.asm	/^  d9:	38 ca                	cmp    %cl,%dl$/;"	l
 d90	user/usertests.asm	/^     d90:	8d 45 de             	lea    -0x22(%ebp),%eax$/;"	l
-d93	user/sh.asm	/^ d93:	83 c4 10             	add    $0x10,%esp$/;"	l
+d91	user/sh.asm	/^ d91:	83 ec 0c             	sub    $0xc,%esp$/;"	l
 d93	user/usertests.asm	/^     d93:	50                   	push   %eax$/;"	l
+d94	user/sh.asm	/^ d94:	6a 01                	push   $0x1$/;"	l
 d94	user/usertests.asm	/^     d94:	ff 75 d4             	pushl  -0x2c(%ebp)$/;"	l
-d96	user/sh.asm	/^ d96:	bf 00 00 00 00       	mov    $0x0,%edi$/;"	l
-d97	user/usertests.asm	/^     d97:	e8 10 2a 00 00       	call   37ac <read>$/;"	l
-d9b	user/sh.asm	/^ d9b:	eb 80                	jmp    d1d <printf+0x45>$/;"	l
+d96	user/sh.asm	/^ d96:	b9 0a 00 00 00       	mov    $0xa,%ecx$/;"	l
+d97	user/usertests.asm	/^     d97:	e8 0e 2a 00 00       	call   37aa <read>$/;"	l
+d9b	user/sh.asm	/^ d9b:	8b 7d d4             	mov    -0x2c(%ebp),%edi$/;"	l
 d9c	user/usertests.asm	/^     d9c:	83 c4 10             	add    $0x10,%esp$/;"	l
-d9d	user/sh.asm	/^ d9d:	83 ec 0c             	sub    $0xc,%esp$/;"	l
+d9e	user/sh.asm	/^ d9e:	8b 17                	mov    (%edi),%edx$/;"	l
 d9f	user/usertests.asm	/^     d9f:	85 c0                	test   %eax,%eax$/;"	l
 da	user/echo.asm	/^  da:	55                   	push   %ebp$/;"	l
 da	user/grep.asm	/^  da:	83 ec 08             	sub    $0x8,%esp$/;"	l
-da	user/init.asm	/^  da:	e8 c2 01 00 00       	call   2a1 <exit>$/;"	l
+da	user/init.asm	/^  da:	e8 c0 01 00 00       	call   29f <exit>$/;"	l
 da	user/kill.asm	/^  da:	fc                   	cld    $/;"	l
 da	user/ls.asm	/^  da:	66 83 f8 02          	cmp    $0x2,%ax$/;"	l
-da	user/ps.asm	/^  da:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
-da	user/sh.asm	/^  da:	e8 b5 0a 00 00       	call   b94 <exit>$/;"	l
+da	user/mkdir.asm	/^  da:	80 3c 11 00          	cmpb   $0x0,(%ecx,%edx,1)$/;"	l
+da	user/rm.asm	/^  da:	80 3c 11 00          	cmpb   $0x0,(%ecx,%edx,1)$/;"	l
+da	user/sh.asm	/^  da:	e8 b3 0a 00 00       	call   b92 <exit>$/;"	l
 da	user/wc.asm	/^  da:	ff 71 fc             	pushl  -0x4(%ecx)$/;"	l
-da0	user/sh.asm	/^ da0:	6a 01                	push   $0x1$/;"	l
+da0	user/sh.asm	/^ da0:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
 da1	user/usertests.asm	/^     da1:	7e 3d                	jle    de0 <sharedfd+0x13c>$/;"	l
-da2	user/sh.asm	/^ da2:	b9 0a 00 00 00       	mov    $0xa,%ecx$/;"	l
+da3	user/sh.asm	/^ da3:	e8 9a fe ff ff       	call   c42 <printint>$/;"	l
 da3	user/usertests.asm	/^     da3:	8d 45 de             	lea    -0x22(%ebp),%eax$/;"	l
 da6	user/usertests.asm	/^     da6:	eb 23                	jmp    dcb <sharedfd+0x127>$/;"	l
-da7	user/sh.asm	/^ da7:	8b 7d d4             	mov    -0x2c(%ebp),%edi$/;"	l
-da8	user/usertests.asm	/^     da8:	e8 e7 29 00 00       	call   3794 <exit>$/;"	l
-daa	user/sh.asm	/^ daa:	8b 17                	mov    (%edi),%edx$/;"	l
-dac	user/sh.asm	/^ dac:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
+da8	user/sh.asm	/^ da8:	89 f8                	mov    %edi,%eax$/;"	l
+da8	user/usertests.asm	/^     da8:	e8 e5 29 00 00       	call   3792 <exit>$/;"	l
+daa	user/sh.asm	/^ daa:	83 c0 04             	add    $0x4,%eax$/;"	l
+dad	user/sh.asm	/^ dad:	89 45 d4             	mov    %eax,-0x2c(%ebp)$/;"	l
 dad	user/usertests.asm	/^     dad:	83 ec 08             	sub    $0x8,%esp$/;"	l
-daf	user/sh.asm	/^ daf:	e8 90 fe ff ff       	call   c44 <printint>$/;"	l
 data	buf.h	/^  uchar data[BSIZE];$/;"	m	struct:buf
 data	ioapic.c	/^  uint data;$/;"	m	struct:ioapic	file:
 data	pipe.c	/^  char data[PIPESIZE];$/;"	m	struct:pipe	file:
@@ -1566,69 +1571,69 @@ db	mmu.h	/^  uint db : 1;         \/\/ 0 = 16-bit segment, 1 = 32-bit segment$/;
 db	user/echo.asm	/^  db:	89 e5                	mov    %esp,%ebp$/;"	l
 db	user/kill.asm	/^  db:	f3 aa                	rep stos %al,%es:(%edi)$/;"	l
 db	user/ln.asm	/^  db:	8b 45 0c             	mov    0xc(%ebp),%eax$/;"	l
-db	user/slabtest.asm	/^  db:	8b 75 08             	mov    0x8(%ebp),%esi$/;"	l
+db	user/ps.asm	/^  db:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
+db	user/slabtest.asm	/^  db:	55                   	push   %ebp$/;"	l
+db	user/zombie.asm	/^  db:	75 f2                	jne    cf <strchr+0x17>$/;"	l
+db0	user/sh.asm	/^ db0:	83 c4 10             	add    $0x10,%esp$/;"	l
 db0	user/usertests.asm	/^     db0:	68 30 4d 00 00       	push   $0x4d30$/;"	l
-db4	user/sh.asm	/^ db4:	89 f8                	mov    %edi,%eax$/;"	l
+db3	user/sh.asm	/^ db3:	bf 00 00 00 00       	mov    $0x0,%edi$/;"	l
 db5	user/usertests.asm	/^     db5:	6a 01                	push   $0x1$/;"	l
-db6	user/sh.asm	/^ db6:	83 c0 04             	add    $0x4,%eax$/;"	l
-db7	user/usertests.asm	/^     db7:	e8 1c 2b 00 00       	call   38d8 <printf>$/;"	l
-db9	user/sh.asm	/^ db9:	89 45 d4             	mov    %eax,-0x2c(%ebp)$/;"	l
-dbc	user/sh.asm	/^ dbc:	83 c4 10             	add    $0x10,%esp$/;"	l
+db7	user/usertests.asm	/^     db7:	e8 10 2b 00 00       	call   38cc <printf>$/;"	l
+db8	user/sh.asm	/^ db8:	e9 54 ff ff ff       	jmp    d11 <printf+0x45>$/;"	l
 dbc	user/usertests.asm	/^     dbc:	83 c4 10             	add    $0x10,%esp$/;"	l
-dbf	user/sh.asm	/^ dbf:	bf 00 00 00 00       	mov    $0x0,%edi$/;"	l
+dbd	user/sh.asm	/^ dbd:	83 ec 0c             	sub    $0xc,%esp$/;"	l
 dbf	user/usertests.asm	/^     dbf:	eb 5b                	jmp    e1c <sharedfd+0x178>$/;"	l
-dc	user/mkdir.asm	/^  dc:	75 f5                	jne    d3 <strlen+0x10>$/;"	l
-dc	user/rm.asm	/^  dc:	75 f5                	jne    d3 <strlen+0x10>$/;"	l
+dc	user/slabtest.asm	/^  dc:	89 e5                	mov    %esp,%ebp$/;"	l
 dc	user/stressfs.asm	/^  dc:	bb 14 00 00 00       	mov    $0x14,%ebx$/;"	l
-dc	user/zombie.asm	/^  dc:	5d                   	pop    %ebp$/;"	l
+dc0	user/sh.asm	/^ dc0:	6a 00                	push   $0x0$/;"	l
 dc1	user/usertests.asm	/^     dc1:	83 c7 01             	add    $0x1,%edi$/;"	l
-dc4	user/sh.asm	/^ dc4:	e9 54 ff ff ff       	jmp    d1d <printf+0x45>$/;"	l
+dc2	user/sh.asm	/^ dc2:	b9 10 00 00 00       	mov    $0x10,%ecx$/;"	l
 dc4	user/usertests.asm	/^     dc4:	83 c0 01             	add    $0x1,%eax$/;"	l
+dc7	user/sh.asm	/^ dc7:	8b 7d d4             	mov    -0x2c(%ebp),%edi$/;"	l
 dc7	user/usertests.asm	/^     dc7:	39 f0                	cmp    %esi,%eax$/;"	l
-dc9	user/sh.asm	/^ dc9:	83 ec 0c             	sub    $0xc,%esp$/;"	l
 dc9	user/usertests.asm	/^     dc9:	74 c0                	je     d8b <sharedfd+0xe7>$/;"	l
+dca	user/sh.asm	/^ dca:	8b 17                	mov    (%edi),%edx$/;"	l
 dcb	user/usertests.asm	/^     dcb:	0f b6 10             	movzbl (%eax),%edx$/;"	l
-dcc	user/sh.asm	/^ dcc:	6a 00                	push   $0x0$/;"	l
-dce	user/sh.asm	/^ dce:	b9 10 00 00 00       	mov    $0x10,%ecx$/;"	l
+dcc	user/sh.asm	/^ dcc:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
 dce	user/usertests.asm	/^     dce:	80 fa 63             	cmp    $0x63,%dl$/;"	l
-dd	user/cat.asm	/^  dd:	e8 db 01 00 00       	call   2bd <exit>$/;"	l
+dcf	user/sh.asm	/^ dcf:	e8 6e fe ff ff       	call   c42 <printint>$/;"	l
+dd	user/cat.asm	/^  dd:	e8 d9 01 00 00       	call   2bb <exit>$/;"	l
 dd	user/echo.asm	/^  dd:	57                   	push   %edi$/;"	l
 dd	user/forktest.asm	/^  dd:	83 e4 f0             	and    $0xfffffff0,%esp$/;"	l
 dd	user/grep.asm	/^  dd:	53                   	push   %ebx$/;"	l
 dd	user/kill.asm	/^  dd:	89 d0                	mov    %edx,%eax$/;"	l
 dd	user/usertests.asm	/^      dd:	55                   	push   %ebp$/;"	l
 dd	user/wc.asm	/^  dd:	55                   	push   %ebp$/;"	l
-dd	user/zombie.asm	/^  dd:	c3                   	ret    $/;"	l
+dd	user/zombie.asm	/^  dd:	eb 05                	jmp    e4 <strchr+0x2c>$/;"	l
 dd1	user/usertests.asm	/^     dd1:	74 ee                	je     dc1 <sharedfd+0x11d>$/;"	l
-dd3	user/sh.asm	/^ dd3:	8b 7d d4             	mov    -0x2c(%ebp),%edi$/;"	l
 dd3	user/usertests.asm	/^     dd3:	80 fa 70             	cmp    $0x70,%dl$/;"	l
-dd6	user/sh.asm	/^ dd6:	8b 17                	mov    (%edi),%edx$/;"	l
+dd4	user/sh.asm	/^ dd4:	89 f8                	mov    %edi,%eax$/;"	l
+dd6	user/sh.asm	/^ dd6:	83 c0 04             	add    $0x4,%eax$/;"	l
 dd6	user/usertests.asm	/^     dd6:	0f 94 c2             	sete   %dl$/;"	l
-dd8	user/sh.asm	/^ dd8:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
+dd9	user/sh.asm	/^ dd9:	89 45 d4             	mov    %eax,-0x2c(%ebp)$/;"	l
 dd9	user/usertests.asm	/^     dd9:	0f b6 d2             	movzbl %dl,%edx$/;"	l
-ddb	user/sh.asm	/^ ddb:	e8 64 fe ff ff       	call   c44 <printint>$/;"	l
+ddc	user/sh.asm	/^ ddc:	83 c4 10             	add    $0x10,%esp$/;"	l
 ddc	user/usertests.asm	/^     ddc:	01 d3                	add    %edx,%ebx$/;"	l
 dde	user/usertests.asm	/^     dde:	eb e4                	jmp    dc4 <sharedfd+0x120>$/;"	l
+ddf	user/sh.asm	/^ ddf:	bf 00 00 00 00       	mov    $0x0,%edi$/;"	l
 de	user/echo.asm	/^  de:	8b 55 08             	mov    0x8(%ebp),%edx$/;"	l
 de	user/grep.asm	/^  de:	56                   	push   %esi$/;"	l
 de	user/ln.asm	/^  de:	fc                   	cld    $/;"	l
 de	user/ls.asm	/^  de:	75 37                	jne    117 <ls+0x85>$/;"	l
-de	user/mkdir.asm	/^  de:	89 c8                	mov    %ecx,%eax$/;"	l
-de	user/rm.asm	/^  de:	89 c8                	mov    %ecx,%eax$/;"	l
-de	user/slabtest.asm	/^  de:	bb 00 00 00 00       	mov    $0x0,%ebx$/;"	l
+de	user/mkdir.asm	/^  de:	75 f5                	jne    d5 <strlen+0x10>$/;"	l
+de	user/rm.asm	/^  de:	75 f5                	jne    d5 <strlen+0x10>$/;"	l
+de	user/slabtest.asm	/^  de:	57                   	push   %edi$/;"	l
 de	user/usertests.asm	/^      de:	89 e5                	mov    %esp,%ebp$/;"	l
 de	user/wc.asm	/^  de:	89 e5                	mov    %esp,%ebp$/;"	l
-de	user/zombie.asm	/^  de:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
-de0	user/sh.asm	/^ de0:	89 f8                	mov    %edi,%eax$/;"	l
 de0	user/usertests.asm	/^     de0:	83 ec 0c             	sub    $0xc,%esp$/;"	l
-de2	user/sh.asm	/^ de2:	83 c0 04             	add    $0x4,%eax$/;"	l
 de3	user/usertests.asm	/^     de3:	ff 75 d4             	pushl  -0x2c(%ebp)$/;"	l
-de5	user/sh.asm	/^ de5:	89 45 d4             	mov    %eax,-0x2c(%ebp)$/;"	l
-de6	user/usertests.asm	/^     de6:	e8 d1 29 00 00       	call   37bc <close>$/;"	l
-de8	user/sh.asm	/^ de8:	83 c4 10             	add    $0x10,%esp$/;"	l
+de4	user/sh.asm	/^ de4:	e9 28 ff ff ff       	jmp    d11 <printf+0x45>$/;"	l
+de6	user/usertests.asm	/^     de6:	e8 cf 29 00 00       	call   37ba <close>$/;"	l
+de9	user/sh.asm	/^ de9:	8b 4d d4             	mov    -0x2c(%ebp),%ecx$/;"	l
 deallocuvm	vm.c	/^deallocuvm(pde_t *pgdir, uint oldsz, uint newsz)$/;"	f
-deb	user/sh.asm	/^ deb:	bf 00 00 00 00       	mov    $0x0,%edi$/;"	l
 deb	user/usertests.asm	/^     deb:	c7 04 24 1f 40 00 00 	movl   $0x401f,(%esp)$/;"	l
+dec	user/sh.asm	/^ dec:	8b 01                	mov    (%ecx),%eax$/;"	l
+dee	user/sh.asm	/^ dee:	83 c1 04             	add    $0x4,%ecx$/;"	l
 dev	buf.h	/^  uint dev;$/;"	m	struct:buf
 dev	file.h	/^  uint dev;           \/\/ Device number$/;"	m	struct:inode
 dev	log.c	/^  int dev;$/;"	m	struct:log	file:
@@ -1639,16 +1644,18 @@ df	user/grep.asm	/^  df:	e8 64 ff ff ff       	call   48 <matchhere>$/;"	l
 df	user/init.asm	/^  df:	55                   	push   %ebp$/;"	l
 df	user/kill.asm	/^  df:	5f                   	pop    %edi$/;"	l
 df	user/ln.asm	/^  df:	f3 aa                	rep stos %al,%es:(%edi)$/;"	l
-df	user/ps.asm	/^  df:	eb f7                	jmp    d8 <strchr+0x24>$/;"	l
 df	user/sh.asm	/^  df:	83 ec 0c             	sub    $0xc,%esp$/;"	l
-df0	user/sh.asm	/^ df0:	e9 28 ff ff ff       	jmp    d1d <printf+0x45>$/;"	l
-df2	user/usertests.asm	/^     df2:	e8 ed 29 00 00       	call   37e4 <unlink>$/;"	l
-df5	user/sh.asm	/^ df5:	8b 4d d4             	mov    -0x2c(%ebp),%ecx$/;"	l
+df	user/slabtest.asm	/^  df:	56                   	push   %esi$/;"	l
+df	user/zombie.asm	/^  df:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
+df1	user/sh.asm	/^ df1:	89 4d d4             	mov    %ecx,-0x2c(%ebp)$/;"	l
+df2	user/usertests.asm	/^     df2:	e8 eb 29 00 00       	call   37e2 <unlink>$/;"	l
+df4	user/sh.asm	/^ df4:	85 c0                	test   %eax,%eax$/;"	l
+df6	user/sh.asm	/^ df6:	74 13                	je     e0b <printf+0x13f>$/;"	l
 df7	user/usertests.asm	/^     df7:	83 c4 10             	add    $0x10,%esp$/;"	l
-df8	user/sh.asm	/^ df8:	8b 01                	mov    (%ecx),%eax$/;"	l
-dfa	user/sh.asm	/^ dfa:	83 c1 04             	add    $0x4,%ecx$/;"	l
+df8	user/sh.asm	/^ df8:	89 c3                	mov    %eax,%ebx$/;"	l
+dfa	user/sh.asm	/^ dfa:	0f b6 00             	movzbl (%eax),%eax$/;"	l
 dfa	user/usertests.asm	/^     dfa:	81 ff 10 27 00 00    	cmp    $0x2710,%edi$/;"	l
-dfd	user/sh.asm	/^ dfd:	89 4d d4             	mov    %ecx,-0x2c(%ebp)$/;"	l
+dfd	user/sh.asm	/^ dfd:	bf 00 00 00 00       	mov    $0x0,%edi$/;"	l
 dinode	fs.h	/^struct dinode {$/;"	s
 dirent	fs.h	/^struct dirent {$/;"	s
 dirfile	user/usertests.c	/^dirfile(void)$/;"	f
@@ -1695,216 +1702,217 @@ e0	user/init.asm	/^  e0:	89 e5                	mov    %esp,%ebp$/;"	l
 e0	user/kill.asm	/^  e0:	5d                   	pop    %ebp$/;"	l
 e0	user/ls.asm	/^  e0:	8b bd d4 fd ff ff    	mov    -0x22c(%ebp),%edi$/;"	l
 e0	user/mkdir.asm	/^  e0:	5d                   	pop    %ebp$/;"	l
+e0	user/ps.asm	/^  e0:	5b                   	pop    %ebx$/;"	l
 e0	user/rm.asm	/^  e0:	5d                   	pop    %ebp$/;"	l
+e0	user/slabtest.asm	/^  e0:	53                   	push   %ebx$/;"	l
 e0	user/usertests.asm	/^      e0:	83 ec 10             	sub    $0x10,%esp$/;"	l
 e0	user/wc.asm	/^  e0:	57                   	push   %edi$/;"	l
-e00	user/sh.asm	/^ e00:	85 c0                	test   %eax,%eax$/;"	l
 e00	user/usertests.asm	/^     e00:	75 22                	jne    e24 <sharedfd+0x180>$/;"	l
-e02	user/sh.asm	/^ e02:	74 13                	je     e17 <printf+0x13f>$/;"	l
+e02	user/sh.asm	/^ e02:	84 c0                	test   %al,%al$/;"	l
 e02	user/usertests.asm	/^     e02:	81 fb 10 27 00 00    	cmp    $0x2710,%ebx$/;"	l
-e04	user/sh.asm	/^ e04:	89 c3                	mov    %eax,%ebx$/;"	l
-e06	user/sh.asm	/^ e06:	0f b6 00             	movzbl (%eax),%eax$/;"	l
+e04	user/sh.asm	/^ e04:	75 0f                	jne    e15 <printf+0x149>$/;"	l
+e06	user/sh.asm	/^ e06:	e9 06 ff ff ff       	jmp    d11 <printf+0x45>$/;"	l
 e08	user/usertests.asm	/^     e08:	75 1a                	jne    e24 <sharedfd+0x180>$/;"	l
-e09	user/sh.asm	/^ e09:	bf 00 00 00 00       	mov    $0x0,%edi$/;"	l
 e0a	user/usertests.asm	/^     e0a:	83 ec 08             	sub    $0x8,%esp$/;"	l
+e0b	user/sh.asm	/^ e0b:	bb cc 10 00 00       	mov    $0x10cc,%ebx$/;"	l
 e0d	user/usertests.asm	/^     e0d:	68 28 40 00 00       	push   $0x4028$/;"	l
-e0e	user/sh.asm	/^ e0e:	84 c0                	test   %al,%al$/;"	l
 e1	user/echo.asm	/^  e1:	89 d7                	mov    %edx,%edi$/;"	l
 e1	user/kill.asm	/^  e1:	c3                   	ret    $/;"	l
 e1	user/ln.asm	/^  e1:	89 d0                	mov    %edx,%eax$/;"	l
 e1	user/mkdir.asm	/^  e1:	c3                   	ret    $/;"	l
-e1	user/ps.asm	/^  e1:	55                   	push   %ebp$/;"	l
+e1	user/ps.asm	/^  e1:	5d                   	pop    %ebp$/;"	l
 e1	user/rm.asm	/^  e1:	c3                   	ret    $/;"	l
+e1	user/slabtest.asm	/^  e1:	83 ec 1c             	sub    $0x1c,%esp$/;"	l
 e1	user/stressfs.asm	/^  e1:	8d bd de fd ff ff    	lea    -0x222(%ebp),%edi$/;"	l
 e1	user/wc.asm	/^  e1:	56                   	push   %esi$/;"	l
-e10	user/sh.asm	/^ e10:	75 0f                	jne    e21 <printf+0x149>$/;"	l
-e12	user/sh.asm	/^ e12:	e9 06 ff ff ff       	jmp    d1d <printf+0x45>$/;"	l
+e10	user/sh.asm	/^ e10:	b8 28 00 00 00       	mov    $0x28,%eax$/;"	l
 e12	user/usertests.asm	/^     e12:	6a 01                	push   $0x1$/;"	l
-e14	user/usertests.asm	/^     e14:	e8 bf 2a 00 00       	call   38d8 <printf>$/;"	l
-e17	user/sh.asm	/^ e17:	bb cc 10 00 00       	mov    $0x10cc,%ebx$/;"	l
+e14	user/usertests.asm	/^     e14:	e8 b3 2a 00 00       	call   38cc <printf>$/;"	l
+e15	user/sh.asm	/^ e15:	8d 7d e3             	lea    -0x1d(%ebp),%edi$/;"	l
+e18	user/sh.asm	/^ e18:	89 75 d0             	mov    %esi,-0x30(%ebp)$/;"	l
 e19	user/usertests.asm	/^     e19:	83 c4 10             	add    $0x10,%esp$/;"	l
-e1c	user/sh.asm	/^ e1c:	b8 28 00 00 00       	mov    $0x28,%eax$/;"	l
+e1b	user/sh.asm	/^ e1b:	8b 75 08             	mov    0x8(%ebp),%esi$/;"	l
 e1c	user/usertests.asm	/^     e1c:	8d 65 f4             	lea    -0xc(%ebp),%esp$/;"	l
+e1e	user/sh.asm	/^ e1e:	88 45 e3             	mov    %al,-0x1d(%ebp)$/;"	l
 e1f	user/usertests.asm	/^     e1f:	5b                   	pop    %ebx$/;"	l
 e2	user/cat.asm	/^  e2:	83 ec 04             	sub    $0x4,%esp$/;"	l
 e2	user/init.asm	/^  e2:	53                   	push   %ebx$/;"	l
 e2	user/kill.asm	/^  e2:	55                   	push   %ebp$/;"	l
-e2	user/mkdir.asm	/^  e2:	b9 00 00 00 00       	mov    $0x0,%ecx$/;"	l
-e2	user/ps.asm	/^  e2:	89 e5                	mov    %esp,%ebp$/;"	l
-e2	user/rm.asm	/^  e2:	b9 00 00 00 00       	mov    $0x0,%ecx$/;"	l
+e2	user/mkdir.asm	/^  e2:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
+e2	user/ps.asm	/^  e2:	c3                   	ret    $/;"	l
+e2	user/rm.asm	/^  e2:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
 e2	user/sh.asm	/^  e2:	ff 73 14             	pushl  0x14(%ebx)$/;"	l
 e2	user/wc.asm	/^  e2:	53                   	push   %ebx$/;"	l
 e20	user/usertests.asm	/^     e20:	5e                   	pop    %esi$/;"	l
-e21	user/sh.asm	/^ e21:	8b 7d 08             	mov    0x8(%ebp),%edi$/;"	l
+e21	user/sh.asm	/^ e21:	83 ec 04             	sub    $0x4,%esp$/;"	l
 e21	user/usertests.asm	/^     e21:	5f                   	pop    %edi$/;"	l
 e22	user/usertests.asm	/^     e22:	5d                   	pop    %ebp$/;"	l
 e23	user/usertests.asm	/^     e23:	c3                   	ret    $/;"	l
-e24	user/sh.asm	/^ e24:	88 45 e7             	mov    %al,-0x19(%ebp)$/;"	l
+e24	user/sh.asm	/^ e24:	6a 01                	push   $0x1$/;"	l
 e24	user/usertests.asm	/^     e24:	53                   	push   %ebx$/;"	l
 e25	user/usertests.asm	/^     e25:	57                   	push   %edi$/;"	l
+e26	user/sh.asm	/^ e26:	57                   	push   %edi$/;"	l
 e26	user/usertests.asm	/^     e26:	68 35 40 00 00       	push   $0x4035$/;"	l
-e27	user/sh.asm	/^ e27:	83 ec 04             	sub    $0x4,%esp$/;"	l
-e2a	user/sh.asm	/^ e2a:	6a 01                	push   $0x1$/;"	l
+e27	user/sh.asm	/^ e27:	56                   	push   %esi$/;"	l
+e28	user/sh.asm	/^ e28:	e8 85 fd ff ff       	call   bb2 <write>$/;"	l
 e2b	user/usertests.asm	/^     e2b:	6a 01                	push   $0x1$/;"	l
-e2c	user/sh.asm	/^ e2c:	8d 45 e7             	lea    -0x19(%ebp),%eax$/;"	l
-e2d	user/usertests.asm	/^     e2d:	e8 a6 2a 00 00       	call   38d8 <printf>$/;"	l
-e2f	user/sh.asm	/^ e2f:	50                   	push   %eax$/;"	l
+e2d	user/sh.asm	/^ e2d:	83 c3 01             	add    $0x1,%ebx$/;"	l
+e2d	user/usertests.asm	/^     e2d:	e8 9a 2a 00 00       	call   38cc <printf>$/;"	l
 e3	user/echo.asm	/^  e3:	8b 4d 10             	mov    0x10(%ebp),%ecx$/;"	l
 e3	user/forktest.asm	/^  e3:	55                   	push   %ebp$/;"	l
-e3	user/init.asm	/^  e3:	8b 4d 08             	mov    0x8(%ebp),%ecx$/;"	l
+e3	user/init.asm	/^  e3:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
 e3	user/kill.asm	/^  e3:	89 e5                	mov    %esp,%ebp$/;"	l
 e3	user/ln.asm	/^  e3:	5f                   	pop    %edi$/;"	l
-e3	user/slabtest.asm	/^  e3:	8d 7d e7             	lea    -0x19(%ebp),%edi$/;"	l
+e3	user/ps.asm	/^  e3:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
 e3	user/usertests.asm	/^      e3:	68 3f 3c 00 00       	push   $0x3c3f$/;"	l
 e3	user/wc.asm	/^  e3:	51                   	push   %ecx$/;"	l
-e3	user/zombie.asm	/^  e3:	eb f7                	jmp    dc <strchr+0x24>$/;"	l
-e30	user/sh.asm	/^ e30:	57                   	push   %edi$/;"	l
-e31	user/sh.asm	/^ e31:	e8 7e fd ff ff       	call   bb4 <write>$/;"	l
-e32	user/usertests.asm	/^     e32:	e8 5d 29 00 00       	call   3794 <exit>$/;"	l
-e36	user/sh.asm	/^ e36:	83 c3 01             	add    $0x1,%ebx$/;"	l
+e30	user/sh.asm	/^ e30:	0f b6 03             	movzbl (%ebx),%eax$/;"	l
+e32	user/usertests.asm	/^     e32:	e8 5b 29 00 00       	call   3792 <exit>$/;"	l
+e33	user/sh.asm	/^ e33:	83 c4 10             	add    $0x10,%esp$/;"	l
+e36	user/sh.asm	/^ e36:	84 c0                	test   %al,%al$/;"	l
 e37	user/usertests.asm	/^     e37:	55                   	push   %ebp$/;"	l
+e38	user/sh.asm	/^ e38:	75 e4                	jne    e1e <printf+0x152>$/;"	l
 e38	user/usertests.asm	/^     e38:	89 e5                	mov    %esp,%ebp$/;"	l
-e39	user/sh.asm	/^ e39:	0f b6 03             	movzbl (%ebx),%eax$/;"	l
+e3a	user/sh.asm	/^ e3a:	8b 75 d0             	mov    -0x30(%ebp),%esi$/;"	l
 e3a	user/usertests.asm	/^     e3a:	57                   	push   %edi$/;"	l
 e3b	user/usertests.asm	/^     e3b:	56                   	push   %esi$/;"	l
-e3c	user/sh.asm	/^ e3c:	83 c4 10             	add    $0x10,%esp$/;"	l
 e3c	user/usertests.asm	/^     e3c:	53                   	push   %ebx$/;"	l
+e3d	user/sh.asm	/^ e3d:	bf 00 00 00 00       	mov    $0x0,%edi$/;"	l
 e3d	user/usertests.asm	/^     e3d:	83 ec 34             	sub    $0x34,%esp$/;"	l
-e3f	user/sh.asm	/^ e3f:	84 c0                	test   %al,%al$/;"	l
 e4	user/forktest.asm	/^  e4:	89 e5                	mov    %esp,%ebp$/;"	l
 e4	user/grep.asm	/^  e4:	83 c4 10             	add    $0x10,%esp$/;"	l
 e4	user/ln.asm	/^  e4:	5d                   	pop    %ebp$/;"	l
-e4	user/ps.asm	/^  e4:	57                   	push   %edi$/;"	l
+e4	user/slabtest.asm	/^  e4:	be 00 00 00 00       	mov    $0x0,%esi$/;"	l
 e4	user/wc.asm	/^  e4:	83 ec 18             	sub    $0x18,%esp$/;"	l
+e4	user/zombie.asm	/^  e4:	5b                   	pop    %ebx$/;"	l
 e40	user/usertests.asm	/^     e40:	c7 45 d8 4a 40 00 00 	movl   $0x404a,-0x28(%ebp)$/;"	l
-e41	user/sh.asm	/^ e41:	75 e1                	jne    e24 <printf+0x14c>$/;"	l
-e43	user/sh.asm	/^ e43:	bf 00 00 00 00       	mov    $0x0,%edi$/;"	l
+e42	user/sh.asm	/^ e42:	e9 ca fe ff ff       	jmp    d11 <printf+0x45>$/;"	l
+e47	user/sh.asm	/^ e47:	8b 7d d4             	mov    -0x2c(%ebp),%edi$/;"	l
 e47	user/usertests.asm	/^     e47:	c7 45 dc 93 41 00 00 	movl   $0x4193,-0x24(%ebp)$/;"	l
-e48	user/sh.asm	/^ e48:	e9 d0 fe ff ff       	jmp    d1d <printf+0x45>$/;"	l
-e4d	user/sh.asm	/^ e4d:	8b 7d d4             	mov    -0x2c(%ebp),%edi$/;"	l
+e4a	user/sh.asm	/^ e4a:	8b 07                	mov    (%edi),%eax$/;"	l
+e4c	user/sh.asm	/^ e4c:	88 45 e4             	mov    %al,-0x1c(%ebp)$/;"	l
 e4e	user/usertests.asm	/^     e4e:	c7 45 e0 97 41 00 00 	movl   $0x4197,-0x20(%ebp)$/;"	l
+e4f	user/sh.asm	/^ e4f:	83 ec 04             	sub    $0x4,%esp$/;"	l
 e5	user/cat.asm	/^  e5:	8b 45 e0             	mov    -0x20(%ebp),%eax$/;"	l
-e5	user/kill.asm	/^  e5:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
+e5	user/kill.asm	/^  e5:	53                   	push   %ebx$/;"	l
 e5	user/ln.asm	/^  e5:	c3                   	ret    $/;"	l
-e5	user/ps.asm	/^  e5:	56                   	push   %esi$/;"	l
-e5	user/sh.asm	/^  e5:	e8 d2 0a 00 00       	call   bbc <close>$/;"	l
-e5	user/zombie.asm	/^  e5:	55                   	push   %ebp$/;"	l
-e50	user/sh.asm	/^ e50:	8b 07                	mov    (%edi),%eax$/;"	l
-e52	user/sh.asm	/^ e52:	88 45 e7             	mov    %al,-0x19(%ebp)$/;"	l
-e55	user/sh.asm	/^ e55:	83 ec 04             	sub    $0x4,%esp$/;"	l
+e5	user/sh.asm	/^  e5:	e8 d0 0a 00 00       	call   bba <close>$/;"	l
+e5	user/zombie.asm	/^  e5:	5d                   	pop    %ebp$/;"	l
+e52	user/sh.asm	/^ e52:	6a 01                	push   $0x1$/;"	l
+e54	user/sh.asm	/^ e54:	8d 45 e4             	lea    -0x1c(%ebp),%eax$/;"	l
 e55	user/usertests.asm	/^     e55:	c7 45 e4 4d 40 00 00 	movl   $0x404d,-0x1c(%ebp)$/;"	l
-e58	user/sh.asm	/^ e58:	6a 01                	push   $0x1$/;"	l
-e5a	user/sh.asm	/^ e5a:	8d 45 e7             	lea    -0x19(%ebp),%eax$/;"	l
+e57	user/sh.asm	/^ e57:	50                   	push   %eax$/;"	l
+e58	user/sh.asm	/^ e58:	ff 75 08             	pushl  0x8(%ebp)$/;"	l
+e5b	user/sh.asm	/^ e5b:	e8 52 fd ff ff       	call   bb2 <write>$/;"	l
 e5c	user/usertests.asm	/^     e5c:	68 50 40 00 00       	push   $0x4050$/;"	l
-e5d	user/sh.asm	/^ e5d:	50                   	push   %eax$/;"	l
-e5e	user/sh.asm	/^ e5e:	ff 75 08             	pushl  0x8(%ebp)$/;"	l
 e6	user/echo.asm	/^  e6:	8b 45 0c             	mov    0xc(%ebp),%eax$/;"	l
 e6	user/forktest.asm	/^  e6:	51                   	push   %ecx$/;"	l
-e6	user/init.asm	/^  e6:	8b 5d 0c             	mov    0xc(%ebp),%ebx$/;"	l
+e6	user/init.asm	/^  e6:	8b 4d 0c             	mov    0xc(%ebp),%ecx$/;"	l
+e6	user/kill.asm	/^  e6:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
 e6	user/ln.asm	/^  e6:	55                   	push   %ebp$/;"	l
 e6	user/ls.asm	/^  e6:	8b 85 cc fd ff ff    	mov    -0x234(%ebp),%eax$/;"	l
-e6	user/ps.asm	/^  e6:	53                   	push   %ebx$/;"	l
-e6	user/slabtest.asm	/^  e6:	89 5d d4             	mov    %ebx,-0x2c(%ebp)$/;"	l
-e6	user/zombie.asm	/^  e6:	89 e5                	mov    %esp,%ebp$/;"	l
-e61	user/sh.asm	/^ e61:	e8 4e fd ff ff       	call   bb4 <write>$/;"	l
+e6	user/zombie.asm	/^  e6:	c3                   	ret    $/;"	l
+e60	user/sh.asm	/^ e60:	83 c7 04             	add    $0x4,%edi$/;"	l
 e61	user/usertests.asm	/^     e61:	6a 01                	push   $0x1$/;"	l
-e63	user/usertests.asm	/^     e63:	e8 70 2a 00 00       	call   38d8 <printf>$/;"	l
-e66	user/sh.asm	/^ e66:	83 c7 04             	add    $0x4,%edi$/;"	l
+e63	user/sh.asm	/^ e63:	89 7d d4             	mov    %edi,-0x2c(%ebp)$/;"	l
+e63	user/usertests.asm	/^     e63:	e8 64 2a 00 00       	call   38cc <printf>$/;"	l
+e66	user/sh.asm	/^ e66:	83 c4 10             	add    $0x10,%esp$/;"	l
 e68	user/usertests.asm	/^     e68:	83 c4 10             	add    $0x10,%esp$/;"	l
-e69	user/sh.asm	/^ e69:	89 7d d4             	mov    %edi,-0x2c(%ebp)$/;"	l
+e69	user/sh.asm	/^ e69:	bf 00 00 00 00       	mov    $0x0,%edi$/;"	l
 e6b	user/usertests.asm	/^     e6b:	bb 00 00 00 00       	mov    $0x0,%ebx$/;"	l
-e6c	user/sh.asm	/^ e6c:	83 c4 10             	add    $0x10,%esp$/;"	l
-e6f	user/sh.asm	/^ e6f:	bf 00 00 00 00       	mov    $0x0,%edi$/;"	l
+e6e	user/sh.asm	/^ e6e:	e9 9e fe ff ff       	jmp    d11 <printf+0x45>$/;"	l
 e7	user/forktest.asm	/^  e7:	83 ec 04             	sub    $0x4,%esp$/;"	l
 e7	user/grep.asm	/^  e7:	85 c0                	test   %eax,%eax$/;"	l
 e7	user/ln.asm	/^  e7:	89 e5                	mov    %esp,%ebp$/;"	l
-e7	user/mkdir.asm	/^  e7:	eb f5                	jmp    de <strlen+0x1b>$/;"	l
-e7	user/ps.asm	/^  e7:	83 ec 2c             	sub    $0x2c,%esp$/;"	l
-e7	user/rm.asm	/^  e7:	eb f5                	jmp    de <strlen+0x1b>$/;"	l
+e7	user/mkdir.asm	/^  e7:	eb f7                	jmp    e0 <strlen+0x1b>$/;"	l
+e7	user/rm.asm	/^  e7:	eb f7                	jmp    e0 <strlen+0x1b>$/;"	l
 e7	user/stressfs.asm	/^  e7:	83 ec 04             	sub    $0x4,%esp$/;"	l
 e7	user/wc.asm	/^  e7:	8b 01                	mov    (%ecx),%eax$/;"	l
+e7	user/zombie.asm	/^  e7:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
 e70	user/usertests.asm	/^     e70:	8b 74 9d d8          	mov    -0x28(%ebp,%ebx,4),%esi$/;"	l
-e74	user/sh.asm	/^ e74:	e9 a4 fe ff ff       	jmp    d1d <printf+0x45>$/;"	l
+e73	user/sh.asm	/^ e73:	88 5d e5             	mov    %bl,-0x1b(%ebp)$/;"	l
 e74	user/usertests.asm	/^     e74:	83 ec 0c             	sub    $0xc,%esp$/;"	l
+e76	user/sh.asm	/^ e76:	83 ec 04             	sub    $0x4,%esp$/;"	l
 e77	user/usertests.asm	/^     e77:	56                   	push   %esi$/;"	l
-e78	user/usertests.asm	/^     e78:	e8 67 29 00 00       	call   37e4 <unlink>$/;"	l
-e79	user/sh.asm	/^ e79:	88 5d e7             	mov    %bl,-0x19(%ebp)$/;"	l
-e7c	user/sh.asm	/^ e7c:	83 ec 04             	sub    $0x4,%esp$/;"	l
-e7d	user/usertests.asm	/^     e7d:	e8 0a 29 00 00       	call   378c <fork>$/;"	l
-e7f	user/sh.asm	/^ e7f:	6a 01                	push   $0x1$/;"	l
+e78	user/usertests.asm	/^     e78:	e8 65 29 00 00       	call   37e2 <unlink>$/;"	l
+e79	user/sh.asm	/^ e79:	6a 01                	push   $0x1$/;"	l
+e7b	user/sh.asm	/^ e7b:	8d 45 e5             	lea    -0x1b(%ebp),%eax$/;"	l
+e7d	user/usertests.asm	/^     e7d:	e8 08 29 00 00       	call   378a <fork>$/;"	l
+e7e	user/sh.asm	/^ e7e:	50                   	push   %eax$/;"	l
+e7f	user/sh.asm	/^ e7f:	ff 75 08             	pushl  0x8(%ebp)$/;"	l
 e8	user/cat.asm	/^  e8:	ff 30                	pushl  (%eax)$/;"	l
-e8	user/kill.asm	/^  e8:	0f b6 4d 0c          	movzbl 0xc(%ebp),%ecx$/;"	l
+e8	user/ps.asm	/^  e8:	eb f6                	jmp    e0 <strchr+0x2c>$/;"	l
 e8	user/usertests.asm	/^      e8:	ff 35 14 5c 00 00    	pushl  0x5c14$/;"	l
-e8	user/zombie.asm	/^  e8:	57                   	push   %edi$/;"	l
-e81	user/sh.asm	/^ e81:	8d 45 e7             	lea    -0x19(%ebp),%eax$/;"	l
+e82	user/sh.asm	/^ e82:	e8 2b fd ff ff       	call   bb2 <write>$/;"	l
 e82	user/usertests.asm	/^     e82:	83 c4 10             	add    $0x10,%esp$/;"	l
-e84	user/sh.asm	/^ e84:	50                   	push   %eax$/;"	l
-e85	user/sh.asm	/^ e85:	ff 75 08             	pushl  0x8(%ebp)$/;"	l
 e85	user/usertests.asm	/^     e85:	85 c0                	test   %eax,%eax$/;"	l
+e87	user/sh.asm	/^ e87:	83 c4 10             	add    $0x10,%esp$/;"	l
 e87	user/usertests.asm	/^     e87:	78 2a                	js     eb3 <fourfiles+0x7c>$/;"	l
-e88	user/sh.asm	/^ e88:	e8 27 fd ff ff       	call   bb4 <write>$/;"	l
 e89	user/usertests.asm	/^     e89:	85 c0                	test   %eax,%eax$/;"	l
+e8a	user/sh.asm	/^ e8a:	bf 00 00 00 00       	mov    $0x0,%edi$/;"	l
 e8b	user/usertests.asm	/^     e8b:	74 3a                	je     ec7 <fourfiles+0x90>$/;"	l
-e8d	user/sh.asm	/^ e8d:	83 c4 10             	add    $0x10,%esp$/;"	l
 e8d	user/usertests.asm	/^     e8d:	83 c3 01             	add    $0x1,%ebx$/;"	l
+e8f	user/sh.asm	/^ e8f:	e9 7d fe ff ff       	jmp    d11 <printf+0x45>$/;"	l
 e9	user/echo.asm	/^  e9:	fc                   	cld    $/;"	l
 e9	user/grep.asm	/^  e9:	75 1d                	jne    108 <match+0x3e>$/;"	l
-e9	user/init.asm	/^  e9:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
-e9	user/ln.asm	/^  e9:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
+e9	user/init.asm	/^  e9:	89 c2                	mov    %eax,%edx$/;"	l
+e9	user/kill.asm	/^  e9:	8b 5d 0c             	mov    0xc(%ebp),%ebx$/;"	l
+e9	user/ln.asm	/^  e9:	53                   	push   %ebx$/;"	l
 e9	user/mkdir.asm	/^  e9:	55                   	push   %ebp$/;"	l
 e9	user/rm.asm	/^  e9:	55                   	push   %ebp$/;"	l
-e9	user/slabtest.asm	/^  e9:	83 c3 01             	add    $0x1,%ebx$/;"	l
+e9	user/slabtest.asm	/^  e9:	8d 7d e7             	lea    -0x19(%ebp),%edi$/;"	l
 e9	user/wc.asm	/^  e9:	89 45 e4             	mov    %eax,-0x1c(%ebp)$/;"	l
-e9	user/zombie.asm	/^  e9:	56                   	push   %esi$/;"	l
-e90	user/sh.asm	/^ e90:	bf 00 00 00 00       	mov    $0x0,%edi$/;"	l
 e90	user/usertests.asm	/^     e90:	83 fb 04             	cmp    $0x4,%ebx$/;"	l
 e93	user/usertests.asm	/^     e93:	75 db                	jne    e70 <fourfiles+0x39>$/;"	l
-e95	user/sh.asm	/^ e95:	e9 83 fe ff ff       	jmp    d1d <printf+0x45>$/;"	l
-e95	user/usertests.asm	/^     e95:	e8 02 29 00 00       	call   379c <wait>$/;"	l
-e9a	user/sh.asm	/^ e9a:	8d 65 f4             	lea    -0xc(%ebp),%esp$/;"	l
-e9a	user/usertests.asm	/^     e9a:	e8 fd 28 00 00       	call   379c <wait>$/;"	l
-e9d	user/sh.asm	/^ e9d:	5b                   	pop    %ebx$/;"	l
-e9e	user/sh.asm	/^ e9e:	5e                   	pop    %esi$/;"	l
-e9f	user/sh.asm	/^ e9f:	5f                   	pop    %edi$/;"	l
-e9f	user/usertests.asm	/^     e9f:	e8 f8 28 00 00       	call   379c <wait>$/;"	l
+e94	user/sh.asm	/^ e94:	8d 65 f4             	lea    -0xc(%ebp),%esp$/;"	l
+e95	user/usertests.asm	/^     e95:	e8 00 29 00 00       	call   379a <wait>$/;"	l
+e97	user/sh.asm	/^ e97:	5b                   	pop    %ebx$/;"	l
+e98	user/sh.asm	/^ e98:	5e                   	pop    %esi$/;"	l
+e99	user/sh.asm	/^ e99:	5f                   	pop    %edi$/;"	l
+e9a	user/sh.asm	/^ e9a:	5d                   	pop    %ebp$/;"	l
+e9a	user/usertests.asm	/^     e9a:	e8 fb 28 00 00       	call   379a <wait>$/;"	l
+e9b	user/sh.asm	/^ e9b:	c3                   	ret    $/;"	l
+e9c	user/sh.asm	/^ e9c:	55                   	push   %ebp$/;"	l
+e9d	user/sh.asm	/^ e9d:	89 e5                	mov    %esp,%ebp$/;"	l
+e9f	user/sh.asm	/^ e9f:	57                   	push   %edi$/;"	l
+e9f	user/usertests.asm	/^     e9f:	e8 f6 28 00 00       	call   379a <wait>$/;"	l
 ea	user/cat.asm	/^  ea:	68 2f 07 00 00       	push   $0x72f$/;"	l
 ea	user/echo.asm	/^  ea:	f3 aa                	rep stos %al,%es:(%edi)$/;"	l
 ea	user/forktest.asm	/^  ea:	e8 36 ff ff ff       	call   25 <forktest>$/;"	l
+ea	user/ln.asm	/^  ea:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
 ea	user/mkdir.asm	/^  ea:	89 e5                	mov    %esp,%ebp$/;"	l
-ea	user/ps.asm	/^  ea:	8b 75 08             	mov    0x8(%ebp),%esi$/;"	l
+ea	user/ps.asm	/^  ea:	55                   	push   %ebp$/;"	l
 ea	user/rm.asm	/^  ea:	89 e5                	mov    %esp,%ebp$/;"	l
 ea	user/sh.asm	/^  ea:	83 c4 08             	add    $0x8,%esp$/;"	l
 ea	user/stressfs.asm	/^  ea:	68 00 02 00 00       	push   $0x200$/;"	l
-ea	user/zombie.asm	/^  ea:	53                   	push   %ebx$/;"	l
-ea0	user/sh.asm	/^ ea0:	5d                   	pop    %ebp$/;"	l
-ea1	user/sh.asm	/^ ea1:	c3                   	ret    $/;"	l
-ea2	user/sh.asm	/^ ea2:	55                   	push   %ebp$/;"	l
-ea3	user/sh.asm	/^ ea3:	89 e5                	mov    %esp,%ebp$/;"	l
-ea4	user/usertests.asm	/^     ea4:	e8 f3 28 00 00       	call   379c <wait>$/;"	l
-ea5	user/sh.asm	/^ ea5:	57                   	push   %edi$/;"	l
-ea6	user/sh.asm	/^ ea6:	56                   	push   %esi$/;"	l
-ea7	user/sh.asm	/^ ea7:	53                   	push   %ebx$/;"	l
-ea8	user/sh.asm	/^ ea8:	8b 5d 08             	mov    0x8(%ebp),%ebx$/;"	l
+ea0	user/sh.asm	/^ ea0:	56                   	push   %esi$/;"	l
+ea1	user/sh.asm	/^ ea1:	53                   	push   %ebx$/;"	l
+ea2	user/sh.asm	/^ ea2:	8b 5d 08             	mov    0x8(%ebp),%ebx$/;"	l
+ea4	user/usertests.asm	/^     ea4:	e8 f1 28 00 00       	call   379a <wait>$/;"	l
+ea5	user/sh.asm	/^ ea5:	8d 4b f8             	lea    -0x8(%ebx),%ecx$/;"	l
+ea8	user/sh.asm	/^ ea8:	a1 a4 16 00 00       	mov    0x16a4,%eax$/;"	l
 ea9	user/usertests.asm	/^     ea9:	bf 30 00 00 00       	mov    $0x30,%edi$/;"	l
-eab	user/sh.asm	/^ eab:	8d 4b f8             	lea    -0x8(%ebx),%ecx$/;"	l
-eae	user/sh.asm	/^ eae:	a1 a4 16 00 00       	mov    0x16a4,%eax$/;"	l
+ead	user/sh.asm	/^ ead:	eb 0c                	jmp    ebb <free+0x1f>$/;"	l
 eae	user/usertests.asm	/^     eae:	e9 15 01 00 00       	jmp    fc8 <fourfiles+0x191>$/;"	l
+eaf	user/sh.asm	/^ eaf:	8b 10                	mov    (%eax),%edx$/;"	l
 eargv	user/sh.c	/^  char *eargv[MAXARGS];$/;"	m	struct:execcmd	file:
 eax	mmu.h	/^  uint eax;          \/\/ More saved state (registers)$/;"	m	struct:taskstate
 eax	x86.h	/^  uint eax;$/;"	m	struct:trapframe
 eb	user/grep.asm	/^  eb:	83 c3 01             	add    $0x1,%ebx$/;"	l
-eb	user/zombie.asm	/^  eb:	83 ec 2c             	sub    $0x2c,%esp$/;"	l
-eb3	user/sh.asm	/^ eb3:	eb 0c                	jmp    ec1 <free+0x1f>$/;"	l
+eb	user/init.asm	/^  eb:	83 c1 01             	add    $0x1,%ecx$/;"	l
+eb	user/ps.asm	/^  eb:	89 e5                	mov    %esp,%ebp$/;"	l
+eb1	user/sh.asm	/^ eb1:	39 c2                	cmp    %eax,%edx$/;"	l
+eb3	user/sh.asm	/^ eb3:	77 04                	ja     eb9 <free+0x1d>$/;"	l
 eb3	user/usertests.asm	/^     eb3:	83 ec 08             	sub    $0x8,%esp$/;"	l
-eb5	user/sh.asm	/^ eb5:	8b 10                	mov    (%eax),%edx$/;"	l
+eb5	user/sh.asm	/^ eb5:	39 ca                	cmp    %ecx,%edx$/;"	l
 eb6	user/usertests.asm	/^     eb6:	68 25 4b 00 00       	push   $0x4b25$/;"	l
-eb7	user/sh.asm	/^ eb7:	39 c2                	cmp    %eax,%edx$/;"	l
-eb9	user/sh.asm	/^ eb9:	77 04                	ja     ebf <free+0x1d>$/;"	l
-ebb	user/sh.asm	/^ ebb:	39 ca                	cmp    %ecx,%edx$/;"	l
+eb7	user/sh.asm	/^ eb7:	77 10                	ja     ec9 <free+0x2d>$/;"	l
+eb9	user/sh.asm	/^ eb9:	89 d0                	mov    %edx,%eax$/;"	l
+ebb	user/sh.asm	/^ ebb:	39 c8                	cmp    %ecx,%eax$/;"	l
 ebb	user/usertests.asm	/^     ebb:	6a 01                	push   $0x1$/;"	l
-ebd	user/sh.asm	/^ ebd:	77 10                	ja     ecf <free+0x2d>$/;"	l
-ebd	user/usertests.asm	/^     ebd:	e8 16 2a 00 00       	call   38d8 <printf>$/;"	l
-ebf	user/sh.asm	/^ ebf:	89 d0                	mov    %edx,%eax$/;"	l
+ebd	user/sh.asm	/^ ebd:	73 f0                	jae    eaf <free+0x13>$/;"	l
+ebd	user/usertests.asm	/^     ebd:	e8 0a 2a 00 00       	call   38cc <printf>$/;"	l
+ebf	user/sh.asm	/^ ebf:	8b 10                	mov    (%eax),%edx$/;"	l
 ebp	mmu.h	/^  uint *ebp;$/;"	m	struct:taskstate
 ebp	proc.h	/^  uint ebp;$/;"	m	struct:context
 ebp	x86.h	/^  uint ebp;$/;"	m	struct:trapframe
@@ -1913,42 +1921,42 @@ ebx	proc.h	/^  uint ebx;$/;"	m	struct:context
 ebx	x86.h	/^  uint ebx;$/;"	m	struct:trapframe
 ec	user/echo.asm	/^  ec:	89 d0                	mov    %edx,%eax$/;"	l
 ec	user/kill.asm	/^  ec:	0f b6 10             	movzbl (%eax),%edx$/;"	l
-ec	user/ln.asm	/^  ec:	0f b6 4d 0c          	movzbl 0xc(%ebp),%ecx$/;"	l
 ec	user/ls.asm	/^  ec:	89 85 b4 fd ff ff    	mov    %eax,-0x24c(%ebp)$/;"	l
 ec	user/mkdir.asm	/^  ec:	57                   	push   %edi$/;"	l
 ec	user/rm.asm	/^  ec:	57                   	push   %edi$/;"	l
-ec	user/slabtest.asm	/^  ec:	3b 5d 0c             	cmp    0xc(%ebp),%ebx$/;"	l
+ec	user/slabtest.asm	/^  ec:	8d 5e 01             	lea    0x1(%esi),%ebx$/;"	l
 ec	user/wc.asm	/^  ec:	8b 59 04             	mov    0x4(%ecx),%ebx$/;"	l
-ec1	user/sh.asm	/^ ec1:	39 c8                	cmp    %ecx,%eax$/;"	l
-ec2	user/usertests.asm	/^     ec2:	e8 cd 28 00 00       	call   3794 <exit>$/;"	l
-ec3	user/sh.asm	/^ ec3:	73 f0                	jae    eb5 <free+0x13>$/;"	l
-ec5	user/sh.asm	/^ ec5:	8b 10                	mov    (%eax),%edx$/;"	l
-ec7	user/sh.asm	/^ ec7:	39 ca                	cmp    %ecx,%edx$/;"	l
+ec	user/zombie.asm	/^  ec:	eb f6                	jmp    e4 <strchr+0x2c>$/;"	l
+ec1	user/sh.asm	/^ ec1:	39 ca                	cmp    %ecx,%edx$/;"	l
+ec2	user/usertests.asm	/^     ec2:	e8 cb 28 00 00       	call   3792 <exit>$/;"	l
+ec3	user/sh.asm	/^ ec3:	77 04                	ja     ec9 <free+0x2d>$/;"	l
+ec5	user/sh.asm	/^ ec5:	39 c2                	cmp    %eax,%edx$/;"	l
+ec7	user/sh.asm	/^ ec7:	77 f0                	ja     eb9 <free+0x1d>$/;"	l
 ec7	user/usertests.asm	/^     ec7:	83 ec 08             	sub    $0x8,%esp$/;"	l
-ec9	user/sh.asm	/^ ec9:	77 04                	ja     ecf <free+0x2d>$/;"	l
+ec9	user/sh.asm	/^ ec9:	8b 73 fc             	mov    -0x4(%ebx),%esi$/;"	l
 eca	user/usertests.asm	/^     eca:	68 02 02 00 00       	push   $0x202$/;"	l
-ecb	user/sh.asm	/^ ecb:	39 c2                	cmp    %eax,%edx$/;"	l
-ecd	user/sh.asm	/^ ecd:	77 f0                	ja     ebf <free+0x1d>$/;"	l
-ecf	user/sh.asm	/^ ecf:	8b 73 fc             	mov    -0x4(%ebx),%esi$/;"	l
+ecc	user/sh.asm	/^ ecc:	8b 10                	mov    (%eax),%edx$/;"	l
+ece	user/sh.asm	/^ ece:	8d 3c f1             	lea    (%ecx,%esi,8),%edi$/;"	l
 ecf	user/usertests.asm	/^     ecf:	56                   	push   %esi$/;"	l
 echoargv	user/usertests.c	/^char *echoargv[] = { "echo", "ALL", "TESTS", "PASSED", 0 };$/;"	v
 ecx	mmu.h	/^  uint ecx;$/;"	m	struct:taskstate
 ecx	x86.h	/^  uint ecx;$/;"	m	struct:trapframe
+ed	user/ln.asm	/^  ed:	8b 5d 0c             	mov    0xc(%ebp),%ebx$/;"	l
 ed	user/mkdir.asm	/^  ed:	8b 55 08             	mov    0x8(%ebp),%edx$/;"	l
-ed	user/ps.asm	/^  ed:	bb 00 00 00 00       	mov    $0x0,%ebx$/;"	l
+ed	user/ps.asm	/^  ed:	57                   	push   %edi$/;"	l
 ed	user/rm.asm	/^  ed:	8b 55 08             	mov    0x8(%ebp),%edx$/;"	l
 ed	user/sh.asm	/^  ed:	ff 73 10             	pushl  0x10(%ebx)$/;"	l
-ed0	user/usertests.asm	/^     ed0:	e8 ff 28 00 00       	call   37d4 <open>$/;"	l
-ed2	user/sh.asm	/^ ed2:	8b 10                	mov    (%eax),%edx$/;"	l
-ed4	user/sh.asm	/^ ed4:	8d 3c f1             	lea    (%ecx,%esi,8),%edi$/;"	l
+ed0	user/usertests.asm	/^     ed0:	e8 fd 28 00 00       	call   37d2 <open>$/;"	l
+ed1	user/sh.asm	/^ ed1:	39 fa                	cmp    %edi,%edx$/;"	l
+ed3	user/sh.asm	/^ ed3:	74 19                	je     eee <free+0x52>$/;"	l
+ed5	user/sh.asm	/^ ed5:	89 53 f8             	mov    %edx,-0x8(%ebx)$/;"	l
 ed5	user/usertests.asm	/^     ed5:	89 c6                	mov    %eax,%esi$/;"	l
-ed7	user/sh.asm	/^ ed7:	39 fa                	cmp    %edi,%edx$/;"	l
 ed7	user/usertests.asm	/^     ed7:	83 c4 10             	add    $0x10,%esp$/;"	l
-ed9	user/sh.asm	/^ ed9:	74 19                	je     ef4 <free+0x52>$/;"	l
+ed8	user/sh.asm	/^ ed8:	8b 50 04             	mov    0x4(%eax),%edx$/;"	l
 eda	user/usertests.asm	/^     eda:	85 c0                	test   %eax,%eax$/;"	l
-edb	user/sh.asm	/^ edb:	89 53 f8             	mov    %edx,-0x8(%ebx)$/;"	l
+edb	user/sh.asm	/^ edb:	8d 34 d0             	lea    (%eax,%edx,8),%esi$/;"	l
 edc	user/usertests.asm	/^     edc:	78 45                	js     f23 <fourfiles+0xec>$/;"	l
-ede	user/sh.asm	/^ ede:	8b 50 04             	mov    0x4(%eax),%edx$/;"	l
+ede	user/sh.asm	/^ ede:	39 f1                	cmp    %esi,%ecx$/;"	l
 ede	user/usertests.asm	/^     ede:	83 ec 04             	sub    $0x4,%esp$/;"	l
 edi	mmu.h	/^  uint edi;$/;"	m	struct:taskstate
 edi	proc.h	/^  uint edi;$/;"	m	struct:context
@@ -1957,39 +1965,42 @@ edx	mmu.h	/^  uint edx;$/;"	m	struct:taskstate
 edx	x86.h	/^  uint edx;$/;"	m	struct:trapframe
 ee	user/echo.asm	/^  ee:	5f                   	pop    %edi$/;"	l
 ee	user/grep.asm	/^  ee:	80 7b ff 00          	cmpb   $0x0,-0x1(%ebx)$/;"	l
-ee	user/init.asm	/^  ee:	0f b6 14 03          	movzbl (%ebx,%eax,1),%edx$/;"	l
-ee	user/usertests.asm	/^      ee:	e8 e5 37 00 00       	call   38d8 <printf>$/;"	l
-ee	user/zombie.asm	/^  ee:	8b 75 08             	mov    0x8(%ebp),%esi$/;"	l
-ee1	user/sh.asm	/^ ee1:	8d 34 d0             	lea    (%eax,%edx,8),%esi$/;"	l
+ee	user/init.asm	/^  ee:	83 c2 01             	add    $0x1,%edx$/;"	l
+ee	user/ps.asm	/^  ee:	56                   	push   %esi$/;"	l
+ee	user/usertests.asm	/^      ee:	e8 d9 37 00 00       	call   38cc <printf>$/;"	l
+ee	user/zombie.asm	/^  ee:	55                   	push   %ebp$/;"	l
+ee0	user/sh.asm	/^ ee0:	74 1b                	je     efd <free+0x61>$/;"	l
 ee1	user/usertests.asm	/^     ee1:	68 00 02 00 00       	push   $0x200$/;"	l
-ee4	user/sh.asm	/^ ee4:	39 f1                	cmp    %esi,%ecx$/;"	l
-ee6	user/sh.asm	/^ ee6:	74 1b                	je     f03 <free+0x61>$/;"	l
+ee2	user/sh.asm	/^ ee2:	89 08                	mov    %ecx,(%eax)$/;"	l
+ee4	user/sh.asm	/^ ee4:	a3 a4 16 00 00       	mov    %eax,0x16a4$/;"	l
 ee6	user/usertests.asm	/^     ee6:	83 c3 30             	add    $0x30,%ebx$/;"	l
-ee8	user/sh.asm	/^ ee8:	89 08                	mov    %ecx,(%eax)$/;"	l
+ee9	user/sh.asm	/^ ee9:	5b                   	pop    %ebx$/;"	l
 ee9	user/usertests.asm	/^     ee9:	53                   	push   %ebx$/;"	l
-eea	user/sh.asm	/^ eea:	a3 a4 16 00 00       	mov    %eax,0x16a4$/;"	l
+eea	user/sh.asm	/^ eea:	5e                   	pop    %esi$/;"	l
 eea	user/usertests.asm	/^     eea:	68 00 84 00 00       	push   $0x8400$/;"	l
-eef	user/sh.asm	/^ eef:	5b                   	pop    %ebx$/;"	l
+eeb	user/sh.asm	/^ eeb:	5f                   	pop    %edi$/;"	l
+eec	user/sh.asm	/^ eec:	5d                   	pop    %ebp$/;"	l
+eed	user/sh.asm	/^ eed:	c3                   	ret    $/;"	l
+eee	user/sh.asm	/^ eee:	03 72 04             	add    0x4(%edx),%esi$/;"	l
 eef	user/usertests.asm	/^     eef:	e8 51 27 00 00       	call   3645 <memset>$/;"	l
 ef	user/cat.asm	/^  ef:	6a 01                	push   $0x1$/;"	l
 ef	user/echo.asm	/^  ef:	5d                   	pop    %ebp$/;"	l
-ef	user/forktest.asm	/^  ef:	e8 c2 01 00 00       	call   2b6 <exit>$/;"	l
+ef	user/forktest.asm	/^  ef:	e8 c0 01 00 00       	call   2b4 <exit>$/;"	l
 ef	user/kill.asm	/^  ef:	84 d2                	test   %dl,%dl$/;"	l
-ef	user/slabtest.asm	/^  ef:	7d 27                	jge    118 <gets+0x46>$/;"	l
+ef	user/ps.asm	/^  ef:	53                   	push   %ebx$/;"	l
+ef	user/slabtest.asm	/^  ef:	3b 5d 0c             	cmp    0xc(%ebp),%ebx$/;"	l
 ef	user/stressfs.asm	/^  ef:	57                   	push   %edi$/;"	l
 ef	user/wc.asm	/^  ef:	83 c3 04             	add    $0x4,%ebx$/;"	l
-ef0	user/sh.asm	/^ ef0:	5e                   	pop    %esi$/;"	l
-ef1	user/sh.asm	/^ ef1:	5f                   	pop    %edi$/;"	l
-ef2	user/sh.asm	/^ ef2:	5d                   	pop    %ebp$/;"	l
-ef3	user/sh.asm	/^ ef3:	c3                   	ret    $/;"	l
-ef4	user/sh.asm	/^ ef4:	03 72 04             	add    0x4(%edx),%esi$/;"	l
+ef	user/zombie.asm	/^  ef:	89 e5                	mov    %esp,%ebp$/;"	l
+ef1	user/sh.asm	/^ ef1:	89 73 fc             	mov    %esi,-0x4(%ebx)$/;"	l
+ef4	user/sh.asm	/^ ef4:	8b 10                	mov    (%eax),%edx$/;"	l
 ef4	user/usertests.asm	/^     ef4:	83 c4 10             	add    $0x10,%esp$/;"	l
-ef7	user/sh.asm	/^ ef7:	89 73 fc             	mov    %esi,-0x4(%ebx)$/;"	l
+ef6	user/sh.asm	/^ ef6:	8b 12                	mov    (%edx),%edx$/;"	l
 ef7	user/usertests.asm	/^     ef7:	bb 0c 00 00 00       	mov    $0xc,%ebx$/;"	l
-efa	user/sh.asm	/^ efa:	8b 10                	mov    (%eax),%edx$/;"	l
-efc	user/sh.asm	/^ efc:	8b 12                	mov    (%edx),%edx$/;"	l
+ef8	user/sh.asm	/^ ef8:	89 53 f8             	mov    %edx,-0x8(%ebx)$/;"	l
+efb	user/sh.asm	/^ efb:	eb db                	jmp    ed8 <free+0x3c>$/;"	l
 efc	user/usertests.asm	/^     efc:	83 ec 04             	sub    $0x4,%esp$/;"	l
-efe	user/sh.asm	/^ efe:	89 53 f8             	mov    %edx,-0x8(%ebx)$/;"	l
+efd	user/sh.asm	/^ efd:	03 53 fc             	add    -0x4(%ebx),%edx$/;"	l
 eff	user/usertests.asm	/^     eff:	68 f4 01 00 00       	push   $0x1f4$/;"	l
 efile	user/sh.c	/^  char *efile;$/;"	m	struct:redircmd	file:
 eflags	mmu.h	/^  uint eflags;$/;"	m	struct:taskstate
@@ -2042,215 +2053,219 @@ f	user/stressfs.asm	/^   f:	53                   	push   %ebx$/;"	l
 f0	user/echo.asm	/^  f0:	c3                   	ret    $/;"	l
 f0	user/ln.asm	/^  f0:	0f b6 10             	movzbl (%eax),%edx$/;"	l
 f0	user/mkdir.asm	/^  f0:	89 d7                	mov    %edx,%edi$/;"	l
+f0	user/ps.asm	/^  f0:	83 ec 1c             	sub    $0x1c,%esp$/;"	l
 f0	user/rm.asm	/^  f0:	89 d7                	mov    %edx,%edi$/;"	l
 f0	user/sh.asm	/^  f0:	ff 73 08             	pushl  0x8(%ebx)$/;"	l
 f0	user/stressfs.asm	/^  f0:	56                   	push   %esi$/;"	l
-f01	user/sh.asm	/^ f01:	eb db                	jmp    ede <free+0x3c>$/;"	l
-f03	user/sh.asm	/^ f03:	03 53 fc             	add    -0x4(%ebx),%edx$/;"	l
+f00	user/sh.asm	/^ f00:	89 50 04             	mov    %edx,0x4(%eax)$/;"	l
+f03	user/sh.asm	/^ f03:	8b 53 f8             	mov    -0x8(%ebx),%edx$/;"	l
 f04	user/usertests.asm	/^     f04:	68 00 84 00 00       	push   $0x8400$/;"	l
-f06	user/sh.asm	/^ f06:	89 50 04             	mov    %edx,0x4(%eax)$/;"	l
-f09	user/sh.asm	/^ f09:	8b 53 f8             	mov    -0x8(%ebx),%edx$/;"	l
+f06	user/sh.asm	/^ f06:	89 10                	mov    %edx,(%eax)$/;"	l
+f08	user/sh.asm	/^ f08:	eb da                	jmp    ee4 <free+0x48>$/;"	l
 f09	user/usertests.asm	/^     f09:	56                   	push   %esi$/;"	l
-f0a	user/usertests.asm	/^     f0a:	e8 a5 28 00 00       	call   37b4 <write>$/;"	l
-f0c	user/sh.asm	/^ f0c:	89 10                	mov    %edx,(%eax)$/;"	l
-f0e	user/sh.asm	/^ f0e:	eb da                	jmp    eea <free+0x48>$/;"	l
+f0a	user/sh.asm	/^ f0a:	55                   	push   %ebp$/;"	l
+f0a	user/usertests.asm	/^     f0a:	e8 a3 28 00 00       	call   37b2 <write>$/;"	l
+f0b	user/sh.asm	/^ f0b:	89 e5                	mov    %esp,%ebp$/;"	l
+f0d	user/sh.asm	/^ f0d:	57                   	push   %edi$/;"	l
+f0e	user/sh.asm	/^ f0e:	56                   	push   %esi$/;"	l
+f0f	user/sh.asm	/^ f0f:	53                   	push   %ebx$/;"	l
 f0f	user/usertests.asm	/^     f0f:	83 c4 10             	add    $0x10,%esp$/;"	l
-f1	user/cat.asm	/^  f1:	e8 0b 03 00 00       	call   401 <printf>$/;"	l
+f1	user/cat.asm	/^  f1:	e8 ff 02 00 00       	call   3f5 <printf>$/;"	l
 f1	user/echo.asm	/^  f1:	55                   	push   %ebp$/;"	l
-f1	user/kill.asm	/^  f1:	74 15                	je     108 <strchr+0x26>$/;"	l
-f1	user/slabtest.asm	/^  f1:	83 ec 04             	sub    $0x4,%esp$/;"	l
-f1	user/stressfs.asm	/^  f1:	e8 f5 01 00 00       	call   2eb <read>$/;"	l
-f1	user/zombie.asm	/^  f1:	bb 00 00 00 00       	mov    $0x0,%ebx$/;"	l
-f10	user/sh.asm	/^ f10:	55                   	push   %ebp$/;"	l
-f11	user/sh.asm	/^ f11:	89 e5                	mov    %esp,%ebp$/;"	l
+f1	user/init.asm	/^  f1:	0f b6 59 ff          	movzbl -0x1(%ecx),%ebx$/;"	l
+f1	user/kill.asm	/^  f1:	74 1e                	je     111 <strchr+0x2f>$/;"	l
+f1	user/stressfs.asm	/^  f1:	e8 f3 01 00 00       	call   2e9 <read>$/;"	l
+f1	user/zombie.asm	/^  f1:	57                   	push   %edi$/;"	l
+f10	user/sh.asm	/^ f10:	83 ec 0c             	sub    $0xc,%esp$/;"	l
 f12	user/usertests.asm	/^     f12:	3d f4 01 00 00       	cmp    $0x1f4,%eax$/;"	l
-f13	user/sh.asm	/^ f13:	57                   	push   %edi$/;"	l
-f14	user/sh.asm	/^ f14:	56                   	push   %esi$/;"	l
-f15	user/sh.asm	/^ f15:	53                   	push   %ebx$/;"	l
-f16	user/sh.asm	/^ f16:	83 ec 0c             	sub    $0xc,%esp$/;"	l
+f13	user/sh.asm	/^ f13:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
+f16	user/sh.asm	/^ f16:	8d 58 07             	lea    0x7(%eax),%ebx$/;"	l
 f17	user/usertests.asm	/^     f17:	75 1e                	jne    f37 <fourfiles+0x100>$/;"	l
-f19	user/sh.asm	/^ f19:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
+f19	user/sh.asm	/^ f19:	c1 eb 03             	shr    $0x3,%ebx$/;"	l
 f19	user/usertests.asm	/^     f19:	83 eb 01             	sub    $0x1,%ebx$/;"	l
-f1c	user/sh.asm	/^ f1c:	8d 58 07             	lea    0x7(%eax),%ebx$/;"	l
+f1c	user/sh.asm	/^ f1c:	83 c3 01             	add    $0x1,%ebx$/;"	l
 f1c	user/usertests.asm	/^     f1c:	75 de                	jne    efc <fourfiles+0xc5>$/;"	l
-f1e	user/usertests.asm	/^     f1e:	e8 71 28 00 00       	call   3794 <exit>$/;"	l
-f1f	user/sh.asm	/^ f1f:	c1 eb 03             	shr    $0x3,%ebx$/;"	l
+f1e	user/usertests.asm	/^     f1e:	e8 6f 28 00 00       	call   3792 <exit>$/;"	l
+f1f	user/sh.asm	/^ f1f:	8b 15 a4 16 00 00    	mov    0x16a4,%edx$/;"	l
 f2	user/echo.asm	/^  f2:	89 e5                	mov    %esp,%ebp$/;"	l
 f2	user/grep.asm	/^  f2:	75 e6                	jne    da <match+0x10>$/;"	l
-f2	user/init.asm	/^  f2:	88 14 01             	mov    %dl,(%ecx,%eax,1)$/;"	l
 f2	user/ls.asm	/^  f2:	83 ec 0c             	sub    $0xc,%esp$/;"	l
 f2	user/mkdir.asm	/^  f2:	8b 4d 10             	mov    0x10(%ebp),%ecx$/;"	l
-f2	user/ps.asm	/^  f2:	8d 7d e7             	lea    -0x19(%ebp),%edi$/;"	l
 f2	user/rm.asm	/^  f2:	8b 4d 10             	mov    0x10(%ebp),%ecx$/;"	l
+f2	user/slabtest.asm	/^  f2:	7d 2b                	jge    11f <gets+0x44>$/;"	l
 f2	user/wc.asm	/^  f2:	bf 01 00 00 00       	mov    $0x1,%edi$/;"	l
-f22	user/sh.asm	/^ f22:	83 c3 01             	add    $0x1,%ebx$/;"	l
+f2	user/zombie.asm	/^  f2:	56                   	push   %esi$/;"	l
 f23	user/usertests.asm	/^     f23:	83 ec 08             	sub    $0x8,%esp$/;"	l
-f25	user/sh.asm	/^ f25:	8b 15 a4 16 00 00    	mov    0x16a4,%edx$/;"	l
+f25	user/sh.asm	/^ f25:	85 d2                	test   %edx,%edx$/;"	l
 f26	user/usertests.asm	/^     f26:	68 eb 42 00 00       	push   $0x42eb$/;"	l
-f2b	user/sh.asm	/^ f2b:	85 d2                	test   %edx,%edx$/;"	l
+f27	user/sh.asm	/^ f27:	74 20                	je     f49 <malloc+0x3f>$/;"	l
+f29	user/sh.asm	/^ f29:	8b 02                	mov    (%edx),%eax$/;"	l
+f2b	user/sh.asm	/^ f2b:	8b 48 04             	mov    0x4(%eax),%ecx$/;"	l
 f2b	user/usertests.asm	/^     f2b:	6a 01                	push   $0x1$/;"	l
-f2d	user/sh.asm	/^ f2d:	74 20                	je     f4f <malloc+0x3f>$/;"	l
-f2d	user/usertests.asm	/^     f2d:	e8 a6 29 00 00       	call   38d8 <printf>$/;"	l
-f2f	user/sh.asm	/^ f2f:	8b 02                	mov    (%edx),%eax$/;"	l
-f3	user/kill.asm	/^  f3:	38 d1                	cmp    %dl,%cl$/;"	l
+f2d	user/usertests.asm	/^     f2d:	e8 9a 29 00 00       	call   38cc <printf>$/;"	l
+f2e	user/sh.asm	/^ f2e:	39 cb                	cmp    %ecx,%ebx$/;"	l
+f3	user/kill.asm	/^  f3:	89 d9                	mov    %ebx,%ecx$/;"	l
 f3	user/ln.asm	/^  f3:	84 d2                	test   %dl,%dl$/;"	l
-f3	user/sh.asm	/^  f3:	e8 dc 0a 00 00       	call   bd4 <open>$/;"	l
-f3	user/usertests.asm	/^      f3:	e8 94 36 00 00       	call   378c <fork>$/;"	l
-f31	user/sh.asm	/^ f31:	8b 48 04             	mov    0x4(%eax),%ecx$/;"	l
-f32	user/usertests.asm	/^     f32:	e8 5d 28 00 00       	call   3794 <exit>$/;"	l
-f34	user/sh.asm	/^ f34:	39 cb                	cmp    %ecx,%ebx$/;"	l
-f36	user/sh.asm	/^ f36:	76 3c                	jbe    f74 <malloc+0x64>$/;"	l
+f3	user/ps.asm	/^  f3:	be 00 00 00 00       	mov    $0x0,%esi$/;"	l
+f3	user/sh.asm	/^  f3:	e8 da 0a 00 00       	call   bd2 <open>$/;"	l
+f3	user/usertests.asm	/^      f3:	e8 92 36 00 00       	call   378a <fork>$/;"	l
+f3	user/zombie.asm	/^  f3:	53                   	push   %ebx$/;"	l
+f30	user/sh.asm	/^ f30:	76 3c                	jbe    f6e <malloc+0x64>$/;"	l
+f32	user/sh.asm	/^ f32:	81 fb 00 10 00 00    	cmp    $0x1000,%ebx$/;"	l
+f32	user/usertests.asm	/^     f32:	e8 5b 28 00 00       	call   3792 <exit>$/;"	l
 f37	user/usertests.asm	/^     f37:	83 ec 04             	sub    $0x4,%esp$/;"	l
-f38	user/sh.asm	/^ f38:	81 fb 00 10 00 00    	cmp    $0x1000,%ebx$/;"	l
+f38	user/sh.asm	/^ f38:	be 00 10 00 00       	mov    $0x1000,%esi$/;"	l
 f3a	user/usertests.asm	/^     f3a:	50                   	push   %eax$/;"	l
 f3b	user/usertests.asm	/^     f3b:	68 60 40 00 00       	push   $0x4060$/;"	l
-f3e	user/sh.asm	/^ f3e:	be 00 10 00 00       	mov    $0x1000,%esi$/;"	l
-f4	user/echo.asm	/^  f4:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
+f3d	user/sh.asm	/^ f3d:	0f 43 f3             	cmovae %ebx,%esi$/;"	l
+f4	user/echo.asm	/^  f4:	53                   	push   %ebx$/;"	l
 f4	user/forktest.asm	/^  f4:	55                   	push   %ebp$/;"	l
 f4	user/grep.asm	/^  f4:	eb 17                	jmp    10d <match+0x43>$/;"	l
-f4	user/slabtest.asm	/^  f4:	6a 01                	push   $0x1$/;"	l
+f4	user/slabtest.asm	/^  f4:	83 ec 04             	sub    $0x4,%esp$/;"	l
+f4	user/zombie.asm	/^  f4:	83 ec 1c             	sub    $0x1c,%esp$/;"	l
+f40	user/sh.asm	/^ f40:	8d 3c f5 00 00 00 00 	lea    0x0(,%esi,8),%edi$/;"	l
 f40	user/usertests.asm	/^     f40:	6a 01                	push   $0x1$/;"	l
-f42	user/usertests.asm	/^     f42:	e8 91 29 00 00       	call   38d8 <printf>$/;"	l
-f43	user/sh.asm	/^ f43:	0f 43 f3             	cmovae %ebx,%esi$/;"	l
-f46	user/sh.asm	/^ f46:	8d 3c f5 00 00 00 00 	lea    0x0(,%esi,8),%edi$/;"	l
-f47	user/usertests.asm	/^     f47:	e8 48 28 00 00       	call   3794 <exit>$/;"	l
+f42	user/usertests.asm	/^     f42:	e8 85 29 00 00       	call   38cc <printf>$/;"	l
+f47	user/sh.asm	/^ f47:	eb 70                	jmp    fb9 <malloc+0xaf>$/;"	l
+f47	user/usertests.asm	/^     f47:	e8 46 28 00 00       	call   3792 <exit>$/;"	l
+f49	user/sh.asm	/^ f49:	c7 05 a4 16 00 00 a8 	movl   $0x16a8,0x16a4$/;"	l
 f4c	user/usertests.asm	/^     f4c:	01 d3                	add    %edx,%ebx$/;"	l
-f4d	user/sh.asm	/^ f4d:	eb 72                	jmp    fc1 <malloc+0xb1>$/;"	l
 f4e	user/usertests.asm	/^     f4e:	83 ec 04             	sub    $0x4,%esp$/;"	l
-f4f	user/sh.asm	/^ f4f:	c7 05 a4 16 00 00 a8 	movl   $0x16a8,0x16a4$/;"	l
+f5	user/echo.asm	/^  f5:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
 f5	user/forktest.asm	/^  f5:	89 e5                	mov    %esp,%ebp$/;"	l
-f5	user/init.asm	/^  f5:	83 c0 01             	add    $0x1,%eax$/;"	l
-f5	user/kill.asm	/^  f5:	74 0f                	je     106 <strchr+0x24>$/;"	l
-f5	user/ln.asm	/^  f5:	74 15                	je     10c <strchr+0x26>$/;"	l
+f5	user/init.asm	/^  f5:	88 5a ff             	mov    %bl,-0x1(%edx)$/;"	l
+f5	user/kill.asm	/^  f5:	38 d3                	cmp    %dl,%bl$/;"	l
+f5	user/ln.asm	/^  f5:	74 1e                	je     115 <strchr+0x2f>$/;"	l
 f5	user/ls.asm	/^  f5:	53                   	push   %ebx$/;"	l
 f5	user/mkdir.asm	/^  f5:	8b 45 0c             	mov    0xc(%ebp),%eax$/;"	l
-f5	user/ps.asm	/^  f5:	89 5d d4             	mov    %ebx,-0x2c(%ebp)$/;"	l
 f5	user/rm.asm	/^  f5:	8b 45 0c             	mov    0xc(%ebp),%eax$/;"	l
+f50	user/sh.asm	/^ f50:	16 00 00 $/;"	l
 f51	user/usertests.asm	/^     f51:	68 00 20 00 00       	push   $0x2000$/;"	l
-f56	user/sh.asm	/^ f56:	16 00 00 $/;"	l
+f53	user/sh.asm	/^ f53:	c7 05 a8 16 00 00 a8 	movl   $0x16a8,0x16a8$/;"	l
 f56	user/usertests.asm	/^     f56:	68 00 84 00 00       	push   $0x8400$/;"	l
-f59	user/sh.asm	/^ f59:	c7 05 a8 16 00 00 a8 	movl   $0x16a8,0x16a8$/;"	l
+f5a	user/sh.asm	/^ f5a:	16 00 00 $/;"	l
 f5b	user/usertests.asm	/^     f5b:	56                   	push   %esi$/;"	l
-f5c	user/usertests.asm	/^     f5c:	e8 4b 28 00 00       	call   37ac <read>$/;"	l
-f6	user/cat.asm	/^  f6:	e8 c2 01 00 00       	call   2bd <exit>$/;"	l
+f5c	user/usertests.asm	/^     f5c:	e8 49 28 00 00       	call   37aa <read>$/;"	l
+f5d	user/sh.asm	/^ f5d:	c7 05 ac 16 00 00 00 	movl   $0x0,0x16ac$/;"	l
+f6	user/cat.asm	/^  f6:	e8 c0 01 00 00       	call   2bb <exit>$/;"	l
 f6	user/grep.asm	/^  f6:	83 ec 08             	sub    $0x8,%esp$/;"	l
 f6	user/ls.asm	/^  f6:	e8 05 ff ff ff       	call   0 <fmtname>$/;"	l
-f6	user/slabtest.asm	/^  f6:	57                   	push   %edi$/;"	l
 f6	user/stressfs.asm	/^  f6:	83 c4 10             	add    $0x10,%esp$/;"	l
-f6	user/zombie.asm	/^  f6:	8d 7d e7             	lea    -0x19(%ebp),%edi$/;"	l
-f60	user/sh.asm	/^ f60:	16 00 00 $/;"	l
 f61	user/usertests.asm	/^     f61:	83 c4 10             	add    $0x10,%esp$/;"	l
-f63	user/sh.asm	/^ f63:	c7 05 ac 16 00 00 00 	movl   $0x0,0x16ac$/;"	l
+f64	user/sh.asm	/^ f64:	00 00 00 $/;"	l
 f64	user/usertests.asm	/^     f64:	85 c0                	test   %eax,%eax$/;"	l
 f66	user/usertests.asm	/^     f66:	7e 36                	jle    f9e <fourfiles+0x167>$/;"	l
+f67	user/sh.asm	/^ f67:	ba a8 16 00 00       	mov    $0x16a8,%edx$/;"	l
 f68	user/usertests.asm	/^     f68:	0f b6 0d 00 84 00 00 	movzbl 0x8400,%ecx$/;"	l
-f6a	user/sh.asm	/^ f6a:	00 00 00 $/;"	l
-f6d	user/sh.asm	/^ f6d:	b8 a8 16 00 00       	mov    $0x16a8,%eax$/;"	l
+f6c	user/sh.asm	/^ f6c:	eb bb                	jmp    f29 <malloc+0x1f>$/;"	l
+f6e	user/sh.asm	/^ f6e:	39 cb                	cmp    %ecx,%ebx$/;"	l
 f6f	user/usertests.asm	/^     f6f:	0f be d1             	movsbl %cl,%edx$/;"	l
-f7	user/echo.asm	/^  f7:	0f b6 4d 0c          	movzbl 0xc(%ebp),%ecx$/;"	l
 f7	user/forktest.asm	/^  f7:	53                   	push   %ebx$/;"	l
-f7	user/kill.asm	/^  f7:	83 c0 01             	add    $0x1,%eax$/;"	l
-f7	user/ln.asm	/^  f7:	38 d1                	cmp    %dl,%cl$/;"	l
-f7	user/slabtest.asm	/^  f7:	6a 00                	push   $0x0$/;"	l
+f7	user/kill.asm	/^  f7:	74 15                	je     10e <strchr+0x2c>$/;"	l
+f7	user/ln.asm	/^  f7:	89 d9                	mov    %ebx,%ecx$/;"	l
+f7	user/slabtest.asm	/^  f7:	6a 01                	push   $0x1$/;"	l
 f7	user/wc.asm	/^  f7:	83 f8 01             	cmp    $0x1,%eax$/;"	l
-f72	user/sh.asm	/^ f72:	eb c4                	jmp    f38 <malloc+0x28>$/;"	l
+f7	user/zombie.asm	/^  f7:	be 00 00 00 00       	mov    $0x0,%esi$/;"	l
+f70	user/sh.asm	/^ f70:	74 1c                	je     f8e <malloc+0x84>$/;"	l
+f72	user/sh.asm	/^ f72:	29 d9                	sub    %ebx,%ecx$/;"	l
 f72	user/usertests.asm	/^     f72:	39 fa                	cmp    %edi,%edx$/;"	l
-f74	user/sh.asm	/^ f74:	39 cb                	cmp    %ecx,%ebx$/;"	l
+f74	user/sh.asm	/^ f74:	89 48 04             	mov    %ecx,0x4(%eax)$/;"	l
 f74	user/usertests.asm	/^     f74:	75 14                	jne    f8a <fourfiles+0x153>$/;"	l
-f76	user/sh.asm	/^ f76:	74 1e                	je     f96 <malloc+0x86>$/;"	l
 f76	user/usertests.asm	/^     f76:	ba 00 00 00 00       	mov    $0x0,%edx$/;"	l
-f78	user/sh.asm	/^ f78:	29 d9                	sub    %ebx,%ecx$/;"	l
-f7a	user/sh.asm	/^ f7a:	89 48 04             	mov    %ecx,0x4(%eax)$/;"	l
+f77	user/sh.asm	/^ f77:	8d 04 c8             	lea    (%eax,%ecx,8),%eax$/;"	l
+f7a	user/sh.asm	/^ f7a:	89 58 04             	mov    %ebx,0x4(%eax)$/;"	l
 f7b	user/usertests.asm	/^     f7b:	83 c2 01             	add    $0x1,%edx$/;"	l
-f7d	user/sh.asm	/^ f7d:	8d 04 c8             	lea    (%eax,%ecx,8),%eax$/;"	l
+f7d	user/sh.asm	/^ f7d:	89 15 a4 16 00 00    	mov    %edx,0x16a4$/;"	l
 f7e	user/usertests.asm	/^     f7e:	39 d0                	cmp    %edx,%eax$/;"	l
-f8	user/forktest.asm	/^  f8:	8b 4d 08             	mov    0x8(%ebp),%ecx$/;"	l
-f8	user/init.asm	/^  f8:	84 d2                	test   %dl,%dl$/;"	l
+f8	user/echo.asm	/^  f8:	8b 5d 0c             	mov    0xc(%ebp),%ebx$/;"	l
+f8	user/forktest.asm	/^  f8:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
+f8	user/init.asm	/^  f8:	84 db                	test   %bl,%bl$/;"	l
 f8	user/mkdir.asm	/^  f8:	fc                   	cld    $/;"	l
-f8	user/ps.asm	/^  f8:	83 c3 01             	add    $0x1,%ebx$/;"	l
+f8	user/ps.asm	/^  f8:	8d 7d e7             	lea    -0x19(%ebp),%edi$/;"	l
 f8	user/rm.asm	/^  f8:	fc                   	cld    $/;"	l
 f8	user/sh.asm	/^  f8:	83 c4 10             	add    $0x10,%esp$/;"	l
 f8	user/usertests.asm	/^      f8:	83 c4 10             	add    $0x10,%esp$/;"	l
-f80	user/sh.asm	/^ f80:	89 58 04             	mov    %ebx,0x4(%eax)$/;"	l
 f80	user/usertests.asm	/^     f80:	74 ca                	je     f4c <fourfiles+0x115>$/;"	l
 f82	user/usertests.asm	/^     f82:	38 8a 00 84 00 00    	cmp    %cl,0x8400(%edx)$/;"	l
-f83	user/sh.asm	/^ f83:	89 15 a4 16 00 00    	mov    %edx,0x16a4$/;"	l
+f83	user/sh.asm	/^ f83:	83 c0 08             	add    $0x8,%eax$/;"	l
+f86	user/sh.asm	/^ f86:	8d 65 f4             	lea    -0xc(%ebp),%esp$/;"	l
 f88	user/usertests.asm	/^     f88:	74 f1                	je     f7b <fourfiles+0x144>$/;"	l
-f89	user/sh.asm	/^ f89:	8d 50 08             	lea    0x8(%eax),%edx$/;"	l
+f89	user/sh.asm	/^ f89:	5b                   	pop    %ebx$/;"	l
+f8a	user/sh.asm	/^ f8a:	5e                   	pop    %esi$/;"	l
 f8a	user/usertests.asm	/^     f8a:	83 ec 08             	sub    $0x8,%esp$/;"	l
-f8c	user/sh.asm	/^ f8c:	89 d0                	mov    %edx,%eax$/;"	l
+f8b	user/sh.asm	/^ f8b:	5f                   	pop    %edi$/;"	l
+f8c	user/sh.asm	/^ f8c:	5d                   	pop    %ebp$/;"	l
+f8d	user/sh.asm	/^ f8d:	c3                   	ret    $/;"	l
 f8d	user/usertests.asm	/^     f8d:	68 71 40 00 00       	push   $0x4071$/;"	l
-f8e	user/sh.asm	/^ f8e:	8d 65 f4             	lea    -0xc(%ebp),%esp$/;"	l
+f8e	user/sh.asm	/^ f8e:	8b 08                	mov    (%eax),%ecx$/;"	l
 f9	user/grep.asm	/^  f9:	53                   	push   %ebx$/;"	l
-f9	user/ln.asm	/^  f9:	74 0f                	je     10a <strchr+0x24>$/;"	l
+f9	user/kill.asm	/^  f9:	83 c0 01             	add    $0x1,%eax$/;"	l
+f9	user/ln.asm	/^  f9:	38 d3                	cmp    %dl,%bl$/;"	l
 f9	user/mkdir.asm	/^  f9:	f3 aa                	rep stos %al,%es:(%edi)$/;"	l
 f9	user/rm.asm	/^  f9:	f3 aa                	rep stos %al,%es:(%edi)$/;"	l
-f9	user/slabtest.asm	/^  f9:	e8 f7 00 00 00       	call   1f5 <read>$/;"	l
+f9	user/slabtest.asm	/^  f9:	57                   	push   %edi$/;"	l
 f9	user/stressfs.asm	/^  f9:	83 eb 01             	sub    $0x1,%ebx$/;"	l
-f9	user/zombie.asm	/^  f9:	89 5d d4             	mov    %ebx,-0x2c(%ebp)$/;"	l
-f91	user/sh.asm	/^ f91:	5b                   	pop    %ebx$/;"	l
-f92	user/sh.asm	/^ f92:	5e                   	pop    %esi$/;"	l
+f90	user/sh.asm	/^ f90:	89 0a                	mov    %ecx,(%edx)$/;"	l
+f92	user/sh.asm	/^ f92:	eb e9                	jmp    f7d <malloc+0x73>$/;"	l
 f92	user/usertests.asm	/^     f92:	6a 01                	push   $0x1$/;"	l
-f93	user/sh.asm	/^ f93:	5f                   	pop    %edi$/;"	l
-f94	user/sh.asm	/^ f94:	5d                   	pop    %ebp$/;"	l
-f94	user/usertests.asm	/^     f94:	e8 3f 29 00 00       	call   38d8 <printf>$/;"	l
-f95	user/sh.asm	/^ f95:	c3                   	ret    $/;"	l
-f96	user/sh.asm	/^ f96:	8b 08                	mov    (%eax),%ecx$/;"	l
-f98	user/sh.asm	/^ f98:	89 0a                	mov    %ecx,(%edx)$/;"	l
-f99	user/usertests.asm	/^     f99:	e8 f6 27 00 00       	call   3794 <exit>$/;"	l
-f9a	user/sh.asm	/^ f9a:	eb e7                	jmp    f83 <malloc+0x73>$/;"	l
-f9c	user/sh.asm	/^ f9c:	89 70 04             	mov    %esi,0x4(%eax)$/;"	l
+f94	user/sh.asm	/^ f94:	89 70 04             	mov    %esi,0x4(%eax)$/;"	l
+f94	user/usertests.asm	/^     f94:	e8 33 29 00 00       	call   38cc <printf>$/;"	l
+f97	user/sh.asm	/^ f97:	83 ec 0c             	sub    $0xc,%esp$/;"	l
+f99	user/usertests.asm	/^     f99:	e8 f4 27 00 00       	call   3792 <exit>$/;"	l
+f9a	user/sh.asm	/^ f9a:	83 c0 08             	add    $0x8,%eax$/;"	l
+f9d	user/sh.asm	/^ f9d:	50                   	push   %eax$/;"	l
+f9e	user/sh.asm	/^ f9e:	e8 f9 fe ff ff       	call   e9c <free>$/;"	l
 f9e	user/usertests.asm	/^     f9e:	83 ec 0c             	sub    $0xc,%esp$/;"	l
-f9f	user/sh.asm	/^ f9f:	83 ec 0c             	sub    $0xc,%esp$/;"	l
 fa	user/grep.asm	/^  fa:	83 c6 01             	add    $0x1,%esi$/;"	l
-fa	user/init.asm	/^  fa:	75 f2                	jne    ee <strcpy+0xf>$/;"	l
-fa	user/kill.asm	/^  fa:	0f b6 10             	movzbl (%eax),%edx$/;"	l
+fa	user/init.asm	/^  fa:	75 ef                	jne    eb <strcpy+0xc>$/;"	l
+fa	user/slabtest.asm	/^  fa:	6a 00                	push   $0x0$/;"	l
 fa	user/wc.asm	/^  fa:	7e 3e                	jle    13a <main+0x67>$/;"	l
 fa1	user/usertests.asm	/^     fa1:	56                   	push   %esi$/;"	l
-fa2	user/sh.asm	/^ fa2:	83 c0 08             	add    $0x8,%eax$/;"	l
-fa2	user/usertests.asm	/^     fa2:	e8 15 28 00 00       	call   37bc <close>$/;"	l
-fa5	user/sh.asm	/^ fa5:	50                   	push   %eax$/;"	l
-fa6	user/sh.asm	/^ fa6:	e8 f7 fe ff ff       	call   ea2 <free>$/;"	l
+fa2	user/usertests.asm	/^     fa2:	e8 13 28 00 00       	call   37ba <close>$/;"	l
+fa3	user/sh.asm	/^ fa3:	8b 15 a4 16 00 00    	mov    0x16a4,%edx$/;"	l
 fa7	user/usertests.asm	/^     fa7:	83 c4 10             	add    $0x10,%esp$/;"	l
+fa9	user/sh.asm	/^ fa9:	83 c4 10             	add    $0x10,%esp$/;"	l
 faa	user/usertests.asm	/^     faa:	81 fb 70 17 00 00    	cmp    $0x1770,%ebx$/;"	l
-fab	user/sh.asm	/^ fab:	8b 15 a4 16 00 00    	mov    0x16a4,%edx$/;"	l
+fac	user/sh.asm	/^ fac:	85 d2                	test   %edx,%edx$/;"	l
+fae	user/sh.asm	/^ fae:	74 2b                	je     fdb <malloc+0xd1>$/;"	l
 fb	user/cat.asm	/^  fb:	55                   	push   %ebp$/;"	l
 fb	user/echo.asm	/^  fb:	0f b6 10             	movzbl (%eax),%edx$/;"	l
-fb	user/forktest.asm	/^  fb:	8b 5d 0c             	mov    0xc(%ebp),%ebx$/;"	l
-fb	user/ln.asm	/^  fb:	83 c0 01             	add    $0x1,%eax$/;"	l
+fb	user/forktest.asm	/^  fb:	8b 4d 0c             	mov    0xc(%ebp),%ecx$/;"	l
+fb	user/ln.asm	/^  fb:	74 15                	je     112 <strchr+0x2c>$/;"	l
 fb	user/ls.asm	/^  fb:	83 c4 08             	add    $0x8,%esp$/;"	l
 fb	user/mkdir.asm	/^  fb:	89 d0                	mov    %edx,%eax$/;"	l
-fb	user/ps.asm	/^  fb:	3b 5d 0c             	cmp    0xc(%ebp),%ebx$/;"	l
+fb	user/ps.asm	/^  fb:	8d 5e 01             	lea    0x1(%esi),%ebx$/;"	l
 fb	user/rm.asm	/^  fb:	89 d0                	mov    %edx,%eax$/;"	l
 fb	user/sh.asm	/^  fb:	85 c0                	test   %eax,%eax$/;"	l
 fb	user/usertests.asm	/^      fb:	85 c0                	test   %eax,%eax$/;"	l
+fb0	user/sh.asm	/^ fb0:	8b 02                	mov    (%edx),%eax$/;"	l
 fb0	user/usertests.asm	/^     fb0:	75 3a                	jne    fec <fourfiles+0x1b5>$/;"	l
-fb1	user/sh.asm	/^ fb1:	83 c4 10             	add    $0x10,%esp$/;"	l
+fb2	user/sh.asm	/^ fb2:	8b 48 04             	mov    0x4(%eax),%ecx$/;"	l
 fb2	user/usertests.asm	/^     fb2:	83 ec 0c             	sub    $0xc,%esp$/;"	l
-fb4	user/sh.asm	/^ fb4:	85 d2                	test   %edx,%edx$/;"	l
+fb5	user/sh.asm	/^ fb5:	39 d9                	cmp    %ebx,%ecx$/;"	l
 fb5	user/usertests.asm	/^     fb5:	ff 75 d4             	pushl  -0x2c(%ebp)$/;"	l
-fb6	user/sh.asm	/^ fb6:	74 d4                	je     f8c <malloc+0x7c>$/;"	l
-fb8	user/sh.asm	/^ fb8:	8b 02                	mov    (%edx),%eax$/;"	l
-fb8	user/usertests.asm	/^     fb8:	e8 27 28 00 00       	call   37e4 <unlink>$/;"	l
-fba	user/sh.asm	/^ fba:	8b 48 04             	mov    0x4(%eax),%ecx$/;"	l
-fbd	user/sh.asm	/^ fbd:	39 d9                	cmp    %ebx,%ecx$/;"	l
+fb7	user/sh.asm	/^ fb7:	73 b5                	jae    f6e <malloc+0x64>$/;"	l
+fb8	user/usertests.asm	/^     fb8:	e8 25 28 00 00       	call   37e2 <unlink>$/;"	l
+fb9	user/sh.asm	/^ fb9:	89 c2                	mov    %eax,%edx$/;"	l
+fbb	user/sh.asm	/^ fbb:	39 05 a4 16 00 00    	cmp    %eax,0x16a4$/;"	l
 fbd	user/usertests.asm	/^     fbd:	83 c7 01             	add    $0x1,%edi$/;"	l
-fbf	user/sh.asm	/^ fbf:	73 b3                	jae    f74 <malloc+0x64>$/;"	l
 fc	user/cat.asm	/^  fc:	89 e5                	mov    %esp,%ebp$/;"	l
-fc	user/init.asm	/^  fc:	89 c8                	mov    %ecx,%eax$/;"	l
+fc	user/init.asm	/^  fc:	5b                   	pop    %ebx$/;"	l
+fc	user/kill.asm	/^  fc:	0f b6 10             	movzbl (%eax),%edx$/;"	l
+fc	user/slabtest.asm	/^  fc:	e8 f2 00 00 00       	call   1f3 <read>$/;"	l
 fc	user/stressfs.asm	/^  fc:	75 e9                	jne    e7 <main+0xe7>$/;"	l
 fc	user/wc.asm	/^  fc:	89 5d e0             	mov    %ebx,-0x20(%ebp)$/;"	l
-fc	user/zombie.asm	/^  fc:	83 c3 01             	add    $0x1,%ebx$/;"	l
+fc	user/zombie.asm	/^  fc:	8d 7d e7             	lea    -0x19(%ebp),%edi$/;"	l
 fc0	user/usertests.asm	/^     fc0:	83 c4 10             	add    $0x10,%esp$/;"	l
-fc1	user/sh.asm	/^ fc1:	89 c2                	mov    %eax,%edx$/;"	l
-fc3	user/sh.asm	/^ fc3:	39 05 a4 16 00 00    	cmp    %eax,0x16a4$/;"	l
+fc1	user/sh.asm	/^ fc1:	75 ed                	jne    fb0 <malloc+0xa6>$/;"	l
+fc3	user/sh.asm	/^ fc3:	83 ec 0c             	sub    $0xc,%esp$/;"	l
 fc3	user/usertests.asm	/^     fc3:	83 ff 32             	cmp    $0x32,%edi$/;"	l
+fc6	user/sh.asm	/^ fc6:	57                   	push   %edi$/;"	l
 fc6	user/usertests.asm	/^     fc6:	74 39                	je     1001 <fourfiles+0x1ca>$/;"	l
+fc7	user/sh.asm	/^ fc7:	e8 4e fc ff ff       	call   c1a <sbrk>$/;"	l
 fc8	user/usertests.asm	/^     fc8:	8b 84 bd 18 ff ff ff 	mov    -0xe8(%ebp,%edi,4),%eax$/;"	l
-fc9	user/sh.asm	/^ fc9:	75 ed                	jne    fb8 <malloc+0xa8>$/;"	l
-fcb	user/sh.asm	/^ fcb:	83 ec 0c             	sub    $0xc,%esp$/;"	l
-fce	user/sh.asm	/^ fce:	57                   	push   %edi$/;"	l
-fcf	user/sh.asm	/^ fcf:	e8 48 fc ff ff       	call   c1c <sbrk>$/;"	l
+fcc	user/sh.asm	/^ fcc:	83 c4 10             	add    $0x10,%esp$/;"	l
+fcf	user/sh.asm	/^ fcf:	83 f8 ff             	cmp    $0xffffffff,%eax$/;"	l
 fcf	user/usertests.asm	/^     fcf:	89 45 d4             	mov    %eax,-0x2c(%ebp)$/;"	l
 fd	user/cat.asm	/^  fd = open(n, O_RDONLY);$/;"	d
 fd	user/echo.asm	/^  fd = open(n, O_RDONLY);$/;"	d
@@ -2258,9 +2273,10 @@ fd	user/forktest.asm	/^  fd = open(n, O_RDONLY);$/;"	d
 fd	user/grep.asm	/^  fd = open(n, O_RDONLY);$/;"	d
 fd	user/grep.asm	/^  fd:	56                   	push   %esi$/;"	l
 fd	user/init.asm	/^  fd = open(n, O_RDONLY);$/;"	d
+fd	user/init.asm	/^  fd:	5d                   	pop    %ebp$/;"	l
 fd	user/kill.asm	/^  fd = open(n, O_RDONLY);$/;"	d
-fd	user/kill.asm	/^  fd:	84 d2                	test   %dl,%dl$/;"	l
 fd	user/ln.asm	/^  fd = open(n, O_RDONLY);$/;"	d
+fd	user/ln.asm	/^  fd:	83 c0 01             	add    $0x1,%eax$/;"	l
 fd	user/ls.asm	/^  fd = open(n, O_RDONLY);$/;"	d
 fd	user/mkdir.asm	/^  fd = open(n, O_RDONLY);$/;"	d
 fd	user/mkdir.asm	/^  fd:	5f                   	pop    %edi$/;"	l
@@ -2276,30 +2292,28 @@ fd	user/usertests.asm	/^      fd:	78 49                	js     148 <exitiputtest
 fd	user/usertests.asm	/^  fd = open(n, O_RDONLY);$/;"	d
 fd	user/wc.asm	/^  fd = open(n, O_RDONLY);$/;"	d
 fd	user/zombie.asm	/^  fd = open(n, O_RDONLY);$/;"	d
+fd2	user/sh.asm	/^ fd2:	75 c0                	jne    f94 <malloc+0x8a>$/;"	l
 fd2	user/usertests.asm	/^     fd2:	83 ec 08             	sub    $0x8,%esp$/;"	l
-fd4	user/sh.asm	/^ fd4:	83 c4 10             	add    $0x10,%esp$/;"	l
+fd4	user/sh.asm	/^ fd4:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
 fd5	user/usertests.asm	/^     fd5:	6a 00                	push   $0x0$/;"	l
-fd7	user/sh.asm	/^ fd7:	83 f8 ff             	cmp    $0xffffffff,%eax$/;"	l
 fd7	user/usertests.asm	/^     fd7:	50                   	push   %eax$/;"	l
-fd8	user/usertests.asm	/^     fd8:	e8 f7 27 00 00       	call   37d4 <open>$/;"	l
-fda	user/sh.asm	/^ fda:	75 c0                	jne    f9c <malloc+0x8c>$/;"	l
+fd8	user/usertests.asm	/^     fd8:	e8 f5 27 00 00       	call   37d2 <open>$/;"	l
+fd9	user/sh.asm	/^ fd9:	eb ab                	jmp    f86 <malloc+0x7c>$/;"	l
 fdalloc	sysfile.c	/^fdalloc(struct file *f)$/;"	f	file:
-fdc	user/sh.asm	/^ fdc:	ba 00 00 00 00       	mov    $0x0,%edx$/;"	l
+fdb	user/sh.asm	/^ fdb:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
 fdd	user/usertests.asm	/^     fdd:	89 c6                	mov    %eax,%esi$/;"	l
 fdf	user/usertests.asm	/^     fdf:	83 c4 10             	add    $0x10,%esp$/;"	l
 fe	user/cat.asm	/^  fe:	53                   	push   %ebx$/;"	l
 fe	user/echo.asm	/^  fe:	84 d2                	test   %dl,%dl$/;"	l
-fe	user/forktest.asm	/^  fe:	b8 00 00 00 00       	mov    $0x0,%eax$/;"	l
+fe	user/forktest.asm	/^  fe:	89 c2                	mov    %eax,%edx$/;"	l
 fe	user/grep.asm	/^  fe:	e8 45 ff ff ff       	call   48 <matchhere>$/;"	l
-fe	user/init.asm	/^  fe:	5b                   	pop    %ebx$/;"	l
-fe	user/ln.asm	/^  fe:	0f b6 10             	movzbl (%eax),%edx$/;"	l
+fe	user/init.asm	/^  fe:	c3                   	ret    $/;"	l
 fe	user/ls.asm	/^  fe:	57                   	push   %edi$/;"	l
 fe	user/mkdir.asm	/^  fe:	5d                   	pop    %ebp$/;"	l
-fe	user/ps.asm	/^  fe:	7d 27                	jge    127 <gets+0x46>$/;"	l
+fe	user/ps.asm	/^  fe:	3b 5d 0c             	cmp    0xc(%ebp),%ebx$/;"	l
 fe	user/rm.asm	/^  fe:	5d                   	pop    %ebp$/;"	l
-fe	user/slabtest.asm	/^  fe:	83 c4 10             	add    $0x10,%esp$/;"	l
 fe	user/stressfs.asm	/^  fe:	83 ec 0c             	sub    $0xc,%esp$/;"	l
-fe1	user/sh.asm	/^ fe1:	eb a9                	jmp    f8c <malloc+0x7c>$/;"	l
+fe0	user/sh.asm	/^ fe0:	eb a4                	jmp    f86 <malloc+0x7c>$/;"	l
 fe2	user/usertests.asm	/^     fe2:	bb 00 00 00 00       	mov    $0x0,%ebx$/;"	l
 fe7	user/usertests.asm	/^     fe7:	e9 62 ff ff ff       	jmp    f4e <fourfiles+0x117>$/;"	l
 feature	mp.h	/^  uint feature;                 \/\/ feature flags from CPUID instruction$/;"	m	struct:mpproc
@@ -2307,20 +2321,20 @@ fec	user/usertests.asm	/^     fec:	83 ec 04             	sub    $0x4,%esp$/;"	l
 fef	user/usertests.asm	/^     fef:	53                   	push   %ebx$/;"	l
 fetchint	syscall.c	/^fetchint(uint addr, int *ip)$/;"	f
 fetchstr	syscall.c	/^fetchstr(uint addr, char **pp)$/;"	f
-ff	user/cat.asm	/^  ff:	8b 4d 08             	mov    0x8(%ebp),%ecx$/;"	l
-ff	user/init.asm	/^  ff:	5d                   	pop    %ebp$/;"	l
-ff	user/kill.asm	/^  ff:	75 f2                	jne    f3 <strchr+0x11>$/;"	l
+ff	user/cat.asm	/^  ff:	8b 45 08             	mov    0x8(%ebp),%eax$/;"	l
+ff	user/init.asm	/^  ff:	55                   	push   %ebp$/;"	l
+ff	user/kill.asm	/^  ff:	84 d2                	test   %dl,%dl$/;"	l
 ff	user/ls.asm	/^  ff:	ff b5 b4 fd ff ff    	pushl  -0x24c(%ebp)$/;"	l
 ff	user/mkdir.asm	/^  ff:	c3                   	ret    $/;"	l
 ff	user/rm.asm	/^  ff:	c3                   	ret    $/;"	l
 ff	user/sh.asm	/^  ff:	83 ec 04             	sub    $0x4,%esp$/;"	l
 ff	user/usertests.asm	/^      ff:	85 c0                	test   %eax,%eax$/;"	l
 ff	user/wc.asm	/^  ff:	83 ec 08             	sub    $0x8,%esp$/;"	l
-ff	user/zombie.asm	/^  ff:	3b 5d 0c             	cmp    0xc(%ebp),%ebx$/;"	l
+ff	user/zombie.asm	/^  ff:	8d 5e 01             	lea    0x1(%esi),%ebx$/;"	l
 ff0	user/usertests.asm	/^     ff0:	68 7d 40 00 00       	push   $0x407d$/;"	l
 ff5	user/usertests.asm	/^     ff5:	6a 01                	push   $0x1$/;"	l
-ff7	user/usertests.asm	/^     ff7:	e8 dc 28 00 00       	call   38d8 <printf>$/;"	l
-ffc	user/usertests.asm	/^     ffc:	e8 93 27 00 00       	call   3794 <exit>$/;"	l
+ff7	user/usertests.asm	/^     ff7:	e8 d0 28 00 00       	call   38cc <printf>$/;"	l
+ffc	user/usertests.asm	/^     ffc:	e8 91 27 00 00       	call   3792 <exit>$/;"	l
 file	file.c	/^  struct file file[NFILE];$/;"	m	struct:__anon4	typeref:struct:__anon4::file	file:
 file	file.h	/^struct file {$/;"	s
 file	user/sh.c	/^  char *file;$/;"	m	struct:redircmd	file:

@@ -33,6 +33,8 @@ unsigned int nextPowerOf2Idx(unsigned int n)
 void slabinit()
 {
     /* fill in the blank */
+    initlock(&stable.lock, "stable");
+
     acquire(&stable.lock);
     struct slab *slab_ptr;
 

@@ -7,22 +7,12 @@
 #include "proc.h"
 #include "spinlock.h"
 
-#define DALLOC
-
-#ifdef DALLOC
 struct
 {
     struct spinlock lock;
     struct proc dummy;
     struct proc *proc;
 } ptable;
-#else
-struct
-{
-    struct spinlock lock;
-    struct proc proc[NPROC];
-} ptable;
-#endif
 
 static struct proc *initproc;
 
@@ -34,15 +24,12 @@ static void wakeup1(void *chan);
 
 void pinit(void)
 {
-#ifdef DALLOC
     ptable.dummy.pid = -1;
     ptable.dummy.state = UNUSED;
     ptable.dummy.prev = 0;
     ptable.dummy.next = 0;
     ptable.proc = &ptable.dummy;
-#else
-    memset(ptable.proc, 0, sizeof *ptable.proc);
-#endif
+
     initlock(&ptable.lock, "ptable");
 }
 
@@ -305,7 +292,7 @@ void exit(void)
     wakeup1(curproc->parent);
 
     // Pass abandoned children to init.
-    for (p = ptable.proc->next; p != ptable.proc; p = p->next)
+    for (p = ptable.proc->next; (p != ptable.proc) && (p != 0); p = p->next)
     {
         if (p->parent == curproc)
         {
@@ -349,7 +336,7 @@ int wait(void)
         havekids = 0;
         /**************** todo ****************/
 
-        for (p = ptable.proc->next; p != ptable.proc; p = p->next)
+        for (p = ptable.proc->next; (p != ptable.proc) && (p != 0); p = p->next)
         {
             if (p->parent != curproc)
                 continue;
@@ -359,6 +346,11 @@ int wait(void)
             {
                 // Found one.
                 pid = p->pid;
+                p->next->prev = p->prev;
+                p->prev->next = p->next;
+                p->prev = 0;
+                p->next = 0;
+
                 kfree(p->kstack);
                 p->kstack = 0;
                 freevm(p->pgdir);
@@ -368,11 +360,7 @@ int wait(void)
                 p->killed = 0;
                 p->state = UNUSED;
 
-                p->next->prev = p->prev;
-                p->prev->next = p->next;
-                p->prev = 0;
-                p->next = 0;
-                kmfree(p, sizeof(struct proc));
+                kmfree((char *)p, sizeof(struct proc));
 
                 release(&ptable.lock);
                 return pid;
@@ -437,7 +425,7 @@ void scheduler(void)
         // Loop over process table looking for process to run.
         acquire(&ptable.lock);
         /**************** todo ****************/
-        for (p = ptable.proc->next; p != ptable.proc; p = p->next) /* legacy code for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)*/
+        for (p = ptable.proc->next; (p != ptable.proc) && (p != 0); p = p->next) /* legacy code for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)*/
         {
             if (p->state != RUNNABLE)
                 continue;
@@ -564,7 +552,7 @@ wakeup1(void *chan)
     struct proc *p;
 
     /**************** todo ****************/
-    for (p = ptable.proc->next; p != ptable.proc; p = p->next)
+    for (p = ptable.proc->next; (p != ptable.proc) && (p != 0); p = p->next)
         if (p->state == SLEEPING && p->chan == chan)
             p->state = RUNNABLE;
 
@@ -591,7 +579,7 @@ int kill(int pid)
     struct proc *p;
 
     acquire(&ptable.lock);
-    for (p = ptable.proc->next; p != ptable.proc; p = p->next) /* legacy code for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)*/
+    for (p = ptable.proc->next; (p != ptable.proc) && (p != 0); p = p->next) /* legacy code for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)*/
     {
         if (p->pid == pid)
         {
@@ -625,7 +613,7 @@ void procdump(void)
     char *state;
     uint pc[10];
 
-    for (p = ptable.proc->next; p != ptable.proc; p = p->next) /* legacy code for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)*/
+    for (p = ptable.proc->next; (p != ptable.proc) && (p != 0); p = p->next) /* legacy code for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)*/
     {
         if (p->state == UNUSED)
             continue;
@@ -660,7 +648,7 @@ void ps(void)
     acquire(&ptable.lock);
 
     /**************** todo ****************/
-    for (p = ptable.proc->next; p != ptable.proc; p = p->next)
+    for (p = ptable.proc->next; (p != ptable.proc) && (p != 0); p = p->next)
     {
         if (p->state >= 0 && p->state < NELEM(states) && states[p->state])
             state = states[p->state];
