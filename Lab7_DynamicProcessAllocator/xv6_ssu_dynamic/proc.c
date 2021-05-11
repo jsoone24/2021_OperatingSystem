@@ -373,7 +373,7 @@ int wait(void)
                 p->prev = 0;
                 p->next = 0;
                 kmfree(p, sizeof(struct proc));
-                
+
                 release(&ptable.lock);
                 return pid;
             }
@@ -436,7 +436,8 @@ void scheduler(void)
 
         // Loop over process table looking for process to run.
         acquire(&ptable.lock);
-        for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
+        /**************** todo ****************/
+        for (p = ptable.proc->next; p != ptable.proc; p = p->next) /* legacy code for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)*/
         {
             if (p->state != RUNNABLE)
                 continue;
@@ -590,7 +591,7 @@ int kill(int pid)
     struct proc *p;
 
     acquire(&ptable.lock);
-    for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
+    for (p = ptable.proc->next; p != ptable.proc; p = p->next) /* legacy code for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)*/
     {
         if (p->pid == pid)
         {
@@ -624,7 +625,7 @@ void procdump(void)
     char *state;
     uint pc[10];
 
-    for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
+    for (p = ptable.proc->next; p != ptable.proc; p = p->next) /* legacy code for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)*/
     {
         if (p->state == UNUSED)
             continue;
