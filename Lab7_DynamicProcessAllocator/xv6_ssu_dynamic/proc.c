@@ -257,6 +257,11 @@ int fork(void)
 
     acquire(&ptable.lock);
 
+    /**************** todo ****************/
+    np->next = ptable.proc->next;
+    np->prev = ptable.proc;
+    ptable.proc->next->prev = np;
+    ptable.proc->next = np;
     np->state = RUNNABLE;
 
     release(&ptable.lock);
@@ -627,7 +632,7 @@ void ps(void)
 
         cprintf("%d %s %s %p\n", p->pid, state, name, p);
     }
-    
+
     release(&ptable.lock);
 
     // print slab cache
