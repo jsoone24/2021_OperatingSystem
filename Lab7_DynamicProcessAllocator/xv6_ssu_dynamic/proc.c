@@ -596,6 +596,7 @@ void ps(void)
 
     acquire(&ptable.lock);
 
+    /* legacy code
     for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
     {
         if (p->state >= 0 && p->state < NELEM(states) && states[p->state])
@@ -609,7 +610,28 @@ void ps(void)
             name = p->name;
 
         cprintf("%d %s %s %p\n", p->pid, state, name, p);
+    }*/
+
+    /**************** todo ****************/
+    for (p = ptable.proc->next; p != ptable.proc; p = p->next)
+    {
+        if (p->state >= 0 && p->state < NELEM(states) && states[p->state])
+            state = states[p->state];
+        else
+            state = "???";
+
+        if (p->state == UNUSED)
+            name = "unknown";
+        else
+            name = p->name;
+
+        cprintf("%d %s %s %p\n", p->pid, state, name, p);
     }
+    
     release(&ptable.lock);
+
+    // print slab cache
+    slabdump();
+
     return;
 }

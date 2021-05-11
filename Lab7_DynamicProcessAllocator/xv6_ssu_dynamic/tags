@@ -40,6 +40,7 @@ CR0_WP	mmu.h	9;"	d
 CR4_PSE	mmu.h	12;"	d
 CRTPORT	console.c	128;"	d	file:
 CTL	kbd.h	10;"	d
+DALLOC	proc.c	10;"	d	file:
 DAY	lapic.c	170;"	d	file:
 DEASSERT	lapic.c	26;"	d	file:
 DELIVS	lapic.c	24;"	d	file:
@@ -1360,7 +1361,7 @@ copyuvm	vm.c	/^copyuvm(pde_t *pgdir, uint sz)$/;"	f
 cprintf	console.c	/^cprintf(char *fmt, ...)$/;"	f
 cpu	proc.h	/^struct cpu {$/;"	s
 cpu	spinlock.h	/^  struct cpu *cpu;   \/\/ The cpu holding the lock.$/;"	m	struct:spinlock	typeref:struct:spinlock::cpu
-cpuid	proc.c	/^cpuid() {$/;"	f
+cpuid	proc.c	/^int cpuid()$/;"	f
 cpus	mp.c	/^struct cpu cpus[NCPU];$/;"	v	typeref:struct:cpu
 cr3	mmu.h	/^  void *cr3;         \/\/ Page directory base$/;"	m	struct:taskstate
 create	sysfile.c	/^create(char *path, short type, short major, short minor)$/;"	f	file:
@@ -1676,7 +1677,7 @@ dst	user/stressfs.asm	/^  dst = vdst;$/;"	d
 dst	user/usertests.asm	/^  dst = vdst;$/;"	d
 dst	user/wc.asm	/^  dst = vdst;$/;"	d
 dst	user/zombie.asm	/^  dst = vdst;$/;"	d
-dummy	proc.c	/^  struct proc dummy;$/;"	m	struct:__anon8	typeref:struct:__anon8::proc	file:
+dummy	proc.c	/^    struct proc dummy;$/;"	m	struct:__anon8	typeref:struct:__anon8::proc	file:
 e	console.c	/^  uint e;  \/\/ Edit index$/;"	m	struct:__anon3	file:
 e	user/echo.asm	/^   e:	56                   	push   %esi$/;"	l
 e	user/init.asm	/^   e:	51                   	push   %ecx$/;"	l
@@ -2021,7 +2022,7 @@ execcmd	user/sh.c	/^execcmd(void)$/;"	f
 execcmd	user/sh.c	/^struct execcmd {$/;"	s	file:
 exectest	user/usertests.c	/^exectest(void)$/;"	f
 exit	initcode.S	/^exit:$/;"	l
-exit	proc.c	/^exit(void)$/;"	f
+exit	proc.c	/^void exit(void)$/;"	f
 exitiputtest	user/usertests.c	/^exitiputtest(void)$/;"	f
 exitwait	user/usertests.c	/^exitwait(void)$/;"	f
 f	Makefile	/^	dd if=\/dev\/zero of=xv6.img count=10000$/;"	m
@@ -2338,9 +2339,9 @@ flags	elf.h	/^  uint flags;$/;"	m	struct:proghdr
 flags	mp.h	/^  uchar flags;                  \/\/ CPU flags$/;"	m	struct:mpproc
 flags	mp.h	/^  uchar flags;                  \/\/ I\/O APIC flags$/;"	m	struct:mpioapic
 fmtname	user/ls.c	/^fmtname(char *path)$/;"	f
-fork	proc.c	/^fork(void)$/;"	f
+fork	proc.c	/^int fork(void)$/;"	f
 fork1	user/sh.c	/^fork1(void)$/;"	f
-forkret	proc.c	/^forkret(void)$/;"	f
+forkret	proc.c	/^void forkret(void)$/;"	f
 forktest	user/forktest.c	/^forktest(void)$/;"	f
 forktest	user/usertests.c	/^forktest(void)$/;"	f
 fourfiles	user/usertests.c	/^fourfiles(void)$/;"	f
@@ -2403,7 +2404,7 @@ getcmd	user/sh.c	/^getcmd(char *buf, int nbuf)$/;"	f
 gets	ulib.c	/^gets(char *buf, int max)$/;"	f
 gettoken	user/sh.c	/^gettoken(char **ps, char *es, char **q, char **eq)$/;"	f
 grep	user/grep.c	/^grep(char *pattern, int fd)$/;"	f
-growproc	proc.c	/^growproc(int n)$/;"	f
+growproc	proc.c	/^int growproc(int n)$/;"	f
 gs	mmu.h	/^  ushort gs;$/;"	m	struct:taskstate
 gs	x86.h	/^  ushort gs;$/;"	m	struct:trapframe
 havedisk1	ide.c	/^static int havedisk1;$/;"	v	file:
@@ -2505,7 +2506,7 @@ kalloc	kalloc.c	/^kalloc(void)$/;"	f
 kbdgetc	kbd.c	/^kbdgetc(void)$/;"	f
 kbdintr	kbd.c	/^kbdintr(void)$/;"	f
 kfree	kalloc.c	/^kfree(char *v)$/;"	f
-kill	proc.c	/^kill(int pid)$/;"	f
+kill	proc.c	/^int kill(int pid)$/;"	f
 killed	proc.h	/^  int killed;                  \/\/ If non-zero, have been killed$/;"	m	struct:proc
 kinit1	kalloc.c	/^kinit1(void *vstart, void *vend)$/;"	f
 kinit2	kalloc.c	/^kinit2(void *vstart, void *vend)$/;"	f
@@ -2552,8 +2553,8 @@ lock	fs.c	/^  struct spinlock lock;$/;"	m	struct:__anon6	typeref:struct:__anon6:
 lock	kalloc.c	/^  struct spinlock lock;$/;"	m	struct:__anon7	typeref:struct:__anon7::spinlock	file:
 lock	log.c	/^  struct spinlock lock;$/;"	m	struct:log	typeref:struct:log::spinlock	file:
 lock	pipe.c	/^  struct spinlock lock;$/;"	m	struct:pipe	typeref:struct:pipe::spinlock	file:
-lock	proc.c	/^  struct spinlock lock;$/;"	m	struct:__anon8	typeref:struct:__anon8::spinlock	file:
-lock	proc.c	/^  struct spinlock lock;$/;"	m	struct:__anon9	typeref:struct:__anon9::spinlock	file:
+lock	proc.c	/^    struct spinlock lock;$/;"	m	struct:__anon8	typeref:struct:__anon8::spinlock	file:
+lock	proc.c	/^    struct spinlock lock;$/;"	m	struct:__anon9	typeref:struct:__anon9::spinlock	file:
 lock	slab.c	/^    struct spinlock lock;$/;"	m	struct:__anon10	typeref:struct:__anon10::spinlock	file:
 locked	sleeplock.h	/^  uint locked;       \/\/ Is the lock held?$/;"	m	struct:sleeplock
 locked	spinlock.h	/^  uint locked;       \/\/ Is the lock held?$/;"	m	struct:spinlock
@@ -2623,7 +2624,7 @@ mpsearch	mp.c	/^mpsearch(void)$/;"	f	file:
 mpsearch1	mp.c	/^mpsearch1(uint a, int len)$/;"	f	file:
 multiboot_header	entry.S	/^multiboot_header:$/;"	l
 mycpu	proc.c	/^mycpu(void)$/;"	f
-myproc	proc.c	/^myproc(void) {$/;"	f
+myproc	proc.c	/^myproc(void)$/;"	f
 n	log.c	/^  int n;$/;"	m	struct:logheader	file:
 n	user/cat.asm	/^    n = n*10 + *s++ - '0';$/;"	d
 n	user/cat.asm	/^  n = 0;$/;"	d
@@ -2857,7 +2858,7 @@ physaddr	mp.h	/^  void *physaddr;               \/\/ phys addr of MP config tabl
 picinit	picirq.c	/^picinit(void)$/;"	f
 pid	proc.h	/^  int pid;                     \/\/ Process ID$/;"	m	struct:proc
 pid	sleeplock.h	/^  int pid;           \/\/ Process holding lock$/;"	m	struct:sleeplock
-pinit	proc.c	/^pinit(void)$/;"	f
+pinit	proc.c	/^void pinit(void)$/;"	f
 pipe	file.h	/^  struct pipe *pipe;$/;"	m	struct:file	typeref:struct:file::pipe
 pipe	pipe.c	/^struct pipe {$/;"	s	file:
 pipe1	user/usertests.c	/^pipe1(void)$/;"	f
@@ -2875,15 +2876,15 @@ print	user/forktest.c	/^print(int fd, const char *s, ...)$/;"	f
 printf	printf.c	/^printf(int fd, const char *fmt, ...)$/;"	f
 printint	console.c	/^printint(int xx, int base, int sign)$/;"	f	file:
 printint	printf.c	/^printint(int fd, int xx, int base, int sgn)$/;"	f	file:
-proc	proc.c	/^  struct proc *proc;$/;"	m	struct:__anon8	typeref:struct:__anon8::proc	file:
-proc	proc.c	/^  struct proc proc[NPROC];$/;"	m	struct:__anon9	typeref:struct:__anon9::proc	file:
+proc	proc.c	/^    struct proc *proc;$/;"	m	struct:__anon8	typeref:struct:__anon8::proc	file:
+proc	proc.c	/^    struct proc proc[NPROC];$/;"	m	struct:__anon9	typeref:struct:__anon9::proc	file:
 proc	proc.h	/^  struct proc *proc;           \/\/ The process running on this cpu or null$/;"	m	struct:cpu	typeref:struct:cpu::proc
 proc	proc.h	/^struct proc {$/;"	s
-procdump	proc.c	/^procdump(void)$/;"	f
+procdump	proc.c	/^void procdump(void)$/;"	f
 procstate	proc.h	/^enum procstate { UNUSED, EMBRYO, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };$/;"	g
 product	mp.h	/^  uchar product[20];            \/\/ product id$/;"	m	struct:mpconf
 proghdr	elf.h	/^struct proghdr {$/;"	s
-ps	proc.c	/^ps(void)$/;"	f
+ps	proc.c	/^void ps(void)$/;"	f
 ptable	proc.c	/^} ptable;$/;"	v	typeref:struct:__anon8
 ptable	proc.c	/^} ptable;$/;"	v	typeref:struct:__anon9
 pte_t	mmu.h	/^typedef uint pte_t;$/;"	t
@@ -2984,8 +2985,8 @@ safestrcpy	string.c	/^safestrcpy(char *s, const char *t, int n)$/;"	f
 sb	fs.c	/^struct superblock sb; $/;"	v	typeref:struct:superblock
 sb	mkfs.c	/^struct superblock sb;$/;"	v	typeref:struct:superblock
 sbrktest	user/usertests.c	/^sbrktest(void)$/;"	f
-sched	proc.c	/^sched(void)$/;"	f
-scheduler	proc.c	/^scheduler(void)$/;"	f
+sched	proc.c	/^void sched(void)$/;"	f
+scheduler	proc.c	/^void scheduler(void)$/;"	f
 scheduler	proc.h	/^  struct context *scheduler;   \/\/ swtch() here to enter scheduler$/;"	m	struct:cpu	typeref:struct:cpu::context
 second	date.h	/^  uint second;$/;"	m	struct:rtcdate
 segdesc	mmu.h	/^struct segdesc {$/;"	s
@@ -3014,7 +3015,7 @@ slab	slab.h	/^struct slab {$/;"	s
 slabdump	slab.c	/^void slabdump()$/;"	f
 slabinit	slab.c	/^void slabinit()$/;"	f
 slabtest	sysslab.c	/^int slabtest(void)$/;"	f
-sleep	proc.c	/^sleep(void *chan, struct spinlock *lk)$/;"	f
+sleep	proc.c	/^void sleep(void *chan, struct spinlock *lk)$/;"	f
 sleeplock	sleeplock.h	/^struct sleeplock {$/;"	s
 specrev	mp.h	/^  uchar specrev;                \/\/ [14]$/;"	m	struct:mp
 spin	bootasm.S	/^spin:$/;"	l
@@ -3277,7 +3278,7 @@ uio	user/usertests.c	/^uio()$/;"	f
 uninit	user/usertests.c	/^char uninit[10000];$/;"	v
 unlinkread	user/usertests.c	/^unlinkread(void)$/;"	f
 use_lock	kalloc.c	/^  int use_lock;$/;"	m	struct:__anon7	file:
-userinit	proc.c	/^userinit(void)$/;"	f
+userinit	proc.c	/^void userinit(void)$/;"	f
 ushort	types.h	/^typedef unsigned short ushort;$/;"	t
 uva2ka	vm.c	/^uva2ka(pde_t *pgdir, char *uva)$/;"	f
 vaddr	elf.h	/^  uint vaddr;$/;"	m	struct:proghdr
@@ -3307,9 +3308,9 @@ void	user/usertests.asm	/^void$/;"	l
 void	user/wc.asm	/^void$/;"	l
 void	user/zombie.asm	/^void$/;"	l
 w	console.c	/^  uint w;  \/\/ Write index$/;"	m	struct:__anon3	file:
-wait	proc.c	/^wait(void)$/;"	f
+wait	proc.c	/^int wait(void)$/;"	f
 waitdisk	bootmain.c	/^waitdisk(void)$/;"	f
-wakeup	proc.c	/^wakeup(void *chan)$/;"	f
+wakeup	proc.c	/^void wakeup(void *chan)$/;"	f
 wakeup1	proc.c	/^wakeup1(void *chan)$/;"	f	file:
 walkpgdir	vm.c	/^walkpgdir(pde_t *pgdir, const void *va, int alloc)$/;"	f	file:
 wc	user/wc.c	/^wc(int fd, char *name)$/;"	f
@@ -3366,5 +3367,5 @@ xint	mkfs.c	/^xint(uint x)$/;"	f
 xlength	mp.h	/^  ushort xlength;               \/\/ extended table length$/;"	m	struct:mpconf
 xshort	mkfs.c	/^xshort(ushort x)$/;"	f
 year	date.h	/^  uint year;$/;"	m	struct:rtcdate
-yield	proc.c	/^yield(void)$/;"	f
+yield	proc.c	/^void yield(void)$/;"	f
 zeroes	mkfs.c	/^char zeroes[BSIZE];$/;"	v
