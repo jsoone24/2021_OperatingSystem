@@ -347,11 +347,45 @@ int wait(void)
     {
         // Scan through table looking for exited children.
         havekids = 0;
+        /**************** todo ****************/
+
+        for (p = ptable.proc->next; p != ptable.proc; p = p->next)
+        {
+            if (p->parent != curproc)
+                continue;
+            havekids = 1;
+            
+            if (p->state == ZOMBIE)
+            {
+                // Found one.
+                pid = p->pid;
+                kfree(p->kstack);
+                p->kstack = 0;
+                freevm(p->pgdir);
+                p->pid = 0;
+                p->parent = 0;
+                p->name[0] = 0;
+                p->killed = 0;
+                p->state = UNUSED;
+
+                p->next->prev = p->prev;
+                p->prev->next = p->next;
+                p->prev = 0;
+                p->next = 0;
+                kmfree(p, sizeof(struct proc));
+                
+                release(&ptable.lock);
+                return pid;
+            }
+        }
+
+        /* legacy code
         for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
         {
             if (p->parent != curproc)
                 continue;
             havekids = 1;
+            
             if (p->state == ZOMBIE)
             {
                 // Found one.
@@ -367,7 +401,7 @@ int wait(void)
                 release(&ptable.lock);
                 return pid;
             }
-        }
+        }*/
 
         // No point waiting if we don't have any children.
         if (!havekids || curproc->killed)
