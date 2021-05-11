@@ -528,9 +528,16 @@ wakeup1(void *chan)
 {
     struct proc *p;
 
+    /**************** todo ****************/
+    for (p = ptable.proc->next; p != ptable.proc; p = p->next)
+        if (p->state == SLEEPING && p->chan == chan)
+            p->state = RUNNABLE;
+
+    /* legacy code
     for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
         if (p->state == SLEEPING && p->chan == chan)
             p->state = RUNNABLE;
+    */
 }
 
 // Wake up all processes sleeping on chan.
