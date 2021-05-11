@@ -99,18 +99,6 @@ allocproc(void)
     char *sp;
 
     acquire(&ptable.lock);
-    /* legacy code
-  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++)
-    if(p->state == UNUSED)
-      goto found;
-
-  release(&ptable.lock);
-  return 0;
-
-found:
-  p->state = EMBRYO;
-  p->pid = nextpid++;
-*/
 
     /**************** todo ****************/
     p = (struct proc *)kmalloc(sizeof(struct proc));
@@ -125,6 +113,19 @@ found:
     p->pid = nextpid++;
     p->prev = 0;
     p->next = 0;
+
+    /* legacy code
+    for(p = ptable.proc; p < &ptable.proc[NPROC]; p++)
+        if(p->state == UNUSED)
+        goto found;
+
+    release(&ptable.lock);
+    return 0;
+
+    found:
+        p->state = EMBRYO;
+        p->pid = nextpid++;
+    */
 
     release(&ptable.lock);
 
@@ -298,9 +299,23 @@ void exit(void)
 
     acquire(&ptable.lock);
 
+    /**************** todo ****************/
+
     // Parent might be sleeping in wait().
     wakeup1(curproc->parent);
 
+    // Pass abandoned children to init.
+    for (p = ptable.proc->next; p != ptable.proc; p = p->next)
+    {
+        if (p->parent == curproc)
+        {
+            p->parent = initproc;
+            if (p->state == ZOMBIE)
+                wakeup1(initproc);
+        }
+    }
+
+    /* legacy code
     // Pass abandoned children to init.
     for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
     {
@@ -311,6 +326,7 @@ void exit(void)
                 wakeup1(initproc);
         }
     }
+    */
 
     // Jump into the scheduler, never to return.
     curproc->state = ZOMBIE;
@@ -601,22 +617,6 @@ void ps(void)
 
     acquire(&ptable.lock);
 
-    /* legacy code
-    for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
-    {
-        if (p->state >= 0 && p->state < NELEM(states) && states[p->state])
-            state = states[p->state];
-        else
-            state = "???";
-
-        if (p->state == UNUSED)
-            name = "unknown";
-        else
-            name = p->name;
-
-        cprintf("%d %s %s %p\n", p->pid, state, name, p);
-    }*/
-
     /**************** todo ****************/
     for (p = ptable.proc->next; p != ptable.proc; p = p->next)
     {
@@ -632,6 +632,22 @@ void ps(void)
 
         cprintf("%d %s %s %p\n", p->pid, state, name, p);
     }
+
+    /* legacy code
+    for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
+    {
+        if (p->state >= 0 && p->state < NELEM(states) && states[p->state])
+            state = states[p->state];
+        else
+            state = "???";
+
+        if (p->state == UNUSED)
+            name = "unknown";
+        else
+            name = p->name;
+
+        cprintf("%d %s %s %p\n", p->pid, state, name, p);
+    }*/
 
     release(&ptable.lock);
 
