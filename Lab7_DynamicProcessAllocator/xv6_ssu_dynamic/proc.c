@@ -372,32 +372,29 @@ void scheduler(void)
         // Enable interrupts on this processor.
         sti();
 
-        if (ptable.proc->next != 0)
+        // Loop over process table looking for process to run.
+        acquire(&ptable.lock);
+        /**************** todo ****************/
+        for (p = ptable.proc->next; (p != ptable.proc) && (p != 0); p = p->next)
         {
-            // Loop over process table looking for process to run.
-            acquire(&ptable.lock);
-            /**************** todo ****************/
-            for (p = ptable.proc->next; (p != ptable.proc) && (p != 0); p = p->next)
-            {
-                if (p->state != RUNNABLE)
-                    continue;
+            if (p->state != RUNNABLE)
+                continue;
 
-                // Switch to chosen process.  It is the process's job
-                // to release ptable.lock and then reacquire it
-                // before jumping back to us.
-                c->proc = p;
-                switchuvm(p);
-                p->state = RUNNING;
+            // Switch to chosen process.  It is the process's job
+            // to release ptable.lock and then reacquire it
+            // before jumping back to us.
+            c->proc = p;
+            switchuvm(p);
+            p->state = RUNNING;
 
-                swtch(&(c->scheduler), p->context);
-                switchkvm();
+            swtch(&(c->scheduler), p->context);
+            switchkvm();
 
-                // Process is done running for now.
-                // It should have changed its p->state before coming back.
-                c->proc = 0;
-            }
-            release(&ptable.lock);
+            // Process is done running for now.
+            // It should have changed its p->state before coming back.
+            c->proc = 0;
         }
+        release(&ptable.lock);
     }
 }
 
@@ -592,25 +589,28 @@ void ps(void)
     struct proc *p;
     char *state, *name;
 
-    acquire(&ptable.lock);
-
-    /**************** todo ****************/
-    for (p = ptable.proc->next; (p != ptable.proc) && (p != 0); p = p->next)
+    if (ptable.proc->next != 0)
     {
-        if (p->state >= 0 && p->state < NELEM(states) && states[p->state])
-            state = states[p->state];
-        else
-            state = "???";
+        acquire(&ptable.lock);
 
-        if (p->state == UNUSED)
-            name = "unknown";
-        else
-            name = p->name;
+        /**************** todo ****************/
+        for (p = ptable.proc->next; (p != ptable.proc) && (p != 0); p = p->next)
+        {
+            if (p->state >= 0 && p->state < NELEM(states) && states[p->state])
+                state = states[p->state];
+            else
+                state = "???";
 
-        cprintf("%d %s %s %p\n", p->pid, state, name, p);
+            if (p->state == UNUSED)
+                name = "unknown";
+            else
+                name = p->name;
+
+            cprintf("%d %s %s %p\n", p->pid, state, name, p);
+        }
+
+        release(&ptable.lock);
     }
-
-    release(&ptable.lock);
 
     // print slab cache
     slabdump();
