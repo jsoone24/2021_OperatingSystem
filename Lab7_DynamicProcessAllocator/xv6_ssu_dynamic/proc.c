@@ -101,19 +101,6 @@ allocproc(void)
     p->prev = 0;
     p->next = 0;
 
-    /* legacy code
-    for(p = ptable.proc; p < &ptable.proc[NPROC]; p++)
-        if(p->state == UNUSED)
-        goto found;
-
-    release(&ptable.lock);
-    return 0;
-
-    found:
-        p->state = EMBRYO;
-        p->pid = nextpid++;
-    */
-
     release(&ptable.lock);
 
     // Allocate kernel stack.
@@ -302,19 +289,6 @@ void exit(void)
         }
     }
 
-    /* legacy code
-    // Pass abandoned children to init.
-    for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
-    {
-        if (p->parent == curproc)
-        {
-            p->parent = initproc;
-            if (p->state == ZOMBIE)
-                wakeup1(initproc);
-        }
-    }
-    */
-
     // Jump into the scheduler, never to return.
     curproc->state = ZOMBIE;
     sched();
@@ -367,30 +341,6 @@ int wait(void)
             }
         }
 
-        /* legacy code
-        for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
-        {
-            if (p->parent != curproc)
-                continue;
-            havekids = 1;
-            
-            if (p->state == ZOMBIE)
-            {
-                // Found one.
-                pid = p->pid;
-                kfree(p->kstack);
-                p->kstack = 0;
-                freevm(p->pgdir);
-                p->pid = 0;
-                p->parent = 0;
-                p->name[0] = 0;
-                p->killed = 0;
-                p->state = UNUSED;
-                release(&ptable.lock);
-                return pid;
-            }
-        }*/
-
         // No point waiting if we don't have any children.
         if (!havekids || curproc->killed)
         {
@@ -427,7 +377,7 @@ void scheduler(void)
             // Loop over process table looking for process to run.
             acquire(&ptable.lock);
             /**************** todo ****************/
-            for (p = ptable.proc->next; (p != ptable.proc) && (p != 0); p = p->next) /* legacy code for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)*/
+            for (p = ptable.proc->next; (p != ptable.proc) && (p != 0); p = p->next)
             {
                 if (p->state != RUNNABLE)
                     continue;
@@ -558,12 +508,6 @@ wakeup1(void *chan)
     for (p = ptable.proc->next; (p != ptable.proc) && (p != 0); p = p->next)
         if (p->state == SLEEPING && p->chan == chan)
             p->state = RUNNABLE;
-
-    /* legacy code
-    for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
-        if (p->state == SLEEPING && p->chan == chan)
-            p->state = RUNNABLE;
-    */
 }
 
 // Wake up all processes sleeping on chan.
@@ -582,7 +526,7 @@ int kill(int pid)
     struct proc *p;
 
     acquire(&ptable.lock);
-    for (p = ptable.proc->next; (p != ptable.proc) && (p != 0); p = p->next) /* legacy code for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)*/
+    for (p = ptable.proc->next; (p != ptable.proc) && (p != 0); p = p->next)
     {
         if (p->pid == pid)
         {
@@ -616,7 +560,7 @@ void procdump(void)
     char *state;
     uint pc[10];
 
-    for (p = ptable.proc->next; (p != ptable.proc) && (p != 0); p = p->next) /* legacy code for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)*/
+    for (p = ptable.proc->next; (p != ptable.proc) && (p != 0); p = p->next)
     {
         if (p->state == UNUSED)
             continue;
@@ -665,22 +609,6 @@ void ps(void)
 
         cprintf("%d %s %s %p\n", p->pid, state, name, p);
     }
-
-    /* legacy code
-    for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
-    {
-        if (p->state >= 0 && p->state < NELEM(states) && states[p->state])
-            state = states[p->state];
-        else
-            state = "???";
-
-        if (p->state == UNUSED)
-            name = "unknown";
-        else
-            name = p->name;
-
-        cprintf("%d %s %s %p\n", p->pid, state, name, p);
-    }*/
 
     release(&ptable.lock);
 
