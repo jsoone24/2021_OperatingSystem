@@ -40,7 +40,6 @@ CR0_WP	mmu.h	9;"	d
 CR4_PSE	mmu.h	12;"	d
 CRTPORT	console.c	128;"	d	file:
 CTL	kbd.h	10;"	d
-DALLOC	proc.c	10;"	d	file:
 DAY	lapic.c	170;"	d	file:
 DEASSERT	lapic.c	26;"	d	file:
 DELIVS	lapic.c	24;"	d	file:
@@ -2568,8 +2567,7 @@ lock	kalloc.c	/^  struct spinlock lock;$/;"	m	struct:__anon7	typeref:struct:__an
 lock	log.c	/^  struct spinlock lock;$/;"	m	struct:log	typeref:struct:log::spinlock	file:
 lock	pipe.c	/^  struct spinlock lock;$/;"	m	struct:pipe	typeref:struct:pipe::spinlock	file:
 lock	proc.c	/^    struct spinlock lock;$/;"	m	struct:__anon8	typeref:struct:__anon8::spinlock	file:
-lock	proc.c	/^    struct spinlock lock;$/;"	m	struct:__anon9	typeref:struct:__anon9::spinlock	file:
-lock	slab.c	/^    struct spinlock lock;$/;"	m	struct:__anon10	typeref:struct:__anon10::spinlock	file:
+lock	slab.c	/^    struct spinlock lock;$/;"	m	struct:__anon9	typeref:struct:__anon9::spinlock	file:
 locked	sleeplock.h	/^  uint locked;       \/\/ Is the lock held?$/;"	m	struct:sleeplock
 locked	spinlock.h	/^  uint locked;       \/\/ Is the lock held?$/;"	m	struct:spinlock
 locking	console.c	/^  int locking;$/;"	m	struct:__anon2	file:
@@ -2891,7 +2889,6 @@ printf	printf.c	/^printf(int fd, const char *fmt, ...)$/;"	f
 printint	console.c	/^printint(int xx, int base, int sign)$/;"	f	file:
 printint	printf.c	/^printint(int fd, int xx, int base, int sgn)$/;"	f	file:
 proc	proc.c	/^    struct proc *proc;$/;"	m	struct:__anon8	typeref:struct:__anon8::proc	file:
-proc	proc.c	/^    struct proc proc[NPROC];$/;"	m	struct:__anon9	typeref:struct:__anon9::proc	file:
 proc	proc.h	/^  struct proc *proc;           \/\/ The process running on this cpu or null$/;"	m	struct:cpu	typeref:struct:cpu::proc
 proc	proc.h	/^struct proc {$/;"	s
 procdump	proc.c	/^void procdump(void)$/;"	f
@@ -2900,9 +2897,8 @@ product	mp.h	/^  uchar product[20];            \/\/ product id$/;"	m	struct:mpco
 proghdr	elf.h	/^struct proghdr {$/;"	s
 ps	proc.c	/^void ps(void)$/;"	f
 ptable	proc.c	/^} ptable;$/;"	v	typeref:struct:__anon8
-ptable	proc.c	/^} ptable;$/;"	v	typeref:struct:__anon9
 pte_t	mmu.h	/^typedef uint pte_t;$/;"	t
-ptr	umalloc.c	/^    union header *ptr;$/;"	m	struct:header::__anon11	typeref:union:header::__anon11::header	file:
+ptr	umalloc.c	/^    union header *ptr;$/;"	m	struct:header::__anon10	typeref:union:header::__anon10::header	file:
 pushcli	spinlock.c	/^pushcli(void)$/;"	f
 putc	printf.c	/^putc(int fd, char c)$/;"	f	file:
 qnext	buf.h	/^  struct buf *qnext; \/\/ disk queue$/;"	m	struct:buf	typeref:struct:buf::buf
@@ -2960,7 +2956,7 @@ run	kalloc.c	/^struct run {$/;"	s	file:
 runcmd	user/sh.c	/^runcmd(struct cmd *cmd)$/;"	f
 s	mmu.h	/^  uint s : 1;           \/\/ must be 0 (system)$/;"	m	struct:gatedesc
 s	mmu.h	/^  uint s : 1;          \/\/ 0 = system, 1 = application$/;"	m	struct:segdesc
-s	umalloc.c	/^  } s;$/;"	m	union:header	typeref:struct:header::__anon11	file:
+s	umalloc.c	/^  } s;$/;"	m	union:header	typeref:struct:header::__anon10	file:
 s	user/cat.asm	/^          s = "(null)";$/;"	d
 s	user/cat.asm	/^        s = (char*)*ap;$/;"	d
 s	user/echo.asm	/^          s = "(null)";$/;"	d
@@ -3022,9 +3018,9 @@ size	fs.h	/^  uint size;         \/\/ Size of file system image (blocks)$/;"	m	s
 size	log.c	/^  int size;$/;"	m	struct:log	file:
 size	slab.h	/^	int size;$/;"	m	struct:slab
 size	stat.h	/^  uint size;   \/\/ Size of file in bytes$/;"	m	struct:stat
-size	umalloc.c	/^    uint size;$/;"	m	struct:header::__anon11	file:
+size	umalloc.c	/^    uint size;$/;"	m	struct:header::__anon10	file:
 skipelem	fs.c	/^skipelem(char *path, char *name)$/;"	f	file:
-slab	slab.c	/^    struct slab slab[NSLAB];$/;"	m	struct:__anon10	typeref:struct:__anon10::slab	file:
+slab	slab.c	/^    struct slab slab[NSLAB];$/;"	m	struct:__anon9	typeref:struct:__anon9::slab	file:
 slab	slab.h	/^struct slab {$/;"	s
 slabdump	slab.c	/^void slabdump()$/;"	f
 slabinit	slab.c	/^void slabinit()$/;"	f
@@ -3057,7 +3053,7 @@ ss	x86.h	/^  ushort ss;$/;"	m	struct:trapframe
 ss0	mmu.h	/^  ushort ss0;        \/\/   after an increase in privilege level$/;"	m	struct:taskstate
 ss1	mmu.h	/^  ushort ss1;$/;"	m	struct:taskstate
 ss2	mmu.h	/^  ushort ss2;$/;"	m	struct:taskstate
-stable	slab.c	/^} stable;$/;"	v	typeref:struct:__anon10
+stable	slab.c	/^} stable;$/;"	v	typeref:struct:__anon9
 start	bootasm.S	/^start:$/;"	l
 start	entryother.S	/^start:$/;"	l
 start	initcode.S	/^start:$/;"	l

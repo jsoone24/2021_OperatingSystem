@@ -18,8 +18,10 @@ unsigned int nextPowerOf2Idx(unsigned int n)
 
     // First n in the below condition
     // is for the case where n is 0
-    if (n && !(n & (n - 1)))
-        return 0;
+    if (n < 8)
+        return 3;
+
+    n = n - 1;
 
     while (n != 0)
     {

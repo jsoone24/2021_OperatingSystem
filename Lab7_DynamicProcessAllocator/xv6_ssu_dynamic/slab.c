@@ -18,8 +18,10 @@ unsigned int nextPowerOf2Idx(unsigned int n)
 
     // First n in the below condition
     // is for the case where n is 0
-    if (n && !(n & (n - 1)))
-        return 0;
+    if (n < 8)
+        return 3;
+
+    n = n - 1;
 
     while (n != 0)
     {
@@ -91,10 +93,10 @@ char *kmalloc(int size)
     }
 
     // search bitmap for free space
-    int free_slab_idx = 0;                               // free slab index from bitmap
+    int free_slab_idx = 0;               // free slab index from bitmap
     char *bitmap_ptr = slab_ptr->bitmap; // get bitmap start address
-    char *free_space_addr;                               // return value;
-    unsigned char temp = 0;                              // temporary space for bitmap calculation
+    char *free_space_addr;               // return value;
+    unsigned char temp = 0;              // temporary space for bitmap calculation
 
     for (int i = 0; i * 8 < slab_ptr->num_pages * slab_ptr->num_objects_per_page; i++, bitmap_ptr++)
     {
@@ -179,7 +181,7 @@ void bitmapdump()
 
         for (int i = 0; i < PGSIZE; i++)
         {
-            if(((unsigned char)*ptr) !=0)
+            if (((unsigned char)*ptr) != 0)
                 cprintf("%x ", (unsigned char)*ptr);
             else
                 cprintf("00 ");
