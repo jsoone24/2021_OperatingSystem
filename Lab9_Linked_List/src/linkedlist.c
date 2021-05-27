@@ -34,24 +34,27 @@ void linked_list_destroy(linked_list_t *ll)
 	/* do program */
 	/* free all nodes in the linked list */
 	/* free the linked list */
-/*
+
 	node_t **ptr;
 	node_t **tmp;
 	node_t *_tmp;
 
-	ptr = &(ll->list_head);
-	while ((*ptr) != NULL)
+	ptr = ll->list_head->next;
+	while (ptr != NULL)
 	{
+		
 		tmp = ptr;
-		_tmp = *tmp;
+		_tmp = *ptr;
 		ptr = (*ptr)->next;
 
 		free(_tmp);
 		free(tmp);
 	}
-
+	
+	free(ll->list_head);
 	free(ll);
-	return;*/
+
+	return;
 }
 
 long linked_list_get(long key, linked_list_t *ll)
@@ -63,7 +66,7 @@ long linked_list_get(long key, linked_list_t *ll)
 	node_t **ptr;
 
 	ptr = &(ll->list_head);
-	while ((*ptr) != NULL)
+	while (ptr != NULL)
 	{
 		if ((*ptr)->key != key)
 		{
@@ -83,38 +86,34 @@ long linked_list_put(long key, long value, linked_list_t *ll)
 	/* if succeeds, return 0 */
 	/* if fails, return -1 */
 
-	int i = 0;
-	while (i < 1000)
-	{
 #ifdef BLINKED_LIST
-		// lock
-		pthread_mutex_lock(&(ll->list_lock));
+	// lock
+	pthread_mutex_lock(&(ll->list_lock));
 
-		node_t **ptr;
-		node_t **tmp;
+	node_t **ptr;
+	node_t **tmp;
 
-		ptr = &(ll->list_head);
-		while ((*ptr)->next != NULL)
-		{
-			ptr = (*ptr)->next;
-		}
+	ptr = &(ll->list_head);
+	while ((*ptr)->next != NULL)
+	{
+		ptr = (*ptr)->next;
+	}
 
-		tmp = (node_t **)malloc(sizeof(node_t *));
-		*tmp = (node_t *)malloc(sizeof(node_t));
+	tmp = (node_t **)malloc(sizeof(node_t *));
+	*tmp = (node_t *)malloc(sizeof(node_t));
 
-		(*tmp)->key = i;
-		(*tmp)->value = i;
-		(*tmp)->level = i;
-		(*tmp)->next = NULL;
+	(*tmp)->key = key;
+	(*tmp)->value = value;
+	(*tmp)->level = 0;
+	(*tmp)->next = NULL;
 
-		(*ptr)->next = tmp;
-		i++;
+	(*ptr)->next = tmp;
 
-		// unlock
-		pthread_mutex_unlock(&(ll->list_lock));
-
+	// unlock
+	pthread_mutex_unlock(&(ll->list_lock));
 #else
-
+	while (1)
+	{
 		node_t **ptr;
 		node_t **tmp;
 
@@ -127,17 +126,17 @@ long linked_list_put(long key, long value, linked_list_t *ll)
 		tmp = (node_t **)malloc(sizeof(node_t *));
 		*tmp = (node_t *)malloc(sizeof(node_t));
 
-		(*tmp)->key = i;
-		(*tmp)->value = i;
-		(*tmp)->level = i;
+		(*tmp)->key = key;
+		(*tmp)->value = value;
+		(*tmp)->level = 0;
 		(*tmp)->next = NULL;
 
 		if (CAS(&((*ptr)->next), NULL, tmp) == NULL)
 			continue;
 
-		FAI(&i);
-#endif
+		break;
 	}
+#endif
 
 	return 0;
 }
