@@ -34,19 +34,24 @@ void linked_list_destroy(linked_list_t *ll)
 	/* do program */
 	/* free all nodes in the linked list */
 	/* free the linked list */
+/*
+	node_t **ptr;
+	node_t **tmp;
+	node_t *_tmp;
 
-	node_t *ptr;
-	node_t *tmp;
-	ptr = ll->list_head;
-
-	while (ptr != NULL)
+	ptr = &(ll->list_head);
+	while ((*ptr) != NULL)
 	{
 		tmp = ptr;
-		ptr = ptr->next;
+		_tmp = *tmp;
+		ptr = (*ptr)->next;
+
+		free(_tmp);
 		free(tmp);
 	}
+
 	free(ll);
-	return;
+	return;*/
 }
 
 long linked_list_get(long key, linked_list_t *ll)
@@ -55,18 +60,18 @@ long linked_list_get(long key, linked_list_t *ll)
 	/* if key is found, return value */
 	/* if key is not found, return -1 */
 
-	node_t *ptr;
-	ptr = ll->list_head;
+	node_t **ptr;
 
-	while (ptr->next != NULL)
+	ptr = &(ll->list_head);
+	while ((*ptr) != NULL)
 	{
-		if (ptr->key != key)
+		if ((*ptr)->key != key)
 		{
-			ptr = *(ptr->next);
+			ptr = (*ptr)->next;
 			continue;
 		}
 
-		return ptr->value;
+		return (*ptr)->value;
 	}
 
 	return -1;
@@ -85,40 +90,51 @@ long linked_list_put(long key, long value, linked_list_t *ll)
 		// lock
 		pthread_mutex_lock(&(ll->list_lock));
 
-		node_t *ptr;
-		ptr = ll->list_head;
-		while (ptr->next != NULL)
+		node_t **ptr;
+		node_t **tmp;
+
+		ptr = &(ll->list_head);
+		while ((*ptr)->next != NULL)
 		{
-			ptr = ptr->next;
+			ptr = (*ptr)->next;
 		}
 
-		node_t *tmp;
-		tmp = (node_t *)malloc(sizeof(node_t));
-		tmp->key = key;
-		tmp->value = value;
-		tmp->level = i;
-		tmp->next = NULL;
+		tmp = (node_t **)malloc(sizeof(node_t *));
+		*tmp = (node_t *)malloc(sizeof(node_t));
 
-		ptr->next = tmp;
+		(*tmp)->key = i;
+		(*tmp)->value = i;
+		(*tmp)->level = i;
+		(*tmp)->next = NULL;
+
+		(*ptr)->next = tmp;
 		i++;
+
 		// unlock
 		pthread_mutex_unlock(&(ll->list_lock));
+
 #else
-		node_t *ptr;
-		ptr = ll->list_head;
-		while (ptr->next != NULL)
+
+		node_t **ptr;
+		node_t **tmp;
+
+		ptr = &(ll->list_head);
+		while ((*ptr)->next != NULL)
 		{
-			ptr = ptr->next;
+			ptr = (*ptr)->next;
 		}
 
-		node_t *tmp;
-		tmp = (node_t *)malloc(sizeof(node_t));
-		tmp->key = key;
-		tmp->value = value;
-		tmp->level = i;
-		tmp->next= NULL;
-		if(CAS(&(ptr->next), NULL, tmp) == NULL)
+		tmp = (node_t **)malloc(sizeof(node_t *));
+		*tmp = (node_t *)malloc(sizeof(node_t));
+
+		(*tmp)->key = i;
+		(*tmp)->value = i;
+		(*tmp)->level = i;
+		(*tmp)->next = NULL;
+
+		if (CAS(&((*ptr)->next), NULL, tmp) == NULL)
 			continue;
+
 		FAI(&i);
 #endif
 	}
