@@ -42,7 +42,6 @@ void linked_list_destroy(linked_list_t *ll)
 	ptr = ll->list_head->next;
 	while (ptr != NULL)
 	{
-		
 		tmp = ptr;
 		_tmp = *ptr;
 		ptr = (*ptr)->next;
@@ -50,7 +49,7 @@ void linked_list_destroy(linked_list_t *ll)
 		free(_tmp);
 		free(tmp);
 	}
-	
+
 	free(ll->list_head);
 	free(ll);
 
@@ -93,21 +92,16 @@ long linked_list_put(long key, long value, linked_list_t *ll)
 	node_t **ptr;
 	node_t **tmp;
 
-	ptr = &(ll->list_head);
-	while ((*ptr)->next != NULL)
-	{
-		ptr = (*ptr)->next;
-	}
+	ptr = (ll->list_head->next);
 
 	tmp = (node_t **)malloc(sizeof(node_t *));
 	*tmp = (node_t *)malloc(sizeof(node_t));
-
 	(*tmp)->key = key;
 	(*tmp)->value = value;
 	(*tmp)->level = 0;
-	(*tmp)->next = NULL;
+	(*tmp)->next = ptr;
 
-	(*ptr)->next = tmp;
+	(ll->list_head->next) = tmp;
 
 	// unlock
 	pthread_mutex_unlock(&(ll->list_lock));
@@ -117,21 +111,16 @@ long linked_list_put(long key, long value, linked_list_t *ll)
 		node_t **ptr;
 		node_t **tmp;
 
-		ptr = &(ll->list_head);
-		while ((*ptr)->next != NULL)
-		{
-			ptr = (*ptr)->next;
-		}
+		ptr = (ll->list_head->next);
 
 		tmp = (node_t **)malloc(sizeof(node_t *));
 		*tmp = (node_t *)malloc(sizeof(node_t));
-
 		(*tmp)->key = key;
 		(*tmp)->value = value;
 		(*tmp)->level = 0;
-		(*tmp)->next = NULL;
+		(*tmp)->next = ptr;
 
-		if (CAS(&((*ptr)->next), NULL, tmp) == NULL)
+		if (CAS(&(ll->list_head->next), ptr, tmp) == ptr)
 			continue;
 
 		break;
