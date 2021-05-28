@@ -15,9 +15,9 @@ int linked_list_init(linked_list_t **ll)
 
 	(*ll) = (linked_list_t *)malloc(sizeof(linked_list_t));
 	(*ll)->list_head = (node_t *)malloc(sizeof(node_t));
-	(*ll)->list_head->key = NULL;
-	(*ll)->list_head->value = NULL;
-	(*ll)->list_head->level = NULL;
+	(*ll)->list_head->key = 0;
+	(*ll)->list_head->value = 0;
+	(*ll)->list_head->level = 0;
 	(*ll)->list_head->next = NULL;
 
 #ifdef BLINKED_LIST
@@ -40,6 +40,7 @@ void linked_list_destroy(linked_list_t *ll)
 	node_t *_tmp;
 
 	ptr = ll->list_head->next;
+
 	while (ptr != NULL)
 	{
 		tmp = ptr;
@@ -92,10 +93,18 @@ long linked_list_put(long key, long value, linked_list_t *ll)
 	node_t **ptr;
 	node_t **tmp;
 
-	ptr = (ll->list_head->next);
+	ptr = ll->list_head->next;
 
 	tmp = (node_t **)malloc(sizeof(node_t *));
+	if (tmp == NULL)
+	{
+		return -1;
+	}
 	*tmp = (node_t *)malloc(sizeof(node_t));
+	if (*tmp == NULL)
+	{
+		return -1;
+	}
 	(*tmp)->key = key;
 	(*tmp)->value = value;
 	(*tmp)->level = 0;
@@ -111,19 +120,30 @@ long linked_list_put(long key, long value, linked_list_t *ll)
 		node_t **ptr;
 		node_t **tmp;
 
-		ptr = (ll->list_head->next);
+		ptr = ll->list_head->next;
 
 		tmp = (node_t **)malloc(sizeof(node_t *));
+		if (tmp == NULL)
+		{
+			return -1;
+		}
 		*tmp = (node_t *)malloc(sizeof(node_t));
+		if (*tmp == NULL)
+		{
+			return -1;
+		}
 		(*tmp)->key = key;
 		(*tmp)->value = value;
 		(*tmp)->level = 0;
 		(*tmp)->next = ptr;
 
-		if (CAS(&(ll->list_head->next), ptr, tmp) == ptr)
-			continue;
+		if (CAS(&(ll->list_head->next), ptr, tmp) == 1)
+		{
+			break;
+		}
 
-		break;
+		free(*tmp);
+		free(tmp);
 	}
 #endif
 
